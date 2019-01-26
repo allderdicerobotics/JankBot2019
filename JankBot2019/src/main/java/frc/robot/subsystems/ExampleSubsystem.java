@@ -9,6 +9,8 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+import com.revrobotics.*;
+
 /**
  * An example subsystem.  You can replace me with your own Subsystem.
  */
