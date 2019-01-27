@@ -12,8 +12,16 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.commands.TeleopDrive;
+import frc.robot.subsystems.DriveTrain;
+
+import org.opencv.core.Mat;
+import org.opencv.imgproc.Imgproc;
+import edu.wpi.cscore.CvSink;
+import edu.wpi.cscore.CvSource;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,7 +31,7 @@ import frc.robot.subsystems.ExampleSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
+  public static DriveTrain driveTrain = new DriveTrain();
   public static OI m_oi;
 
   Command m_autonomousCommand;
@@ -36,10 +44,36 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_oi = new OI();
-    m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
+    m_chooser.setDefaultOption("TeleopDrive", new TeleopDrive());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
-  }
+
+    //Setup Camera Server for Smart Dashboard
+		new Thread(() -> {
+			UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture();
+			UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture();
+
+			camera1.setResolution(320, 240);
+			camera2.setResolution(320, 240);
+			camera1.setFPS(10);
+			camera2.setFPS(10);
+			camera1.setBrightness(30);
+			camera2.setBrightness(30);
+
+			
+			CvSink cvSink = CameraServer.getInstance().getVideo();
+			CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 320, 240);
+			
+			Mat source = new Mat();
+			Mat output = new Mat();
+			
+			while(!Thread.interrupted()) {
+				cvSink.grabFrame(source);
+				Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
+				outputStream.putFrame(output);
+			}
+		}).start();
+	}
 
   /**
    * This function is called every robot packet, no matter the mode. Use

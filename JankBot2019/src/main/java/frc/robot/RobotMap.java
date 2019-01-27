@@ -23,4 +23,56 @@ public class RobotMap {
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
+
+
+  //PWM Ports
+	public static final int ELEVATOR_PWM = 5;
+	public static final int INTAKE_PWM_LEFT = 6;
+	public static final int INTAKE_PWM_RIGHT = 7;
+
+  public static final int DRIVE_TRAIN_LEFT_1 = 0;
+  public static final int DRIVE_TRAIN_LEFT_2 = 1;
+	public static final int DRIVE_TRAIN_RIGHT_1 = 2;
+	public static final int DRIVE_TRAIN_RIGHT_2 = 3;
+
+	public static final int TOP_LIMIT_SWITCH_PWM = 1;
+	public static final int BOTTOM_LIMIT_SWITCH_PWM = 1;
+
+	//USB Ports
+	public static final int DRIVE_PORT = 0;
+	public static final int CONTROLLER_PORT = 1;
+
+	//speed constants
+	public static final double ELEVATOR_SPEED = 0.75;
+	public static final double INTAKE_SPEED = 0.75;
+	public static final double THROTTLE_SCALE = 0.6;
+	public static final double STEERING_SCALE = 0.6;
+	
+	public static final double BOOST_THROTTLE_SCALE = 1.5;
+	public static final double BOOST_STEERING_SCALE = 1.2;
+	public static final double SLOW_THROTTLE_SCALE = 1.5;
+	public static final double SLOW_STEERING_SCALE = 1.2;
+  public static final double MAX_SPEED = 0.95;
+  
+  //GamePad Buttons
+/* axis mappings */
+	public static final int kLeftStickX = 0;
+	public static final int kLeftStickY = 1;
+	public static final int kLeftTrigger = 2;
+	public static final int kRightTrigger = 3;
+	public static final int kRightStickX = 4;
+	public static final int kRightStickY = 5;
+	
+	/* button mappings */
+	public static final int kButtonA = 1;
+	public static final int kButtonB = 2;
+	public static final int kButtonX = 3;
+	public static final int kButtonY = 4;
+	public static final int kButtonLeftBumper = 5;
+	public static final int kButtonRightBumper = 6;
+	public static final int kButtonBack = 7;
+	public static final int kButtonStart = 8;
+	public static final int kButtonLeftStick = 9;
+	public static final int kButtonRightStick = 10;
+  public static final int kPOVDPad = 0;
 }
