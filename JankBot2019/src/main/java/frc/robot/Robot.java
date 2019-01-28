@@ -22,7 +22,6 @@ import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 
-
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -44,9 +43,10 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_oi = new OI();
-    m_chooser.setDefaultOption("TeleopDrive", new TeleopDrive());
+    m_chooser.setDefaultOption("TeleopDrive", new TeleopDrive(driveTrain));
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
+    SmartDashboard.putData("Drive Train", driveTrain);
 
     //Setup Camera Server for Smart Dashboard
 		new Thread(() -> {

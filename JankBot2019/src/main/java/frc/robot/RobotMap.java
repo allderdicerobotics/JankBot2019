@@ -30,6 +30,10 @@ public class RobotMap {
 	public static final int INTAKE_PWM_LEFT = 6;
 	public static final int INTAKE_PWM_RIGHT = 7;
 
+	public static final int ELEVATOR_CAN = 0;
+	public static final int INTAKE_CAN_LEFT = 1;
+	public static final int INTAKE_CAN_RIGHT = 2;
+
   public static final int DRIVE_TRAIN_LEFT_1 = 0;
   public static final int DRIVE_TRAIN_LEFT_2 = 1;
 	public static final int DRIVE_TRAIN_RIGHT_1 = 2;
@@ -74,5 +78,5 @@ public class RobotMap {
 	public static final int kButtonStart = 8;
 	public static final int kButtonLeftStick = 9;
 	public static final int kButtonRightStick = 10;
-  public static final int kPOVDPad = 0;
+  	public static final int kPOVDPad = 0;
 }
