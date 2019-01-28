@@ -7,6 +7,12 @@
 
 package frc.robot;
 
+import frc.robot.commands.ElevatorDown;
+import frc.robot.commands.ElevatorUp;
+import frc.robot.commands.ElevatorStop;
+
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -39,4 +45,11 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
+  public OI() {
+    new JoystickButton(Robot.operator, RobotMap.kButtonY).whenPressed(new ElevatorUp());
+    new JoystickButton(Robot.operator, RobotMap.kButtonY).whenReleased(new ElevatorStop());
+
+		new JoystickButton(Robot.operator, RobotMap.kButtonA).whenPressed(new ElevatorDown());
+		new JoystickButton(Robot.operator, RobotMap.kButtonA).whenReleased(new ElevatorStop());
+  }
 }

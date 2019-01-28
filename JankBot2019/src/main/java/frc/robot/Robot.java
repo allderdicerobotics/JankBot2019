@@ -15,12 +15,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.TeleopDrive;
 import frc.robot.subsystems.DriveTrain;
 
+import javax.swing.JPanel;
+
 import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
 import edu.wpi.cscore.CvSink;
 import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.Joystick;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -31,6 +34,8 @@ import edu.wpi.first.wpilibj.CameraServer;
  */
 public class Robot extends TimedRobot {
   public static DriveTrain driveTrain = new DriveTrain();
+  public static Joystick driver = new Joystick(RobotMap.DRIVE_PORT);
+  public static Joystick operator = new Joystick(RobotMap.OPERATOR_PORT);
   public static OI m_oi;
 
   Command m_autonomousCommand;

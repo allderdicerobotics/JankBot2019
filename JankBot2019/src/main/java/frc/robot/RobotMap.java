@@ -44,7 +44,7 @@ public class RobotMap {
 
 	//USB Ports
 	public static final int DRIVE_PORT = 0;
-	public static final int CONTROLLER_PORT = 1;
+	public static final int OPERATOR_PORT = 1;
 
 	//speed constants
 	public static final double ELEVATOR_SPEED = 0.75;
