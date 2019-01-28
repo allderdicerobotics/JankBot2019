@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.TeleopDrive;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Elevator;
 
 import javax.swing.JPanel;
 
@@ -33,9 +34,11 @@ import edu.wpi.first.wpilibj.Joystick;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static DriveTrain driveTrain = new DriveTrain();
+  public static Elevator elevator = new Elevator();
+  public static DriveTrain driveTrain;
   public static Joystick driver = new Joystick(RobotMap.DRIVE_PORT);
-  public static Joystick operator = new Joystick(RobotMap.OPERATOR_PORT);
+  public static Joystick operator = new Joystick(RobotMap.OPERATOR_PORT); 
+  
   public static OI m_oi;
 
   Command m_autonomousCommand;
@@ -47,11 +50,13 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    m_oi = new OI();
+    driveTrain = new DriveTrain();
+    elevator = new Elevator();
     m_chooser.setDefaultOption("TeleopDrive", new TeleopDrive(driveTrain));
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
     SmartDashboard.putData("Drive Train", driveTrain);
+    m_oi = new OI();
 
     //Setup Camera Server for Smart Dashboard
 		new Thread(() -> {
@@ -66,17 +71,17 @@ public class Robot extends TimedRobot {
 			camera2.setBrightness(30);
 
 			
-			CvSink cvSink = CameraServer.getInstance().getVideo();
-			CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 320, 240);
+			//CvSink cvSink = CameraServer.getInstance().getVideo();
+			//CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 320, 240);
 			
-			Mat source = new Mat();
-			Mat output = new Mat();
+			//Mat source = new Mat();
+			//Mat output = new Mat();
 			
-			while(!Thread.interrupted()) {
-				cvSink.grabFrame(source);
-				Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
-				outputStream.putFrame(output);
-			}
+			//while(!Thread.interrupted()) {
+			//	cvSink.grabFrame(source);
+			//	Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
+			//	outputStream.putFrame(output);
+			//}
 		}).start();
 	}
 

@@ -18,8 +18,8 @@ public class TeleopDrive extends Command {
   private Joystick joystick;
 
   public TeleopDrive(DriveTrain driveTrain) {
-    requires(this.driveTrain);
     this.driveTrain = driveTrain;
+    requires(this.driveTrain);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -40,7 +40,7 @@ public class TeleopDrive extends Command {
       speed = speed / RobotMap.SLOW_THROTTLE_SCALE;
       steer = steer / RobotMap.SLOW_STEERING_SCALE;
     }
-    if(joystick.getRawButton(RobotMap.kButtonRightBumper)) {
+    if(joystick.getRawButton(RobotMap.kButtonY)) {
       speed = speed * RobotMap.BOOST_THROTTLE_SCALE;
       steer = steer * RobotMap.BOOST_STEERING_SCALE;
     }

@@ -28,10 +28,10 @@ public class Elevator extends Subsystem {
     stop();
   }
   public void up() {
-    setSpeed(RobotMap.ELEVATOR_SPEED);
+    elevatorMotor.set(RobotMap.ELEVATOR_SPEED);
   }
   public void down() {
-    setSpeed(-RobotMap.ELEVATOR_SPEED);
+    elevatorMotor.set(-RobotMap.ELEVATOR_SPEED);
   }
   public void setSpeed(double speed) {
     //Put limit switch stuff here (if statements)
