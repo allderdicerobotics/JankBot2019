@@ -16,8 +16,6 @@ import frc.robot.commands.TeleopDrive;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Elevator;
 
-import javax.swing.JPanel;
-
 import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
 import edu.wpi.cscore.CvSink;
@@ -34,8 +32,8 @@ import edu.wpi.first.wpilibj.Joystick;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static Elevator elevator = new Elevator();
   public static DriveTrain driveTrain;
+  public static Elevator elevator;
   public static Joystick driver = new Joystick(RobotMap.DRIVE_PORT);
   public static Joystick operator = new Joystick(RobotMap.OPERATOR_PORT); 
   
@@ -56,6 +54,7 @@ public class Robot extends TimedRobot {
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
     SmartDashboard.putData("Drive Train", driveTrain);
+    SmartDashboard.putData("Elevator", elevator);
     m_oi = new OI();
 
     //Setup Camera Server for Smart Dashboard
@@ -71,17 +70,17 @@ public class Robot extends TimedRobot {
 			camera2.setBrightness(30);
 
 			
-			//CvSink cvSink = CameraServer.getInstance().getVideo();
-			//CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 320, 240);
+			CvSink cvSink = CameraServer.getInstance().getVideo();
+			CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 320, 240);
 			
-			//Mat source = new Mat();
-			//Mat output = new Mat();
+			Mat source = new Mat();
+			Mat output = new Mat();
 			
-			//while(!Thread.interrupted()) {
-			//	cvSink.grabFrame(source);
-			//	Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
-			//	outputStream.putFrame(output);
-			//}
+			while(!Thread.interrupted()) {
+				cvSink.grabFrame(source);
+				Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
+				outputStream.putFrame(output);
+			}
 		}).start();
 	}
 
