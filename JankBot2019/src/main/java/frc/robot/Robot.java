@@ -16,12 +16,13 @@ import frc.robot.commands.TeleopDrive;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Elevator;
 
-import org.opencv.core.Mat;
-import org.opencv.imgproc.Imgproc;
-import edu.wpi.cscore.CvSink;
-import edu.wpi.cscore.CvSource;
+// import org.opencv.core.Mat;
+// import org.opencv.imgproc.Imgproc;
+// import edu.wpi.cscore.CvSink;
+// import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
-import edu.wpi.first.wpilibj.CameraServer;
+//import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.Joystick;
 
 /**
@@ -70,17 +71,17 @@ public class Robot extends TimedRobot {
 			camera2.setBrightness(30);
 
 			
-			CvSink cvSink = CameraServer.getInstance().getVideo();
-			CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 320, 240);
+			// CvSink cvSink = CameraServer.getInstance().getVideo();
+			// CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 320, 240);
 			
-			Mat source = new Mat();
-			Mat output = new Mat();
+			// Mat source = new Mat();
+			// Mat output = new Mat();
 			
-			while(!Thread.interrupted()) {
-				cvSink.grabFrame(source);
-				Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
-				outputStream.putFrame(output);
-			}
+			// while(!Thread.interrupted()) {
+			// 	cvSink.grabFrame(source);
+			// 	Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
+			// 	outputStream.putFrame(output);
+			//}
 		}).start();
 	}
 
