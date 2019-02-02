@@ -11,7 +11,6 @@ import frc.robot.commands.ElevatorDown;
 import frc.robot.commands.ElevatorUp;
 import frc.robot.commands.ElevatorStop;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -48,15 +47,14 @@ public class OI {
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
   public OI() {  
-    final Joystick operator = new Joystick(RobotMap.OPERATOR_PORT);
-    Button kY = new JoystickButton(operator, RobotMap.kButtonY);
-    Button kA = new JoystickButton(operator, RobotMap.kButtonA);
+    Button buttonY = new JoystickButton(Robot.operator, RobotMap.kButtonY);
+    Button buttonA = new JoystickButton(Robot.operator, RobotMap.kButtonA);
 
-    kY.whenPressed(new ElevatorUp());
-    kY.whenReleased(new ElevatorStop());
+    buttonY.whenPressed(new ElevatorUp());
+    buttonY.whenReleased(new ElevatorStop());
 
-    kA.whenPressed(new ElevatorDown());
-    kA.whenReleased(new ElevatorStop());
+    buttonA.whenPressed(new ElevatorDown());
+    buttonA.whenReleased(new ElevatorStop());
 
     //new JoystickButton(Robot.operator, RobotMap.kButtonY).whileHeld(new ElevatorUp());
 		//new JoystickButton(Robot.operator, RobotMap.kButtonA).whileHeld(new ElevatorDown());

@@ -34,8 +34,8 @@ public class RobotMap {
 	public static final int INTAKE_CAN_LEFT = 1;
 	public static final int INTAKE_CAN_RIGHT = 2;
 
-  public static final int DRIVE_TRAIN_LEFT_1 = 0;
-  public static final int DRIVE_TRAIN_LEFT_2 = 1;
+  	public static final int DRIVE_TRAIN_LEFT_1 = 0;
+  	public static final int DRIVE_TRAIN_LEFT_2 = 1;
 	public static final int DRIVE_TRAIN_RIGHT_1 = 2;
 	public static final int DRIVE_TRAIN_RIGHT_2 = 3;
 

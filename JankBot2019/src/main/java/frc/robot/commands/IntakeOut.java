@@ -7,21 +7,13 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.DriveTrain;
-import edu.wpi.first.wpilibj.Joystick;
+import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
-import frc.robot.RobotMap;
 
-public class TeleopDrive extends Command {
-
-  private DriveTrain driveTrain;
-  private Joystick joystick;
-
-  public TeleopDrive(DriveTrain driveTrain) {
-    this.driveTrain = driveTrain;
-    requires(this.driveTrain);
-    this.joystick = Robot.driver;
+public class IntakeOut extends Command {
+  private Intake intake = new Intake();
+  public IntakeOut() {
+    requires(intake);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -29,31 +21,12 @@ public class TeleopDrive extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    driveTrain.stop();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double speed = RobotMap.THROTTLE_SCALE;
-    double steer = RobotMap.STEERING_SCALE;
-
-    if(joystick.getRawButton(RobotMap.kButtonA)) {
-      speed = speed / RobotMap.SLOW_THROTTLE_SCALE;
-      steer = steer / RobotMap.SLOW_STEERING_SCALE;
-    }
-    if(joystick.getRawButton(RobotMap.kButtonY)) {
-      speed = speed * RobotMap.BOOST_THROTTLE_SCALE;
-      steer = steer * RobotMap.BOOST_STEERING_SCALE;
-    }
-    if (speed >= RobotMap.MAX_SPEED) {
-      speed = RobotMap.MAX_SPEED;
-    }
-
-    speed = speed * -joystick.getRawAxis(RobotMap.kLeftStickY);
-    steer = steer * joystick.getRawAxis(RobotMap.kRightStickX);
-
-    driveTrain.arcadeDrive(speed, steer);
+    intake.out();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -65,12 +38,13 @@ public class TeleopDrive extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    driveTrain.stop();
+    intake.stop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    intake.stop();
   }
 }
