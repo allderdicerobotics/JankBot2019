@@ -38,7 +38,7 @@ public class Elevator extends Subsystem {
     elevatorMotor.set(speed);
   }
   public void stop() {
-    elevatorMotor.stopMotor();
+    elevatorMotor.set(0.0);
   }
 
   @Override

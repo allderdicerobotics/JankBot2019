@@ -50,11 +50,11 @@ public class OI {
     Button buttonY = new JoystickButton(Robot.operator, RobotMap.kButtonY);
     Button buttonA = new JoystickButton(Robot.operator, RobotMap.kButtonA);
 
-    buttonY.whenPressed(new ElevatorUp());
-    buttonY.whenReleased(new ElevatorStop());
+    buttonY.whileHeld(new ElevatorUp());
+    //buttonY.whenReleased(new ElevatorStop());
 
-    buttonA.whenPressed(new ElevatorDown());
-    buttonA.whenReleased(new ElevatorStop());
+    buttonA.whileHeld(new ElevatorDown());
+    //buttonA.whenReleased(new ElevatorStop());
 
     //new JoystickButton(Robot.operator, RobotMap.kButtonY).whileHeld(new ElevatorUp());
 		//new JoystickButton(Robot.operator, RobotMap.kButtonA).whileHeld(new ElevatorDown());
