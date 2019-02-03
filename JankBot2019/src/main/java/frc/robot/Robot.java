@@ -38,7 +38,7 @@ public class Robot extends TimedRobot {
   public static Elevator elevator = new Elevator();
   public static Intake intake = new Intake();
   public static Joystick driver = new Joystick(RobotMap.DRIVE_PORT);
-  public static Joystick operator = new Joystick(RobotMap.OPERATOR_PORT); 
+  public static Joystick operator = new Joystick(RobotMap.OPERATOR_PORT);
   
   public static OI m_oi;
 
