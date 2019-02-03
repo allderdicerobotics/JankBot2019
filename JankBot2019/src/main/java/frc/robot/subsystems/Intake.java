@@ -27,6 +27,9 @@ public class Intake extends Subsystem {
     //intakeMotorRight = new Spark(RobotMap.INTAKE_PWM_RIGHT);
     intakeMotors = new Spark(RobotMap.INTAKE_PWM_SINGLE);
   }
+  public void Init(){
+    stop();
+  }
   public void in() {
     setSpeed(RobotMap.INTAKE_SPEED);
   }

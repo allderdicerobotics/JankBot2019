@@ -30,7 +30,7 @@ public class RobotMap {
 	//public static final int INTAKE_PWM_LEFT = 6;
 	//public static final int INTAKE_PWM_RIGHT = 7;
 
-	public static final int INTAKE_PWM_SINGLE = 6;
+	public static final int INTAKE_PWM_SINGLE = 4;
 
 	public static final int ELEVATOR_CAN = 0;
 	public static final int INTAKE_CAN_LEFT = 1;

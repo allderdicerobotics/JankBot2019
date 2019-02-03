@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.TeleopDrive;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Elevator;
+import frc.robot.subsystems.Intake;
 
  import org.opencv.core.Mat;
  import org.opencv.imgproc.Imgproc;
@@ -35,8 +36,10 @@ import edu.wpi.first.wpilibj.Joystick;
 public class Robot extends TimedRobot {
   public static DriveTrain driveTrain = new DriveTrain();
   public static Elevator elevator = new Elevator();
+  public static Intake intake = new Intake();
   public static Joystick driver = new Joystick(RobotMap.DRIVE_PORT);
   public static Joystick operator = new Joystick(RobotMap.OPERATOR_PORT); 
+
   
   public static OI m_oi;
 
