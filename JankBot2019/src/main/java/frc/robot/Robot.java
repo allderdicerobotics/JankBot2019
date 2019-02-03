@@ -15,8 +15,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.TeleopDrive;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Elevator;
+import frc.robot.subsystems.Intake;
 
- import org.opencv.core.Mat;
+import org.opencv.core.Mat;
  import org.opencv.imgproc.Imgproc;
  import edu.wpi.cscore.CvSink;
  import edu.wpi.cscore.CvSource;
@@ -35,6 +36,7 @@ import edu.wpi.first.wpilibj.Joystick;
 public class Robot extends TimedRobot {
   public static DriveTrain driveTrain = new DriveTrain();
   public static Elevator elevator = new Elevator();
+  public static Intake intake = new Intake();
   public static Joystick driver = new Joystick(RobotMap.DRIVE_PORT);
   public static Joystick operator = new Joystick(RobotMap.OPERATOR_PORT); 
   
@@ -59,6 +61,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Auto mode", m_chooser);
     SmartDashboard.putData("Drive Train", driveTrain);
     SmartDashboard.putData("Elevator", elevator);
+    SmartDashboard.putData("Intake", intake);
 
     driveTrain.setDefaultCommand(teleopDrive);
 
@@ -69,8 +72,8 @@ public class Robot extends TimedRobot {
 
 			camera1.setResolution(320, 240);
 			camera2.setResolution(320, 240);
-			camera1.setFPS(10);
-			camera2.setFPS(10);
+			camera1.setFPS(20);
+			camera2.setFPS(5);
 			camera1.setBrightness(30);
 			camera2.setBrightness(30);
 

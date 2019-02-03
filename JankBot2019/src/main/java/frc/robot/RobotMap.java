@@ -47,7 +47,7 @@ public class RobotMap {
 	public static final int OPERATOR_PORT = 1;
 
 	//speed constants
-	public static final double ELEVATOR_SPEED = 0.7;
+	public static final double ELEVATOR_SPEED = 0.95;
 	public static final double INTAKE_SPEED = 0.75;
 	public static final double THROTTLE_SCALE = 0.6;
 	public static final double STEERING_SCALE = 0.6;
@@ -56,7 +56,7 @@ public class RobotMap {
 	public static final double BOOST_STEERING_SCALE = 1.2;
 	public static final double SLOW_THROTTLE_SCALE = 1.5;
 	public static final double SLOW_STEERING_SCALE = 1.2;
-  public static final double MAX_SPEED = 0.95;
+  	public static final double MAX_SPEED = 0.95;
   
   //GamePad Buttons
 /* axis mappings */
