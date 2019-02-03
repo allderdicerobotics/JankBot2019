@@ -13,6 +13,7 @@ import frc.robot.commands.ElevatorStop;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.Trigger;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -47,6 +48,12 @@ public class OI {
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
   public OI() {  
+    Trigger leftAxisUp = new AxisButton(Robot.operator, RobotMap.kLeftStickY, true);
+    Trigger leftAxisDown = new AxisButton(Robot.operator, RobotMap.kLeftStickY, false);
+
+    leftAxisUp.whileActive(new ElevatorUp());
+    leftAxisDown.whileActive(new ElevatorDown());
+    
     Button buttonY = new JoystickButton(Robot.operator, RobotMap.kButtonY);
     Button buttonA = new JoystickButton(Robot.operator, RobotMap.kButtonA);
 

@@ -27,8 +27,10 @@ public class RobotMap {
 
   //PWM Ports
 	public static final int ELEVATOR_PWM = 5;
-	public static final int INTAKE_PWM_LEFT = 6;
-	public static final int INTAKE_PWM_RIGHT = 7;
+	//public static final int INTAKE_PWM_LEFT = 6;
+	//public static final int INTAKE_PWM_RIGHT = 7;
+
+	public static final int INTAKE_PWM_SINGLE = 6;
 
 	public static final int ELEVATOR_CAN = 0;
 	public static final int INTAKE_CAN_LEFT = 1;
@@ -56,7 +58,9 @@ public class RobotMap {
 	public static final double BOOST_STEERING_SCALE = 1.2;
 	public static final double SLOW_THROTTLE_SCALE = 1.5;
 	public static final double SLOW_STEERING_SCALE = 1.2;
-  public static final double MAX_SPEED = 0.95;
+	public static final double MAX_SPEED = 0.95;
+	
+	public static final double DEADZONE_THRESHOLD = 0.07;
   
   //GamePad Buttons
 /* axis mappings */
