@@ -62,6 +62,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Auto mode", m_chooser);
     SmartDashboard.putData("Drive Train", driveTrain);
     SmartDashboard.putData("Elevator", elevator);
+    SmartDashboard.putData("Intake", intake);
 
     driveTrain.setDefaultCommand(teleopDrive);
 

@@ -7,13 +7,14 @@
 
 package frc.robot.commands;
 
+import frc.robot.Robot;
 import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class IntakeIn extends Command {
-  private Intake intake = new Intake();
+ // private Intake intake = new Intake();
   public IntakeIn() {
-    requires(intake);
+    requires(Robot.intake);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -26,7 +27,7 @@ public class IntakeIn extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    intake.in();
+    Robot.intake.in();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -38,13 +39,13 @@ public class IntakeIn extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    intake.stop();
+    Robot.intake.stop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    intake.stop();
+    Robot.intake.stop();
   }
 }
