@@ -8,7 +8,6 @@
 package frc.robot.commands;
 
 import frc.robot.Robot;
-import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class IntakeStop extends Command {
