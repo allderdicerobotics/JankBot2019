@@ -13,6 +13,10 @@ import frc.robot.commands.ElevatorStop;
 import frc.robot.commands.IntakeIn;
 import frc.robot.commands.IntakeOut;
 
+import frc.robot.commands.NudgeDown;
+import frc.robot.commands.NudgeUp;
+
+
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
@@ -54,8 +58,8 @@ public class OI {
     Trigger leftAxisUp = new AxisButton(Robot.operator, RobotMap.kLeftStickY, true);
     Trigger leftAxisDown = new AxisButton(Robot.operator, RobotMap.kLeftStickY, false);
 
-    leftAxisUp.whileActive(new ElevatorUp());
-    leftAxisDown.whileActive(new ElevatorDown());
+    leftAxisUp.whileActive(new ElevatorUp(false));
+    leftAxisDown.whileActive(new ElevatorDown(false));
 
     //Intake Trigger code
     Trigger rightAxisUp = new AxisButton(Robot.operator, RobotMap.kRightStickY, true);
@@ -63,6 +67,12 @@ public class OI {
 
     rightAxisUp.whileActive(new IntakeOut());
     rightAxisDown.whileActive(new IntakeIn());
+
+    Button leftBumper = new JoystickButton(Robot.operator, RobotMap.kButtonLeftBumper);
+    Button rightBumper = new JoystickButton(Robot.operator, RobotMap.kButtonRightBumper);
+
+    leftBumper.whenPressed(new NudgeDown());
+    rightBumper.whenPressed(new NudgeUp());
 
     /*Examples for button command (linking) */
     //Button buttonY = new JoystickButton(Robot.operator, RobotMap.kButtonY);
