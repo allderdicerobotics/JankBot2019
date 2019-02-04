@@ -50,28 +50,27 @@ public class OI {
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
   public OI() {  
+    //Elevator Trigger code
     Trigger leftAxisUp = new AxisButton(Robot.operator, RobotMap.kLeftStickY, true);
     Trigger leftAxisDown = new AxisButton(Robot.operator, RobotMap.kLeftStickY, false);
 
     leftAxisUp.whileActive(new ElevatorUp());
     leftAxisDown.whileActive(new ElevatorDown());
-    
-    Button buttonY = new JoystickButton(Robot.operator, RobotMap.kButtonY);
-    Button buttonA = new JoystickButton(Robot.operator, RobotMap.kButtonA);
 
-    buttonY.whileHeld(new ElevatorUp());
+    //Intake Trigger code
+    Trigger rightAxisUp = new AxisButton(Robot.operator, RobotMap.kRightStickY, true);
+    Trigger rightAxisDown = new AxisButton(Robot.operator, RobotMap.kRightStickY, false);
+
+    rightAxisUp.whileActive(new IntakeOut());
+    rightAxisDown.whileActive(new IntakeIn());
+
+    /*Examples for button command (linking) */
+    //Button buttonY = new JoystickButton(Robot.operator, RobotMap.kButtonY);
+
+    //buttonY.whileHeld(new ElevatorUp());
     //buttonY.whenReleased(new ElevatorStop());
-
-    buttonA.whileHeld(new ElevatorDown());
-    //buttonA.whenReleased(new ElevatorStop());
-
+    //---------------//
     //new JoystickButton(Robot.operator, RobotMap.kButtonY).whileHeld(new ElevatorUp());
     //new JoystickButton(Robot.operator, RobotMap.kButtonA).whileHeld(new ElevatorDown());
-    Button buttonB = new JoystickButton(Robot.operator, RobotMap.kButtonB);
-    Button buttonX = new JoystickButton(Robot.operator, RobotMap.kButtonX);
-
-    buttonB.whileHeld(new IntakeOut());
-    buttonX.whileHeld(new IntakeIn());
-
   }
 }

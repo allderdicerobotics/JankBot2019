@@ -16,21 +16,21 @@ import edu.wpi.first.wpilibj.GenericHID;
 public class AxisButton extends Trigger {
     private GenericHID joystick;
     private int buttonNumber;
-    private boolean right;
+    private boolean up;
 
-    public AxisButton(GenericHID joystick, int buttonNumber, boolean right) {
+    public AxisButton(GenericHID joystick, int buttonNumber, boolean up) {
         this.buttonNumber = buttonNumber;
         this.joystick = joystick;
-        this.right = right;
+        this.up = up;
     }
 
     public boolean get() {
         boolean move = false;
         double axis = joystick.getRawAxis(buttonNumber);
-        if(axis>RobotMap.DEADZONE_THRESHOLD && right){
+        if(axis>RobotMap.DEADZONE_THRESHOLD && up){
             move = true;
         }
-        else if(axis<-RobotMap.DEADZONE_THRESHOLD && !right){
+        else if(axis<-RobotMap.DEADZONE_THRESHOLD && !up){
             move = true;
         }
         return move;
