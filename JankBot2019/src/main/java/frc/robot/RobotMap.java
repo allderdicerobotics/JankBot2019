@@ -62,8 +62,8 @@ public class RobotMap {
 	
 	public static final double DEADZONE_THRESHOLD = 0.07;
 
-	public static final double NUDGE_SPEED = 0.2;
-	public static final double NUDGE_TIMEOUT = 0.2;
+	public static final double NUDGE_SPEED = 0.3;
+	public static final double NUDGE_TIMEOUT = 0.4;
   
   //GamePad Buttons
 /* axis mappings */
