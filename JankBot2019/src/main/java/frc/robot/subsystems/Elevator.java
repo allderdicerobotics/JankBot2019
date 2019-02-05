@@ -7,6 +7,8 @@
 
 package frc.robot.subsystems;
 
+import frc.robot.Robot;
+
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
@@ -22,7 +24,7 @@ public class Elevator extends Subsystem {
   private CANSparkMax elevatorMotor;
 
   public Elevator() {
-    elevatorMotor = new CANSparkMax(1, MotorType.kBrushless);
+  elevatorMotor = new CANSparkMax(1, MotorType.kBrushless);
   }
   public void Init() {
     stop();
