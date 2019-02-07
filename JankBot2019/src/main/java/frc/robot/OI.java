@@ -71,8 +71,10 @@ public class OI {
     Button leftBumper = new JoystickButton(Robot.operator, RobotMap.kButtonLeftBumper);
     Button rightBumper = new JoystickButton(Robot.operator, RobotMap.kButtonRightBumper);
 
-    leftBumper.whenPressed(new NudgeDown());
-    rightBumper.whenPressed(new NudgeUp());
+    leftBumper.whenActive(new NudgeDown());
+    rightBumper.whenActive(new NudgeUp());
+    //leftBumper.whenPressed(new NudgeDown());
+    //rightBumper.whenPressed(new NudgeUp());
 
     /*Examples for button command (linking) */
     //Button buttonY = new JoystickButton(Robot.operator, RobotMap.kButtonY);

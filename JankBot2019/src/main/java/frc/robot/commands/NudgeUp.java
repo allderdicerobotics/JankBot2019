@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class NudgeUp extends CommandGroup {
@@ -15,8 +16,9 @@ public class NudgeUp extends CommandGroup {
    * Add your docs here.
    */
   public NudgeUp() {
+    requires(Robot.elevator);
     addSequential(new ElevatorUp(true), RobotMap.NUDGE_TIMEOUT);
-    addSequential(new ElevatorStop());
+    //addSequential(new ElevatorStop());
 
     // Add Commands here:
     // e.g. addSequential(new Command1());
