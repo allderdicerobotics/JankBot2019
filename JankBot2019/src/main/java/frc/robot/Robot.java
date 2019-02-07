@@ -54,7 +54,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_oi = new OI();
 
-    TeleopDrive teleopDrive = new TeleopDrive(driveTrain);
+    TeleopDrive teleopDrive = new TeleopDrive(driveTrain, false);
 
     //m_chooser.setDefaultOption("TeleopDrive", new TeleopDrive(driveTrain));
     m_chooser.setDefaultOption("TeleopDrive", teleopDrive);

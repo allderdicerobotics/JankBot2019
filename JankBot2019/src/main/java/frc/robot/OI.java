@@ -16,7 +16,7 @@ import frc.robot.commands.IntakeOut;
 import frc.robot.commands.NudgeDown;
 import frc.robot.commands.NudgeUp;
 
-
+import frc.robot.commands.ReleaseHatch;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
@@ -68,11 +68,18 @@ public class OI {
     rightAxisUp.whileActive(new IntakeOut());
     rightAxisDown.whileActive(new IntakeIn());
 
+    //Nudge commands link to buttons
     Button leftBumper = new JoystickButton(Robot.operator, RobotMap.kButtonLeftBumper);
     Button rightBumper = new JoystickButton(Robot.operator, RobotMap.kButtonRightBumper);
 
+    
     leftBumper.whenActive(new NudgeDown());
     rightBumper.whenActive(new NudgeUp());
+    
+    //for releasing hatch auto
+    Button backButton = new JoystickButton(Robot.operator, RobotMap.kButtonBack);
+
+    backButton.whenPressed(new ReleaseHatch());
     //leftBumper.whenPressed(new NudgeDown());
     //rightBumper.whenPressed(new NudgeUp());
 

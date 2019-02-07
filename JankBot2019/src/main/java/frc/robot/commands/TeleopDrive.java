@@ -17,11 +17,13 @@ public class TeleopDrive extends Command {
 
   private DriveTrain driveTrain;
   private Joystick joystick;
+  private boolean autoBack;
 
-  public TeleopDrive(DriveTrain driveTrain) {
+  public TeleopDrive(DriveTrain driveTrain, boolean autoBack) {
     this.driveTrain = driveTrain;
     requires(this.driveTrain);
     this.joystick = Robot.driver;
+    this.autoBack = autoBack;
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -35,6 +37,11 @@ public class TeleopDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    if(autoBack) {
+      driveTrain.tankDrive(RobotMap.AUTO_BACK_SPEED, RobotMap.AUTO_BACK_SPEED);
+    }
+
+    
     double speed = RobotMap.THROTTLE_SCALE;
     double steer = RobotMap.STEERING_SCALE;
 

@@ -64,6 +64,10 @@ public class RobotMap {
 
 	public static final double NUDGE_SPEED = 0.3;
 	public static final double NUDGE_TIMEOUT = 0.4;
+
+	public static final double AUTO_BACK_SPEED = -0.4;
+	public static final double AUTO_BACK_TIMEOUT = 0.6;
+	public static final double ELEVATOR_DOWN_TIMEOUT = 0.5;
   
   //GamePad Buttons
 /* axis mappings */
