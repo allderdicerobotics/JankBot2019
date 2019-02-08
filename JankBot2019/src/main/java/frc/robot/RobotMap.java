@@ -58,7 +58,7 @@ public class RobotMap {
 	public static final double AUTO_BACK_SPEED = -0.4;
 	public static final double AUTO_BACK_TIME = 0.6;
 	public static final double ELEVATOR_DOWN_TIME = 0.5;
-	public static final double ELEVATOR_UP_TIME = 0.6;
+	public static final double ELEVATOR_UP_TIME = 1.2;
   
   	//GamePad
 	/* axis mappings */
