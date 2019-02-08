@@ -38,10 +38,8 @@ public class TeleopDrive extends Command {
   @Override
   protected void execute() {
     if(autoBack) {
-      driveTrain.tankDrive(RobotMap.AUTO_BACK_SPEED, RobotMap.AUTO_BACK_SPEED);
-    }
-
-    
+      driveTrain.arcadeDrive(RobotMap.AUTO_BACK_SPEED, 0);
+    } else {
     double speed = RobotMap.THROTTLE_SCALE;
     double steer = RobotMap.STEERING_SCALE;
 
@@ -61,6 +59,7 @@ public class TeleopDrive extends Command {
     steer = steer * joystick.getRawAxis(RobotMap.kRightStickX);
 
     driveTrain.arcadeDrive(speed, steer);
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
