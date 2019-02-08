@@ -11,20 +11,19 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class NudgeDown extends CommandGroup {
+public class GetHatch extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public NudgeDown() {
+  public GetHatch() {
     requires(Robot.elevator);
-    addSequential(new ElevatorDown(true), RobotMap.NUDGE_TIME);
-    //addSequential(new ElevatorStop());
-
+    addSequential(new ElevatorUp(true), RobotMap.ELEVATOR_UP_TIME);
+    addSequential(new TeleopDrive(Robot.driveTrain, true), RobotMap.AUTO_BACK_TIME);
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    
+
     // To run multiple commands at the same time,
     // use addParallel()
     // e.g. addParallel(new Command1());

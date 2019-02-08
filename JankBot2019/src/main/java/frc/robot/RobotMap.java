@@ -24,31 +24,21 @@ public class RobotMap {
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
 
-
-  //PWM Ports
-	public static final int ELEVATOR_PWM = 5;
-	//public static final int INTAKE_PWM_LEFT = 6;
-	//public static final int INTAKE_PWM_RIGHT = 7;
-
-	public static final int INTAKE_PWM_SINGLE = 4;
-
+	//CAN Identifiers
 	public static final int ELEVATOR_CAN = 1;
-	public static final int INTAKE_CAN_LEFT = 1;
-	public static final int INTAKE_CAN_RIGHT = 2;
 
+	//PWM Ports
+	public static final int INTAKE_PWM_SINGLE = 4;
   	public static final int DRIVE_TRAIN_LEFT_1 = 0;
   	public static final int DRIVE_TRAIN_LEFT_2 = 1;
 	public static final int DRIVE_TRAIN_RIGHT_1 = 2;
 	public static final int DRIVE_TRAIN_RIGHT_2 = 3;
 
-	public static final int TOP_LIMIT_SWITCH_PWM = 1;
-	public static final int BOTTOM_LIMIT_SWITCH_PWM = 1;
-
 	//USB Ports
 	public static final int DRIVE_PORT = 0;
 	public static final int OPERATOR_PORT = 1;
 
-	//speed constants
+	//Speed Constants
 	public static final double ELEVATOR_SPEED = 0.7;
 	public static final double INTAKE_SPEED = 0.75;
 	public static final double THROTTLE_SCALE = 0.6;
@@ -63,14 +53,15 @@ public class RobotMap {
 	public static final double DEADZONE_THRESHOLD = 0.07;
 
 	public static final double NUDGE_SPEED = 0.3;
-	public static final double NUDGE_TIMEOUT = 0.4;
+	public static final double NUDGE_TIME = 0.4;
 
 	public static final double AUTO_BACK_SPEED = -0.4;
-	public static final double AUTO_BACK_TIMEOUT = 0.6;
-	public static final double ELEVATOR_DOWN_TIMEOUT = 0.5;
+	public static final double AUTO_BACK_TIME = 0.6;
+	public static final double ELEVATOR_DOWN_TIME = 0.5;
+	public static final double ELEVATOR_UP_TIME = 0.6;
   
-  //GamePad Buttons
-/* axis mappings */
+  	//GamePad
+	/* axis mappings */
 	public static final int kLeftStickX = 0;
 	public static final int kLeftStickY = 1;
 	public static final int kLeftTrigger = 2;

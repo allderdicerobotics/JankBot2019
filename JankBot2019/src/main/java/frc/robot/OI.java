@@ -9,14 +9,14 @@ package frc.robot;
 
 import frc.robot.commands.ElevatorDown;
 import frc.robot.commands.ElevatorUp;
-import frc.robot.commands.ElevatorStop;
 import frc.robot.commands.IntakeIn;
 import frc.robot.commands.IntakeOut;
 
 import frc.robot.commands.NudgeDown;
 import frc.robot.commands.NudgeUp;
-
+import frc.robot.commands.GetHatch;
 import frc.robot.commands.ReleaseHatch;
+
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
@@ -77,18 +77,22 @@ public class OI {
     rightBumper.whenActive(new NudgeUp());
     
     //for releasing hatch auto
-    Button backButton = new JoystickButton(Robot.operator, RobotMap.kButtonX);
+    Button buttonX = new JoystickButton(Robot.driver, RobotMap.kButtonX);
+    Button buttonY = new JoystickButton(Robot.driver, RobotMap.kButtonY);
 
-    backButton.whenPressed(new ReleaseHatch());
-    //leftBumper.whenPressed(new NudgeDown());
-    //rightBumper.whenPressed(new NudgeUp());
+    buttonX.whenPressed(new ReleaseHatch());
+    buttonY.whenPressed(new GetHatch());
 
-    /*Examples for button command (linking) */
+
+    /*Examples for button command (linking): */
+
     //Button buttonY = new JoystickButton(Robot.operator, RobotMap.kButtonY);
 
     //buttonY.whileHeld(new ElevatorUp());
     //buttonY.whenReleased(new ElevatorStop());
-    //---------------//
+
+    /*or*/
+
     //new JoystickButton(Robot.operator, RobotMap.kButtonY).whileHeld(new ElevatorUp());
     //new JoystickButton(Robot.operator, RobotMap.kButtonA).whileHeld(new ElevatorDown());
   }

@@ -39,26 +39,27 @@ public class TeleopDrive extends Command {
   protected void execute() {
     if(autoBack) {
       driveTrain.arcadeDrive(RobotMap.AUTO_BACK_SPEED, 0);
-    } else {
-    double speed = RobotMap.THROTTLE_SCALE;
-    double steer = RobotMap.STEERING_SCALE;
+    } 
+    else {
+      double speed = RobotMap.THROTTLE_SCALE;
+      double steer = RobotMap.STEERING_SCALE;
 
-    if(joystick.getRawButton(RobotMap.kButtonA)) {
-      speed = speed / RobotMap.SLOW_THROTTLE_SCALE;
-      steer = steer / RobotMap.SLOW_STEERING_SCALE;
-    }
-    if(joystick.getRawButton(RobotMap.kButtonY)) {
-      speed = speed * RobotMap.BOOST_THROTTLE_SCALE;
-      steer = steer * RobotMap.BOOST_STEERING_SCALE;
-    }
-    if (speed >= RobotMap.MAX_SPEED) {
-      speed = RobotMap.MAX_SPEED;
-    }
+      if(joystick.getRawButton(RobotMap.kButtonA)) {
+        speed = speed / RobotMap.SLOW_THROTTLE_SCALE;
+        steer = steer / RobotMap.SLOW_STEERING_SCALE;
+      }
+      if(joystick.getRawButton(RobotMap.kButtonY)) {
+        speed = speed * RobotMap.BOOST_THROTTLE_SCALE;
+        steer = steer * RobotMap.BOOST_STEERING_SCALE;
+      }
+      if (speed >= RobotMap.MAX_SPEED) {
+       speed = RobotMap.MAX_SPEED;
+     }
 
-    speed = speed * -joystick.getRawAxis(RobotMap.kLeftStickY);
-    steer = steer * joystick.getRawAxis(RobotMap.kRightStickX);
+      speed = speed * -joystick.getRawAxis(RobotMap.kLeftStickY);
+      steer = steer * joystick.getRawAxis(RobotMap.kRightStickX);
 
-    driveTrain.arcadeDrive(speed, steer);
+      driveTrain.arcadeDrive(speed, steer);
     }
   }
 

@@ -11,7 +11,7 @@ import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class ElevatorStop extends Command {
-  //private Elevator elevator = new Elevator();
+  
   public ElevatorStop() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);

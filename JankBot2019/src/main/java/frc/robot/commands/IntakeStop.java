@@ -11,7 +11,7 @@ import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class IntakeStop extends Command {
-  //private Intake intake = new Intake();
+  
   public IntakeStop() {
     requires(Robot.intake);
     // Use requires() here to declare subsystem dependencies

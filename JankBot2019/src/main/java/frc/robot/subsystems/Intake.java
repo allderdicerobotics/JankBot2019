@@ -17,14 +17,9 @@ import frc.robot.RobotMap;
 public class Intake extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  //private Spark intakeMotorLeft;
-  //private Spark intakeMotorRight;
-
   private Spark intakeMotors;
 
   public Intake() {
-    //intakeMotorLeft = new Spark(RobotMap.INTAKE_PWM_LEFT);
-    //intakeMotorRight = new Spark(RobotMap.INTAKE_PWM_RIGHT);
     intakeMotors = new Spark(RobotMap.INTAKE_PWM_SINGLE);
   }
   public void Init(){
@@ -37,13 +32,9 @@ public class Intake extends Subsystem {
     setSpeed(-RobotMap.INTAKE_SPEED);
   }
   public void setSpeed(double speed) {
-    //intakeMotorLeft.setSpeed(speed);
-    //intakeMotorRight.setSpeed(speed);
     intakeMotors.setSpeed(speed);
   }
   public void stop() {
-    //intakeMotorLeft.setSpeed(0.0);
-    //intakeMotorRight.setSpeed(0.0);
     intakeMotors.setSpeed(0.0);
   }
 

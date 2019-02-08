@@ -17,7 +17,7 @@ public class NudgeUp extends CommandGroup {
    */
   public NudgeUp() {
     requires(Robot.elevator);
-    addSequential(new ElevatorUp(true), RobotMap.NUDGE_TIMEOUT);
+    addSequential(new ElevatorUp(true), RobotMap.NUDGE_TIME);
     //addSequential(new ElevatorStop());
 
     // Add Commands here:

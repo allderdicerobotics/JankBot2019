@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class ElevatorDown extends Command {
   private boolean nudge;
-  //private Elevator elevator = new Elevator();
+  
   public ElevatorDown(boolean nudge) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
