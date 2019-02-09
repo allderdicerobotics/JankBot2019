@@ -121,7 +121,7 @@ public class Elevator extends Subsystem {
       kMinOutput = min; kMaxOutput = max; 
     }
 
-    elevatorMotorPidController.setReference(rotations, ControlType.kPosition);
+    //elevatorMotorPidController.setReference(rotations, ControlType.kPosition);
     
     SmartDashboard.putNumber("SetPoint", rotations);
     SmartDashboard.putNumber("ProcessVariable", elevatorEncoder.getPosition());

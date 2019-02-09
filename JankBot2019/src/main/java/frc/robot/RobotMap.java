@@ -66,7 +66,7 @@ public class RobotMap {
 	//goalPosition Encoder values
 	public static final double BALL_1 = 135.0;
 	public static final double BALL_2 = 295.0;
-	public static final double BALL_3 = 440.0;
+	public static final double BALL_3 = 430.0;
 	public static final double HATCH_1 = 25.0;
 	public static final double GET_HATCH_1 = 18.0;
 	public static final double HATCH_2 = 185.0;
