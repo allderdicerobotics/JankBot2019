@@ -36,7 +36,7 @@ public class Elevator extends Subsystem {
 
     // PID coefficients
     kP = 0.5; 
-    kI = 1e-5;
+    kI = 0.e-5;
     kD = 0.5;
     kIz = 0;
     kFF = 0; 
