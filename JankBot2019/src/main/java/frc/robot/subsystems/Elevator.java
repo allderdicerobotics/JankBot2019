@@ -65,23 +65,38 @@ public class Elevator extends Subsystem {
     stop();
   }
   public void up() {
-    elevatorMotor.set(RobotMap.ELEVATOR_SPEED);
+    //elevatorMotor.set(RobotMap.ELEVATOR_SPEED);
+    double currentPosition = elevatorEncoder.getPosition();
+    double goalPosition = currentPosition + RobotMap.ELEVATOR_ENCODER_CHANGE_VALUE;
+    elevatorMotorPidController.setReference(goalPosition, ControlType.kPosition);
   }
   public void down() {
-    elevatorMotor.set(-RobotMap.ELEVATOR_SPEED);
+    //elevatorMotor.set(-RobotMap.ELEVATOR_SPEED);
+    double currentPosition = elevatorEncoder.getPosition();
+    double goalPosition = currentPosition - RobotMap.ELEVATOR_ENCODER_CHANGE_VALUE;
+    elevatorMotorPidController.setReference(goalPosition, ControlType.kPosition);
   }
   public void upNudge() {
-    elevatorMotor.set(-RobotMap.NUDGE_SPEED);
+    //elevatorMotor.set(-RobotMap.NUDGE_SPEED);
+    double currentPosition = elevatorEncoder.getPosition();
+    double goalPosition = currentPosition + RobotMap.ELEVATOR_NUDGE_CHANGE_VALUE;
+    elevatorMotorPidController.setReference(goalPosition, ControlType.kPosition);
   }
   public void downNudge() {
-    elevatorMotor.set(RobotMap.NUDGE_SPEED);
+    //elevatorMotor.set(RobotMap.NUDGE_SPEED);
+    double currentPosition = elevatorEncoder.getPosition();
+    double goalPosition = currentPosition - RobotMap.ELEVATOR_NUDGE_CHANGE_VALUE;
+    elevatorMotorPidController.setReference(goalPosition, ControlType.kPosition);
+  }
+  public void setPosition(double goalPosition) {
+    elevatorMotorPidController.setReference(goalPosition, ControlType.kPosition);
   }
   public void setSpeed(double speed) {
     //Put limit switch stuff here (if statements)
     elevatorMotor.set(speed);
   }
   public void stop() {
-    elevatorMotor.set(0.0);
+    //elevatorMotor.set(0.0);
   }
 
   public void elevatorPID() {
