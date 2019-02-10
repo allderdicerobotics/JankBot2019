@@ -40,7 +40,7 @@ public class RobotMap {
 
 	//Speed Constants
 	public static final double ELEVATOR_SPEED = 0.7;
-	public static final double INTAKE_SPEED = 0.75;
+	public static final double INTAKE_SPEED = 0.6;
 	public static final double THROTTLE_SCALE = 0.6;
 	public static final double STEERING_SCALE = 0.6;
 	
@@ -60,8 +60,8 @@ public class RobotMap {
 	public static final double ELEVATOR_DOWN_TIME = 0.15;
 	public static final double ELEVATOR_UP_TIME = 0.2;
 
-	public static final double ELEVATOR_ENCODER_CHANGE_VALUE = 2.5;
-	public static final double ELEVATOR_NUDGE_CHANGE_VALUE = 1.0;
+	public static final double ELEVATOR_ENCODER_CHANGE_VALUE = 1.9;
+	public static final double ELEVATOR_NUDGE_CHANGE_VALUE = 12.0;
 
 	//goalPosition Encoder values
 	public static final double BALL_1 = 135.0;

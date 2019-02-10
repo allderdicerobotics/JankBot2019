@@ -66,11 +66,11 @@ public class Elevator extends Subsystem {
     stop();
   }
   public void up() {
-    double goalPosition = currentPosition + RobotMap.ELEVATOR_ENCODER_CHANGE_VALUE;
+    double goalPosition = currentPosition - RobotMap.ELEVATOR_ENCODER_CHANGE_VALUE;
     setPosition(goalPosition);
   }
   public void down() {
-    double goalPosition = currentPosition - RobotMap.ELEVATOR_ENCODER_CHANGE_VALUE;
+    double goalPosition = currentPosition + RobotMap.ELEVATOR_ENCODER_CHANGE_VALUE;
     setPosition(goalPosition);
   }
   public void upNudge() {
