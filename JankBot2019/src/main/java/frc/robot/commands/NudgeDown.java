@@ -7,34 +7,43 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
-public class NudgeDown extends CommandGroup {
-  /**
-   * Add your docs here.
-   */
+public class NudgeDown extends Command {
   public NudgeDown() {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
     requires(Robot.elevator);
-    addSequential(new ElevatorDown(true), RobotMap.NUDGE_TIME);
-    //addSequential(new ElevatorStop());
+  }
 
-    // Add Commands here:
-    // e.g. addSequential(new Command1());
-    // addSequential(new Command2());
-    // these will run in order.
-    
-    // To run multiple commands at the same time,
-    // use addParallel()
-    // e.g. addParallel(new Command1());
-    // addSequential(new Command2());
-    // Command1 and Command2 will run in parallel.
+  // Called just before this Command runs the first time
+  @Override
+  protected void initialize() {
+  }
 
-    // A command group will require all of the subsystems that each member
-    // would require.
-    // e.g. if Command1 requires chassis, and Command2 requires arm,
-    // a CommandGroup containing them would require both the chassis and the
-    // arm.
+  // Called repeatedly when this Command is scheduled to run
+  @Override
+  protected void execute() {
+    Robot.elevator.downNudge();
+  }
+
+  // Make this return true when this Command no longer needs to run execute()
+  @Override
+  protected boolean isFinished() {
+    return true;
+  }
+
+  // Called once after isFinished returns true
+  @Override
+  protected void end() {
+    Robot.elevator.stop();
+  }
+
+  // Called when another command which requires one or more of the same
+  // subsystems is scheduled to run
+  @Override
+  protected void interrupted() {
+    Robot.elevator.stop();
   }
 }

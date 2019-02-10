@@ -55,18 +55,15 @@ public class OI {
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
   public OI() {
-
-    Button operatorX = new JoystickButton(Robot.operator, RobotMap.kButtonX);
     Button operatorA = new JoystickButton(Robot.operator, RobotMap.kButtonA);
     Button operatorB = new JoystickButton(Robot.operator, RobotMap.kButtonB);
     Button operatorY = new JoystickButton(Robot.operator, RobotMap.kButtonY);
+    Button operatorX = new JoystickButton(Robot.operator, RobotMap.kButtonX);
 
     operatorX.whenPressed(new SetElevatorHeight(0));
     operatorA.whenPressed(new SetElevatorHeight(RobotMap.BALL_1));
     operatorB.whenPressed(new SetElevatorHeight(RobotMap.BALL_2));
     operatorY.whenPressed(new SetElevatorHeight(RobotMap.BALL_3));
-
-
 
     //Elevator Trigger code
     Trigger leftAxisUp = new AxisButton(Robot.operator, RobotMap.kLeftStickY, true);
@@ -86,7 +83,6 @@ public class OI {
     Button leftBumper = new JoystickButton(Robot.operator, RobotMap.kButtonLeftBumper);
     Button rightBumper = new JoystickButton(Robot.operator, RobotMap.kButtonRightBumper);
 
-    
     leftBumper.whenActive(new NudgeDown());
     rightBumper.whenActive(new NudgeUp());
     

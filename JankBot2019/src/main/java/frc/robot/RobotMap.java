@@ -57,18 +57,18 @@ public class RobotMap {
 
 	public static final double AUTO_BACK_SPEED = -0.4;
 	public static final double AUTO_BACK_TIME = 0.6;
-	public static final double ELEVATOR_DOWN_TIME = 0.5;
-	public static final double ELEVATOR_UP_TIME = 0.6;
+	public static final double ELEVATOR_DOWN_TIME = 0.15;
+	public static final double ELEVATOR_UP_TIME = 0.2;
 
-	public static final double ELEVATOR_ENCODER_CHANGE_VALUE = 0.1;
-	public static final double ELEVATOR_NUDGE_CHANGE_VALUE = 10;
+	public static final double ELEVATOR_ENCODER_CHANGE_VALUE = 2.5;
+	public static final double ELEVATOR_NUDGE_CHANGE_VALUE = 1.0;
 
 	//goalPosition Encoder values
 	public static final double BALL_1 = 135.0;
 	public static final double BALL_2 = 295.0;
 	public static final double BALL_3 = 430.0;
-	public static final double HATCH_1 = 25.0;
 	public static final double GET_HATCH_1 = 18.0;
+	public static final double HATCH_1 = 25.0;
 	public static final double HATCH_2 = 185.0;
 	public static final double HATCH_3 = 330.0;
 

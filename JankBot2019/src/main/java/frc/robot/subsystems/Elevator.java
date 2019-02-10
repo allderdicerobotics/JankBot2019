@@ -29,18 +29,19 @@ public class Elevator extends Subsystem {
   private CANEncoder elevatorEncoder;
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
 
+  public double currentPosition;
+
   public Elevator() {
     elevatorMotor = new CANSparkMax(RobotMap.ELEVATOR_CAN, MotorType.kBrushless);
     elevatorMotorPidController = elevatorMotor.getPIDController();
     elevatorEncoder = elevatorMotor.getEncoder();
-
-    // PID coefficients
-    kP = 0.5; 
-    kI = 0.e-5;
+    currentPosition = elevatorEncoder.getPosition();
+    kP = 0.5;
+    kI = 1e-5;
     kD = 0.5;
     kIz = 0;
-    kFF = 0; 
-    kMaxOutput = 1; 
+    kFF = 0;
+    kMaxOutput = 1;
     kMinOutput = -1;
 
     // set PID coefficients
@@ -65,31 +66,25 @@ public class Elevator extends Subsystem {
     stop();
   }
   public void up() {
-    //elevatorMotor.set(RobotMap.ELEVATOR_SPEED);
-    double currentPosition = elevatorEncoder.getPosition();
     double goalPosition = currentPosition + RobotMap.ELEVATOR_ENCODER_CHANGE_VALUE;
-    elevatorMotorPidController.setReference(goalPosition, ControlType.kPosition);
+    setPosition(goalPosition);
   }
   public void down() {
-    //elevatorMotor.set(-RobotMap.ELEVATOR_SPEED);
-    double currentPosition = elevatorEncoder.getPosition();
     double goalPosition = currentPosition - RobotMap.ELEVATOR_ENCODER_CHANGE_VALUE;
-    elevatorMotorPidController.setReference(goalPosition, ControlType.kPosition);
+    setPosition(goalPosition);
   }
   public void upNudge() {
-    //elevatorMotor.set(-RobotMap.NUDGE_SPEED);
-    double currentPosition = elevatorEncoder.getPosition();
     double goalPosition = currentPosition + RobotMap.ELEVATOR_NUDGE_CHANGE_VALUE;
-    elevatorMotorPidController.setReference(goalPosition, ControlType.kPosition);
+    setPosition(goalPosition);
   }
   public void downNudge() {
     //elevatorMotor.set(RobotMap.NUDGE_SPEED);
-    double currentPosition = elevatorEncoder.getPosition();
     double goalPosition = currentPosition - RobotMap.ELEVATOR_NUDGE_CHANGE_VALUE;
-    elevatorMotorPidController.setReference(goalPosition, ControlType.kPosition);
+    setPosition(goalPosition);
   }
   public void setPosition(double goalPosition) {
     elevatorMotorPidController.setReference(goalPosition, ControlType.kPosition);
+    currentPosition = goalPosition;
   }
   public void setSpeed(double speed) {
     //Put limit switch stuff here (if statements)
