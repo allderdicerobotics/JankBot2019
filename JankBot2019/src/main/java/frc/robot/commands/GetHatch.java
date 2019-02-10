@@ -19,6 +19,7 @@ public class GetHatch extends CommandGroup {
     requires(Robot.elevator);
     addSequential(new ElevatorUp(true), RobotMap.ELEVATOR_UP_TIME);
     addSequential(new TeleopDrive(Robot.driveTrain, true), RobotMap.AUTO_BACK_TIME);
+    
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());

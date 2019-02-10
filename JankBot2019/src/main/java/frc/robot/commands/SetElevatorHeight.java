@@ -10,11 +10,14 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class NudgeDown extends Command {
-  public NudgeDown() {
+public class SetElevatorHeight extends Command {
+  private double goalPosition;
+
+  public SetElevatorHeight(double goalPosition) {
+    requires(Robot.elevator);
+    this.goalPosition = goalPosition;
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.elevator);
   }
 
   // Called just before this Command runs the first time
@@ -25,13 +28,13 @@ public class NudgeDown extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.elevator.downNudge();
+    Robot.elevator.setPosition(goalPosition);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    return false;
   }
 
   // Called once after isFinished returns true

@@ -16,6 +16,7 @@ import frc.robot.commands.NudgeDown;
 import frc.robot.commands.NudgeUp;
 import frc.robot.commands.GetHatch;
 import frc.robot.commands.ReleaseHatch;
+import frc.robot.commands.SetElevatorHeight;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -53,7 +54,17 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
-  public OI() {  
+  public OI() {
+    Button operatorA = new JoystickButton(Robot.operator, RobotMap.kButtonA);
+    Button operatorB = new JoystickButton(Robot.operator, RobotMap.kButtonB);
+    Button operatorY = new JoystickButton(Robot.operator, RobotMap.kButtonY);
+    Button operatorX = new JoystickButton(Robot.operator, RobotMap.kButtonX);
+
+    operatorX.whenPressed(new SetElevatorHeight(0));
+    operatorA.whenPressed(new SetElevatorHeight(RobotMap.BALL_1));
+    operatorB.whenPressed(new SetElevatorHeight(RobotMap.BALL_2));
+    operatorY.whenPressed(new SetElevatorHeight(RobotMap.BALL_3));
+
     //Elevator Trigger code
     Trigger leftAxisUp = new AxisButton(Robot.operator, RobotMap.kLeftStickY, true);
     Trigger leftAxisDown = new AxisButton(Robot.operator, RobotMap.kLeftStickY, false);
@@ -72,16 +83,15 @@ public class OI {
     Button leftBumper = new JoystickButton(Robot.operator, RobotMap.kButtonLeftBumper);
     Button rightBumper = new JoystickButton(Robot.operator, RobotMap.kButtonRightBumper);
 
-    
     leftBumper.whenActive(new NudgeDown());
     rightBumper.whenActive(new NudgeUp());
     
     //for releasing hatch auto
-    Button buttonX = new JoystickButton(Robot.driver, RobotMap.kButtonX);
-    Button buttonY = new JoystickButton(Robot.driver, RobotMap.kButtonY);
+    Button driverX = new JoystickButton(Robot.driver, RobotMap.kButtonX);
+    Button driverY = new JoystickButton(Robot.driver, RobotMap.kButtonY);
 
-    buttonX.whenPressed(new ReleaseHatch());
-    buttonY.whenPressed(new GetHatch());
+    driverX.whenPressed(new ReleaseHatch());
+    driverY.whenPressed(new GetHatch());
 
 
     /*Examples for button command (linking): */
