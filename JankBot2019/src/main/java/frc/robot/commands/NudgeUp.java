@@ -11,10 +11,13 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class NudgeUp extends Command {
-  public NudgeUp() {
+  boolean smallNudge;
+
+  public NudgeUp(boolean smallNudge) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.elevator);
+    this.smallNudge = smallNudge;
   }
 
   // Called just before this Command runs the first time
@@ -25,7 +28,12 @@ public class NudgeUp extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.elevator.upNudge();
+    if(smallNudge) {
+      Robot.elevator.smallUpNudge();
+    }
+    else {
+      Robot.elevator.getHatchNudge();
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()

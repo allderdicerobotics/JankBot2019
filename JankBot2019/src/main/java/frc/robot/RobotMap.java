@@ -60,8 +60,10 @@ public class RobotMap {
 	public static final double ELEVATOR_DOWN_TIME = 0.15;
 	public static final double ELEVATOR_UP_TIME = 0.2;
 
-	public static final double ELEVATOR_ENCODER_CHANGE_VALUE = 1.9;
-	public static final double ELEVATOR_NUDGE_CHANGE_VALUE = 12.0;
+	public static final double ELEVATOR_ENCODER_CHANGE = 1.9;
+	public static final double ELEVATOR_NUDGE_CHANGE_UP = 15.0;
+	public static final double ELEVATOR_NUDGE_CHANGE_DOWN = 10.0;
+	public static final double ELEVATOR_SMALL_NUDGE_CHANGE = 6.0;
 
 	//goalPosition Encoder values
 	public static final double BALL_1 = 135.0;

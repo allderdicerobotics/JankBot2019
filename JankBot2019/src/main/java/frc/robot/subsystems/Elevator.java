@@ -66,20 +66,27 @@ public class Elevator extends Subsystem {
     stop();
   }
   public void up() {
-    double goalPosition = currentPosition - RobotMap.ELEVATOR_ENCODER_CHANGE_VALUE;
+    double goalPosition = currentPosition - RobotMap.ELEVATOR_ENCODER_CHANGE;
     setPosition(goalPosition);
   }
   public void down() {
-    double goalPosition = currentPosition + RobotMap.ELEVATOR_ENCODER_CHANGE_VALUE;
+    double goalPosition = currentPosition + RobotMap.ELEVATOR_ENCODER_CHANGE;
     setPosition(goalPosition);
   }
-  public void upNudge() {
-    double goalPosition = currentPosition + RobotMap.ELEVATOR_NUDGE_CHANGE_VALUE;
+  public void getHatchNudge() {
+    double goalPosition = currentPosition + RobotMap.ELEVATOR_NUDGE_CHANGE_UP;
     setPosition(goalPosition);
   }
-  public void downNudge() {
-    //elevatorMotor.set(RobotMap.NUDGE_SPEED);
-    double goalPosition = currentPosition - RobotMap.ELEVATOR_NUDGE_CHANGE_VALUE;
+  public void releaseHatchNudge() {
+    double goalPosition = currentPosition - RobotMap.ELEVATOR_NUDGE_CHANGE_DOWN;
+    setPosition(goalPosition);
+  }
+  public void smallUpNudge() {
+    double goalPosition = currentPosition + RobotMap.ELEVATOR_SMALL_NUDGE_CHANGE;
+    setPosition(goalPosition);
+  }
+  public void smallDownNudge() {
+    double goalPosition = currentPosition - RobotMap.ELEVATOR_SMALL_NUDGE_CHANGE;
     setPosition(goalPosition);
   }
   public void setPosition(double goalPosition) {

@@ -83,8 +83,8 @@ public class OI {
     Button leftBumper = new JoystickButton(Robot.operator, RobotMap.kButtonLeftBumper);
     Button rightBumper = new JoystickButton(Robot.operator, RobotMap.kButtonRightBumper);
 
-    leftBumper.whenActive(new NudgeDown());
-    rightBumper.whenActive(new NudgeUp());
+    leftBumper.whenActive(new NudgeDown(true));
+    rightBumper.whenActive(new NudgeUp(true));
     
     //for releasing hatch auto
     Button driverX = new JoystickButton(Robot.driver, RobotMap.kButtonX);

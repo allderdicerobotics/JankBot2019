@@ -17,7 +17,7 @@ public class ReleaseHatch extends CommandGroup {
    */
   public ReleaseHatch() {
     requires(Robot.elevator);
-    addSequential(new ElevatorDown(true), RobotMap.ELEVATOR_DOWN_TIME);
+    addSequential(new NudgeDown(false));
     addSequential(new TeleopDrive(Robot.driveTrain, true), RobotMap.AUTO_BACK_TIME);
     
     // Add Commands here:
