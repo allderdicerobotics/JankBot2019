@@ -17,6 +17,7 @@ import frc.robot.commands.NudgeUp;
 import frc.robot.commands.GetHatch;
 import frc.robot.commands.ReleaseHatch;
 import frc.robot.commands.SetElevatorHeight;
+import frc.robot.commands.SetOffset;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -93,6 +94,10 @@ public class OI {
     driverX.whenPressed(new ReleaseHatch());
     driverY.whenPressed(new GetHatch());
 
+    //for zeroing the encoder
+    Button operatorStart = new JoystickButton(Robot.operator, RobotMap.kButtonStart);
+
+    operatorStart.whenActive(new SetOffset());
 
     /*Examples for button command (linking): */
 

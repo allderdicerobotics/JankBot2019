@@ -28,7 +28,7 @@ public class Elevator extends Subsystem {
   private CANPIDController elevatorMotorPidController;
   private CANEncoder elevatorEncoder;
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
-
+  public double currentOffset = 0;
   public double currentPosition;
 
   public Elevator() {
@@ -90,7 +90,7 @@ public class Elevator extends Subsystem {
     setPosition(goalPosition);
   }
   public void setPosition(double goalPosition) {
-    elevatorMotorPidController.setReference(goalPosition, ControlType.kPosition);
+    elevatorMotorPidController.setReference(goalPosition + currentOffset, ControlType.kPosition);
     currentPosition = goalPosition;
   }
   public void setSpeed(double speed) {
@@ -99,6 +99,9 @@ public class Elevator extends Subsystem {
   }
   public void stop() {
     //elevatorMotor.set(0.0);
+  }
+  public void setOffset() {
+    currentOffset = elevatorEncoder.getPosition() - currentPosition;
   }
 
   public void elevatorPID() {
