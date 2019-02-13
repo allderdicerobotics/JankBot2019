@@ -28,6 +28,9 @@ public class NudgeUp extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    //There are two types of nudges:
+    //  A manual, small nudge that is activated by pressing the bumper buttons of the operator Gamepad
+    //  A larger nudge that is used by the GetHatch and ReleaseHatch Command Groups
     if(smallNudge) {
       Robot.elevator.smallUpNudge();
     }

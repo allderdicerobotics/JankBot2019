@@ -7,12 +7,11 @@
 
 package frc.robot.commands;
 
-import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 
 public class ElevatorDown extends Command {
-  
-  public ElevatorDown(boolean nudge) {
+  public ElevatorDown() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.elevator);

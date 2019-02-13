@@ -36,3 +36,4 @@ public class AxisButton extends Trigger {
         return move;
     }
 }
+

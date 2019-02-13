@@ -14,10 +14,10 @@ public class SetElevatorHeight extends Command {
   private double goalPosition;
 
   public SetElevatorHeight(double goalPosition) {
-    requires(Robot.elevator);
-    this.goalPosition = goalPosition;
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.elevator);
+    this.goalPosition = goalPosition;
   }
 
   // Called just before this Command runs the first time
@@ -34,7 +34,7 @@ public class SetElevatorHeight extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true

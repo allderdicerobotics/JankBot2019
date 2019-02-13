@@ -17,7 +17,11 @@ public class GetHatch extends CommandGroup {
    */
   public GetHatch() {
     requires(Robot.elevator);
+
+    //Moves the elevator up a small amount (in order to grab onto the hatch in the retreival zone)
     addSequential(new NudgeUp(false));
+
+    //Drives back for a small amount of time to clear away from the retreival zone
     addSequential(new TeleopDrive(Robot.driveTrain, true), RobotMap.AUTO_BACK_TIME);
     
     // Add Commands here:

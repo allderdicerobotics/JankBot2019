@@ -30,6 +30,8 @@ public class Elevator extends Subsystem {
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
   public double currentOffset = 0;
   public double currentPosition;
+  public boolean elevatorMode = false; //false = ball, true = hatch
+
 
   public Elevator() {
     elevatorMotor = new CANSparkMax(RobotMap.ELEVATOR_CAN, MotorType.kBrushless);
@@ -89,19 +91,47 @@ public class Elevator extends Subsystem {
     double goalPosition = currentPosition - RobotMap.ELEVATOR_SMALL_NUDGE_CHANGE;
     setPosition(goalPosition);
   }
+  public void goToLvl1Ball() {
+    setPosition(RobotMap.BALL_1);
+  }
+  public void goToLvl2Ball() {
+    setPosition(RobotMap.BALL_2);
+  }
+  public void goToLvl3Ball() {
+    setPosition(RobotMap.BALL_3);
+  }
+  public void goToLvl1Hatch() {
+    setPosition(RobotMap.HATCH_1);
+  }
+  public void goToLvl2Hatch() {
+    setPosition(RobotMap.HATCH_2);
+  }
+  public void goToLvl3Hatch() {
+    setPosition(RobotMap.HATCH_3);
+  }
+  public void goToLvlGetHatch() {
+    setPosition(RobotMap.GET_HATCH_1);
+  }
+  public void goToBottom() {
+    setPosition(0.0);
+  }
   public void setPosition(double goalPosition) {
     elevatorMotorPidController.setReference(goalPosition + currentOffset, ControlType.kPosition);
     currentPosition = goalPosition;
+    System.out.println("setPosition to " + currentPosition);
   }
   public void setSpeed(double speed) {
     //Put limit switch stuff here (if statements)
-    elevatorMotor.set(speed);
+    //elevatorMotor.set(speed);
   }
   public void stop() {
     //elevatorMotor.set(0.0);
   }
   public void setOffset() {
-    currentOffset = elevatorEncoder.getPosition() - currentPosition;
+    currentOffset = elevatorEncoder.getPosition();
+  }
+  public double getCurrentPosition(){
+    return elevatorEncoder.getPosition();
   }
 
   public void elevatorPID() {

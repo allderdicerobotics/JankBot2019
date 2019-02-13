@@ -7,15 +7,15 @@
 
 package frc.robot.commands;
 
-import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
+import frc.robot.RobotMap;
 
-public class IntakeIn extends Command {
-  
-  public IntakeIn() {
+public class Height0 extends Command {
+  public Height0() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.intake);
+    requires(Robot.elevator);
   }
 
   // Called just before this Command runs the first time
@@ -26,25 +26,33 @@ public class IntakeIn extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.intake.in();
+    //Set the elevator to the level to retreive a hatch from the player station,
+    //or to the bottom. 
+    //This changes based on whether the operator is holding down the "BACK" button
+    if(Robot.operator.getRawButton(RobotMap.kButtonBack)) {
+      Robot.elevator.goToLvlGetHatch();
+      System.out.println("Set height to getHatch 1");
+    }
+    else {
+      Robot.elevator.goToBottom();
+      System.out.println("Set height to 0");
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.intake.stop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.intake.stop();
   }
 }

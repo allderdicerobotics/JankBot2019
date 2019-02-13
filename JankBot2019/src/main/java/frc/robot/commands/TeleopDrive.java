@@ -20,8 +20,8 @@ public class TeleopDrive extends Command {
   private boolean autoBack;
 
   public TeleopDrive(DriveTrain driveTrain, boolean autoBack) {
-    this.driveTrain = driveTrain;
     requires(this.driveTrain);
+    this.driveTrain = driveTrain;
     this.joystick = Robot.driver;
     this.autoBack = autoBack;
     // Use requires() here to declare subsystem dependencies
@@ -45,11 +45,11 @@ public class TeleopDrive extends Command {
       double speed = RobotMap.THROTTLE_SCALE;
       double steer = RobotMap.STEERING_SCALE;
 
-      if(joystick.getRawButton(RobotMap.kButtonA)) {
+      if(joystick.getRawButton(RobotMap.kButtonA) || (Robot.elevator.getCurrentPosition() > 155.0)) {
         speed = speed / RobotMap.SLOW_THROTTLE_SCALE;
         steer = steer / RobotMap.SLOW_STEERING_SCALE;
       }
-      if(joystick.getRawButton(RobotMap.kButtonY)) {
+      if(joystick.getRawButton(RobotMap.kButtonB)) {
         speed = speed * RobotMap.BOOST_THROTTLE_SCALE;
         steer = steer * RobotMap.BOOST_STEERING_SCALE;
       }

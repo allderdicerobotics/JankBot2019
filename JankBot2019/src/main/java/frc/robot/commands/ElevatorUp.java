@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class ElevatorUp extends Command {
   
-  public ElevatorUp(boolean nudge) {
+  public ElevatorUp() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.elevator);

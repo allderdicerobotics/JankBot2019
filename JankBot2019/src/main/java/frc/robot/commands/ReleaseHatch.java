@@ -17,7 +17,11 @@ public class ReleaseHatch extends CommandGroup {
    */
   public ReleaseHatch() {
     requires(Robot.elevator);
+
+    //Moves the elevator down a small amount (in order to leave the hatch on the velcro of the rocket)
     addSequential(new NudgeDown(false));
+
+    //Drives back for a small amount of time to clear away from the rocket
     addSequential(new TeleopDrive(Robot.driveTrain, true), RobotMap.AUTO_BACK_TIME);
     
     // Add Commands here:

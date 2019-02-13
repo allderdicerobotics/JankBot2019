@@ -29,7 +29,6 @@ public class DriveTrain extends Subsystem {
 
   private DifferentialDrive differentialDrive;
 
-
   public DriveTrain() {
     leftMotor1 = new Victor(RobotMap.DRIVE_TRAIN_LEFT_1);
     leftMotor2 = new Victor(RobotMap.DRIVE_TRAIN_LEFT_2);
@@ -67,7 +66,6 @@ public class DriveTrain extends Subsystem {
   public void stop() {
     differentialDrive.tankDrive(0.0, 0.0);
   }
-
 
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
