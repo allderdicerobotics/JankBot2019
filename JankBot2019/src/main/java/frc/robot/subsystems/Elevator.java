@@ -30,14 +30,14 @@ public class Elevator extends Subsystem {
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
   public double currentOffset = 0;
   public double currentPosition;
-  public boolean elevatorMode = false; //false = ball, true = hatch
-
+  public String currentState;
 
   public Elevator() {
     elevatorMotor = new CANSparkMax(RobotMap.ELEVATOR_CAN, MotorType.kBrushless);
     elevatorMotorPidController = elevatorMotor.getPIDController();
     elevatorEncoder = elevatorMotor.getEncoder();
     currentPosition = elevatorEncoder.getPosition();
+
     kP = 0.5;
     kI = 1e-5;
     kD = 0.5;
@@ -54,15 +54,15 @@ public class Elevator extends Subsystem {
     elevatorMotorPidController.setFF(kFF);
     elevatorMotorPidController.setOutputRange(kMinOutput, kMaxOutput);
 
-    // display PID coefficients on SmartDashboard
-    SmartDashboard.putNumber("P Gain", kP);
-    SmartDashboard.putNumber("I Gain", kI);
-    SmartDashboard.putNumber("D Gain", kD);
-    SmartDashboard.putNumber("I Zone", kIz);
-    SmartDashboard.putNumber("Feed Forward", kFF);
-    SmartDashboard.putNumber("Max Output", kMaxOutput);
-    SmartDashboard.putNumber("Min Output", kMinOutput);
-    SmartDashboard.putNumber("Set Rotations", 0);
+    // // display PID coefficients on SmartDashboard
+    // SmartDashboard.putNumber("P Gain", kP);
+    // SmartDashboard.putNumber("I Gain", kI);
+    // SmartDashboard.putNumber("D Gain", kD);
+    // SmartDashboard.putNumber("I Zone", kIz);
+    // SmartDashboard.putNumber("Feed Forward", kFF);
+    // SmartDashboard.putNumber("Max Output", kMaxOutput);
+    // SmartDashboard.putNumber("Min Output", kMinOutput);
+    // SmartDashboard.putNumber("Set Rotations", 0);
   }
   public void Init() {
     stop();
@@ -70,18 +70,22 @@ public class Elevator extends Subsystem {
   public void up() {
     double goalPosition = currentPosition - RobotMap.ELEVATOR_ENCODER_CHANGE;
     setPosition(goalPosition);
+    currentState = "Moving up manually";
   }
   public void down() {
     double goalPosition = currentPosition + RobotMap.ELEVATOR_ENCODER_CHANGE;
     setPosition(goalPosition);
+    currentState = "Moving down manually";
   }
   public void getHatchNudge() {
     double goalPosition = currentPosition + RobotMap.ELEVATOR_NUDGE_CHANGE_UP;
     setPosition(goalPosition);
+    currentState = "Autonomously retreiving hatch";
   }
   public void releaseHatchNudge() {
     double goalPosition = currentPosition - RobotMap.ELEVATOR_NUDGE_CHANGE_DOWN;
     setPosition(goalPosition);
+    currentState = "Autonomously releasing hatch";
   }
   public void smallUpNudge() {
     double goalPosition = currentPosition + RobotMap.ELEVATOR_SMALL_NUDGE_CHANGE;
@@ -93,27 +97,34 @@ public class Elevator extends Subsystem {
   }
   public void goToLvl1Ball() {
     setPosition(RobotMap.BALL_1);
+    currentState = "Going to drop a ball at level 1";
   }
   public void goToLvl2Ball() {
     setPosition(RobotMap.BALL_2);
+    currentState = "Going to drop a ball at level 2";
   }
   public void goToLvl3Ball() {
     setPosition(RobotMap.BALL_3);
+    currentState = "Going to drop a ball at level 3";
   }
   public void goToLvl1Hatch() {
     setPosition(RobotMap.HATCH_1);
+    currentState = "Going to put a hatch at level 1";
   }
   public void goToLvl2Hatch() {
     setPosition(RobotMap.HATCH_2);
+    currentState = "Going to put a hatch at level 2";
   }
   public void goToLvl3Hatch() {
     setPosition(RobotMap.HATCH_3);
+    currentState = "Going to put a hatch at level 3";
   }
   public void goToLvlGetHatch() {
     setPosition(RobotMap.GET_HATCH_1);
   }
   public void goToBottom() {
     setPosition(0.0);
+    currentState = "Going to the bottom";
   }
   public void setPosition(double goalPosition) {
     elevatorMotorPidController.setReference(goalPosition + currentOffset, ControlType.kPosition);
@@ -121,11 +132,8 @@ public class Elevator extends Subsystem {
     System.out.println("setPosition to " + currentPosition);
   }
   public void setSpeed(double speed) {
-    //Put limit switch stuff here (if statements)
-    //elevatorMotor.set(speed);
   }
   public void stop() {
-    //elevatorMotor.set(0.0);
   }
   public void setOffset() {
     currentOffset = elevatorEncoder.getPosition();
@@ -135,31 +143,33 @@ public class Elevator extends Subsystem {
   }
 
   public void elevatorPID() {
-    // read PID coefficients from SmartDashboard
-    double p = SmartDashboard.getNumber("P Gain", 0);
-    double i = SmartDashboard.getNumber("I Gain", 0);
-    double d = SmartDashboard.getNumber("D Gain", 0);
-    double iz = SmartDashboard.getNumber("I Zone", 0);
-    double ff = SmartDashboard.getNumber("Feed Forward", 0);
-    double max = SmartDashboard.getNumber("Max Output", 0);
-    double min = SmartDashboard.getNumber("Min Output", 0);
-    double rotations = SmartDashboard.getNumber("Set Rotations", 0);
+    // // read PID coefficients from SmartDashboard
+    // double p = SmartDashboard.getNumber("P Gain", 0);
+    // double i = SmartDashboard.getNumber("I Gain", 0);
+    // double d = SmartDashboard.getNumber("D Gain", 0);
+    // double iz = SmartDashboard.getNumber("I Zone", 0);
+    // double ff = SmartDashboard.getNumber("Feed Forward", 0);
+    // double max = SmartDashboard.getNumber("Max Output", 0);
+    // double min = SmartDashboard.getNumber("Min Output", 0);
+    // double rotations = SmartDashboard.getNumber("Set Rotations", 0);
 
-    // if PID coefficients on SmartDashboard have changed, write new values to controller
-    if((p != kP)) { elevatorMotorPidController.setP(p); kP = p; }
-    if((i != kI)) { elevatorMotorPidController.setI(i); kI = i; }
-    if((d != kD)) { elevatorMotorPidController.setD(d); kD = d; }
-    if((iz != kIz)) { elevatorMotorPidController.setIZone(iz); kIz = iz; }
-    if((ff != kFF)) { elevatorMotorPidController.setFF(ff); kFF = ff; }
-    if((max != kMaxOutput) || (min != kMinOutput)) { 
-      elevatorMotorPidController.setOutputRange(min, max); 
-      kMinOutput = min; kMaxOutput = max; 
-    }
+    // // if PID coefficients on SmartDashboard have changed, write new values to controller
+    // if((p != kP)) { elevatorMotorPidController.setP(p); kP = p; }
+    // if((i != kI)) { elevatorMotorPidController.setI(i); kI = i; }
+    // if((d != kD)) { elevatorMotorPidController.setD(d); kD = d; }
+    // if((iz != kIz)) { elevatorMotorPidController.setIZone(iz); kIz = iz; }
+    // if((ff != kFF)) { elevatorMotorPidController.setFF(ff); kFF = ff; }
+    // if((max != kMaxOutput) || (min != kMinOutput)) { 
+    //   elevatorMotorPidController.setOutputRange(min, max); 
+    //   kMinOutput = min; kMaxOutput = max; 
+    // }
 
     //elevatorMotorPidController.setReference(rotations, ControlType.kPosition);
     
-    SmartDashboard.putNumber("SetPoint", rotations);
-    SmartDashboard.putNumber("ProcessVariable", elevatorEncoder.getPosition());
+    // SmartDashboard.putNumber("SetPoint", rotations);
+    SmartDashboard.putNumber("Current Position is ", elevatorEncoder.getPosition());
+    SmartDashboard.putNumber("Offset is ", currentOffset);
+    SmartDashboard.putString("Elevator is ", currentState);
   }
 
   @Override

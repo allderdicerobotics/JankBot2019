@@ -55,15 +55,15 @@ public class Robot extends TimedRobot {
 
     TeleopDrive teleopDrive = new TeleopDrive(driveTrain, false);
 
-    //m_chooser.setDefaultOption("TeleopDrive", new TeleopDrive(driveTrain));
     m_chooser.setDefaultOption("TeleopDrive", teleopDrive);
-    // chooser.addOption("My Auto", new MyAutoCommand());
-    SmartDashboard.putData("Auto mode", m_chooser);
     SmartDashboard.putData("Drive Train", driveTrain);
     SmartDashboard.putData("Elevator", elevator);
     SmartDashboard.putData("Intake", intake);
+    SmartDashboard.putData(Scheduler.getInstance());
+
 
     driveTrain.setDefaultCommand(teleopDrive);
+
 
     //Setup Camera Server for Smart Dashboard
 		new Thread(() -> {
