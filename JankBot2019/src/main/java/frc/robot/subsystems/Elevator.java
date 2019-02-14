@@ -70,22 +70,22 @@ public class Elevator extends Subsystem {
   public void up() {
     double goalPosition = currentPosition - RobotMap.ELEVATOR_ENCODER_CHANGE;
     setPosition(goalPosition);
-    currentState = "Moving up manually";
+    currentState = "moving up manually";
   }
   public void down() {
     double goalPosition = currentPosition + RobotMap.ELEVATOR_ENCODER_CHANGE;
     setPosition(goalPosition);
-    currentState = "Moving down manually";
+    currentState = "moving down manually";
   }
   public void getHatchNudge() {
     double goalPosition = currentPosition + RobotMap.ELEVATOR_NUDGE_CHANGE_UP;
     setPosition(goalPosition);
-    currentState = "Autonomously retreiving hatch";
+    currentState = "autonomously retreiving the hatch";
   }
   public void releaseHatchNudge() {
     double goalPosition = currentPosition - RobotMap.ELEVATOR_NUDGE_CHANGE_DOWN;
     setPosition(goalPosition);
-    currentState = "Autonomously releasing hatch";
+    currentState = "autonomously releasing the hatch";
   }
   public void smallUpNudge() {
     double goalPosition = currentPosition + RobotMap.ELEVATOR_SMALL_NUDGE_CHANGE;
@@ -97,30 +97,31 @@ public class Elevator extends Subsystem {
   }
   public void goToLvl1Ball() {
     setPosition(RobotMap.BALL_1);
-    currentState = "Going to drop a ball at level 1";
+    currentState = "going to level 1 to drop a ball";
   }
   public void goToLvl2Ball() {
     setPosition(RobotMap.BALL_2);
-    currentState = "Going to drop a ball at level 2";
+    currentState = "going to level 2 to drop a ball";
   }
   public void goToLvl3Ball() {
     setPosition(RobotMap.BALL_3);
-    currentState = "Going to drop a ball at level 3";
+    currentState = "going to level 3 to drop a ball";
   }
   public void goToLvl1Hatch() {
     setPosition(RobotMap.HATCH_1);
-    currentState = "Going to put a hatch at level 1";
+    currentState = "going to level 1 to place a hatch panel";
   }
   public void goToLvl2Hatch() {
     setPosition(RobotMap.HATCH_2);
-    currentState = "Going to put a hatch at level 2";
+    currentState = "going to level 2 to place a hatch panel";
   }
   public void goToLvl3Hatch() {
     setPosition(RobotMap.HATCH_3);
-    currentState = "Going to put a hatch at level 3";
+    currentState = "going to level 3 to place a hatch panel";
   }
   public void goToLvlGetHatch() {
     setPosition(RobotMap.GET_HATCH_1);
+    currentState = "going to the retreival zone height to get a hatch panel";
   }
   public void goToBottom() {
     setPosition(0.0);
@@ -168,7 +169,7 @@ public class Elevator extends Subsystem {
     
     // SmartDashboard.putNumber("SetPoint", rotations);
     SmartDashboard.putNumber("Current Position is ", elevatorEncoder.getPosition());
-    SmartDashboard.putNumber("Offset is ", currentOffset);
+    SmartDashboard.putNumber("Current offset is ", currentOffset);
     SmartDashboard.putString("Elevator is ", currentState);
   }
 
