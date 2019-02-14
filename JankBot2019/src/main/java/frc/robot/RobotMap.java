@@ -25,7 +25,8 @@ public class RobotMap {
   // public static int rangefinderModule = 1;
 
 	//CAN Identifiers
-	public static final int ELEVATOR_CAN = 1;
+	public static final int ELEVATOR_1_CAN = 1;
+	public static final int ELEVATOR_2_CAN = 2;
 
 	//PWM Ports
 	public static final int INTAKE_PWM_LEFT = 4;
