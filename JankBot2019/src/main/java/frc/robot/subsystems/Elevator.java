@@ -30,7 +30,7 @@ public class Elevator extends Subsystem {
   private CANEncoder elevatorEncoder;
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
   public double currentOffset = 0;
-  public double currentPosition;
+  public double currentPosition = 0;
   public String currentState;
 
   public Elevator() {
@@ -171,8 +171,8 @@ public class Elevator extends Subsystem {
     //elevatorMotorPidController.setReference(rotations, ControlType.kPosition);
     
     // SmartDashboard.putNumber("SetPoint", rotations);
-    SmartDashboard.putNumber("Current Position is ", elevatorEncoder.getPosition());
-    SmartDashboard.putNumber("Current offset is ", currentOffset);
+    SmartDashboard.putNumber("Current Elevator Position is ", elevatorEncoder.getPosition());
+    SmartDashboard.putNumber("Current Elevator offset is ", currentOffset);
     SmartDashboard.putString("Elevator is ", currentState);
   }
 

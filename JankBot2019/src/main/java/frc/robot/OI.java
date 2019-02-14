@@ -7,6 +7,10 @@
 
 package frc.robot;
 
+import frc.robot.commands.ArmAngle0;
+import frc.robot.commands.ArmAngle1;
+import frc.robot.commands.ArmDown;
+import frc.robot.commands.ArmUp;
 import frc.robot.commands.ElevatorDown;
 import frc.robot.commands.ElevatorUp;
 import frc.robot.commands.IntakeIn;
@@ -17,12 +21,13 @@ import frc.robot.commands.NudgeUp;
 import frc.robot.commands.GetHatch;
 import frc.robot.commands.ReleaseHatch;
 import frc.robot.commands.SetOffset;
-import frc.robot.commands.Height0;
-import frc.robot.commands.Height1;
-import frc.robot.commands.Height2;
-import frc.robot.commands.Height3;
+import frc.robot.commands.ElevatorHeight0;
+import frc.robot.commands.ElevatorHeight1;
+import frc.robot.commands.ElevatorHeight2;
+import frc.robot.commands.ElevatorHeight3;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.POVButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
 import frc.robot.AxisButton;
 
@@ -65,10 +70,22 @@ public class OI {
     Button operatorB = new JoystickButton(Robot.operator, RobotMap.kButtonB);
     Button operatorY = new JoystickButton(Robot.operator, RobotMap.kButtonY);
 
-    operatorX.whenPressed(new Height0());
-    operatorA.whenPressed(new Height1());
-    operatorB.whenPressed(new Height2());
-    operatorY.whenPressed(new Height3());
+    POVButton operatorPOVUp = new POVButton(Robot.operator, 0);
+    POVButton operatorPOVDown = new POVButton(Robot.operator, 180);
+
+    operatorPOVUp.whenActive(new ArmAngle0());
+    operatorPOVDown.whenActive(new ArmAngle1());
+
+    operatorX.whenPressed(new ElevatorHeight0());
+    operatorA.whenPressed(new ElevatorHeight1());
+    operatorB.whenPressed(new ElevatorHeight2());
+    operatorY.whenPressed(new ElevatorHeight3());
+
+    Button driverLeftBumper = new JoystickButton(Robot.driver, RobotMap.kButtonLeftBumper);
+    Button driverRightBumper = new JoystickButton(Robot.driver, RobotMap.kButtonRightBumper);
+
+    driverLeftBumper.whileActive(new ArmDown());
+    driverRightBumper.whileActive(new ArmUp());
 
     //Trigger for the manual operation of the elevator
     Trigger operatorLeftAxisUp = new AxisButton(Robot.operator, RobotMap.kLeftStickY, true);

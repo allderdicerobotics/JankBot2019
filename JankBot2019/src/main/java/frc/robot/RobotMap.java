@@ -67,6 +67,8 @@ public class RobotMap {
 	public static final double ELEVATOR_NUDGE_CHANGE_DOWN = 10.0;
 	public static final double ELEVATOR_SMALL_NUDGE_CHANGE = 6.0;
 
+	public static final double ARM_ENCODER_CHANGE = 0.4;
+
 	//goalPosition Encoder values
 	public static final double BALL_1 = 135.0;
 	public static final double BALL_2 = 295.0;
@@ -75,6 +77,8 @@ public class RobotMap {
 	public static final double HATCH_1 = 25.0;
 	public static final double HATCH_2 = 185.0;
 	public static final double HATCH_3 = 330.0;
+
+	public static final double ARM_DOWN = 15.0;
 
   	//GamePad
 	/* axis mappings */
