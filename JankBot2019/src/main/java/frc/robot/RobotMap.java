@@ -28,7 +28,8 @@ public class RobotMap {
 	public static final int ELEVATOR_CAN = 1;
 
 	//PWM Ports
-	public static final int INTAKE_PWM_SINGLE = 4;
+	public static final int INTAKE_PWM_LEFT = 4;
+	public static final int INTAKE_PWM_RIGHT = 5;
   	public static final int DRIVE_TRAIN_LEFT_1 = 0;
   	public static final int DRIVE_TRAIN_LEFT_2 = 1;
 	public static final int DRIVE_TRAIN_RIGHT_1 = 2;
@@ -40,7 +41,7 @@ public class RobotMap {
 
 	//Speed Constants
 	public static final double ELEVATOR_SPEED = 0.7;
-	public static final double INTAKE_SPEED = 0.6;
+	public static final double INTAKE_SPEED = 0.5;
 	public static final double THROTTLE_SCALE = 0.8;
 	public static final double STEERING_SCALE = 0.6;
 	
