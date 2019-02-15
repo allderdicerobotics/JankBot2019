@@ -5,17 +5,17 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.Intake;
 
 import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ElevatorStop extends Command {
+public class IntakeIn extends Command {
   
-  public ElevatorStop() {
+  public IntakeIn() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.elevator);
+    requires(Robot.intake);
   }
 
   // Called just before this Command runs the first time
@@ -26,7 +26,7 @@ public class ElevatorStop extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.elevator.stop();
+    Robot.intake.in();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -38,13 +38,13 @@ public class ElevatorStop extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.elevator.stop();
+    Robot.intake.stop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.elevator.stop();
+    Robot.intake.stop();
   }
 }

@@ -5,17 +5,16 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.Arm;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
-public class ElevatorHeight0 extends Command {
-  public ElevatorHeight0() {
+public class ArmAngle0 extends Command {
+  public ArmAngle0() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.elevator);
+    requires(Robot.arm);
   }
 
   // Called just before this Command runs the first time
@@ -26,17 +25,7 @@ public class ElevatorHeight0 extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //Set the elevator to the level to retreive a hatch from the player station,
-    //or to the bottom. 
-    //This changes based on whether the operator is holding down the "BACK" button
-    if(Robot.operator.getRawButton(RobotMap.kButtonBack)) {
-      Robot.elevator.goToLvlGetHatch();
-      System.out.println("Set height to getHatch 1");
-    }
-    else {
-      Robot.elevator.goToBottom();
-      System.out.println("Set height to 0");
-    }
+    Robot.arm.goToUpPosition();
   }
 
   // Make this return true when this Command no longer needs to run execute()

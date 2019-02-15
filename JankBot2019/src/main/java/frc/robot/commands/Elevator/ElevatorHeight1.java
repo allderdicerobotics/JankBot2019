@@ -5,14 +5,14 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.Elevator;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class ElevatorHeight3 extends Command {
-  public ElevatorHeight3() {
+public class ElevatorHeight1 extends Command {
+  public ElevatorHeight1() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.elevator);
@@ -26,16 +26,16 @@ public class ElevatorHeight3 extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //Set the elevator to the level to place a hatch on level 3 of the rocket,
-    //or place a ball in level 3 of the rocket. 
+    //Set the elevator to the level to place a hatch on level 1 of the rocket,
+    //or place a ball in level 1 of the rocket. 
     //This changes based on whether the operator is holding down the "BACK" button
     if(Robot.operator.getRawButton(RobotMap.kButtonBack)) {
-      Robot.elevator.goToLvl3Hatch();
-      System.out.println("Set height to Hatch 3");
+      Robot.elevator.goToLvl1Hatch();
+      System.out.println("Set height Hatch1");
     }
     else {
-      Robot.elevator.goToLvl3Ball();
-      System.out.println("Set height to Ball 3");
+      Robot.elevator.goToLvl1Ball();
+      System.out.println("Set height Ball1");
     }
   }
 

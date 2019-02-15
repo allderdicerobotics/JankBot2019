@@ -7,24 +7,24 @@
 
 package frc.robot;
 
-import frc.robot.commands.ArmAngle0;
-import frc.robot.commands.ArmAngle1;
-import frc.robot.commands.ArmDown;
-import frc.robot.commands.ArmUp;
-import frc.robot.commands.ElevatorDown;
-import frc.robot.commands.ElevatorUp;
-import frc.robot.commands.IntakeIn;
-import frc.robot.commands.IntakeOut;
+import frc.robot.commands.Arm.ArmAngle0;
+import frc.robot.commands.Arm.ArmAngle1;
+import frc.robot.commands.Arm.ArmDown;
+import frc.robot.commands.Arm.ArmUp;
+import frc.robot.commands.Elevator.ElevatorDown;
+import frc.robot.commands.Elevator.ElevatorUp;
+import frc.robot.commands.Intake.IntakeIn;
+import frc.robot.commands.Intake.IntakeOut;
 
-import frc.robot.commands.NudgeDown;
-import frc.robot.commands.NudgeUp;
+import frc.robot.commands.Elevator.NudgeDown;
+import frc.robot.commands.Elevator.NudgeUp;
 import frc.robot.commands.GetHatch;
 import frc.robot.commands.ReleaseHatch;
-import frc.robot.commands.SetOffset;
-import frc.robot.commands.ElevatorHeight0;
-import frc.robot.commands.ElevatorHeight1;
-import frc.robot.commands.ElevatorHeight2;
-import frc.robot.commands.ElevatorHeight3;
+import frc.robot.commands.Elevator.SetOffset;
+import frc.robot.commands.Elevator.ElevatorHeight0;
+import frc.robot.commands.Elevator.ElevatorHeight1;
+import frc.robot.commands.Elevator.ElevatorHeight2;
+import frc.robot.commands.Elevator.ElevatorHeight3;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.POVButton;

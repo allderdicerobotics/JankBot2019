@@ -5,17 +5,19 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.Elevator;
 
-import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 
-public class ElevatorUp extends Command {
-  
-  public ElevatorUp() {
+public class NudgeUp extends Command {
+  boolean smallNudge;
+
+  public NudgeUp(boolean smallNudge) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.elevator);
+    this.smallNudge = smallNudge;
   }
 
   // Called just before this Command runs the first time
@@ -26,13 +28,21 @@ public class ElevatorUp extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.elevator.up();
+    //There are two types of nudges:
+    //  A manual, small nudge that is activated by pressing the bumper buttons of the operator Gamepad
+    //  A larger nudge that is used by the GetHatch and ReleaseHatch Command Groups
+    if(smallNudge) {
+      Robot.elevator.smallUpNudge();
+    }
+    else {
+      Robot.elevator.getHatchNudge();
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true
