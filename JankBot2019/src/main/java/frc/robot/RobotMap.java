@@ -38,10 +38,12 @@ public class RobotMap {
   	public static final int DRIVE_TRAIN_LEFT_2 = 1;
 	public static final int DRIVE_TRAIN_RIGHT_1 = 2;
 	public static final int DRIVE_TRAIN_RIGHT_2 = 3;
+	public static final int CLIMBING_WHEEL = 6;
 
 	//USB Ports
 	public static final int DRIVE_PORT = 0;
 	public static final int OPERATOR_PORT = 1;
+	//public static final int CLIMBER_JOYSTICK_PORT = 2;
 
 	//Speed Constants
 	public static final double ELEVATOR_SPEED = 0.7;
@@ -54,7 +56,11 @@ public class RobotMap {
 	public static final double SLOW_THROTTLE_SCALE = 1.8;
 	public static final double SLOW_STEERING_SCALE = 1.4;
 	public static final double MAX_SPEED = 0.9;
-	
+
+	public static final double CLIMBING_WHEEL_NORMAL_SPEED = 0.2;
+	public static final double CLIMBING_WHEEL_MAX_SPEED = 0.4;
+
+	//Times
 	public static final double DEADZONE_THRESHOLD = 0.07;
 
 	public static final double NUDGE_SPEED = 0.3;

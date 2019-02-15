@@ -11,6 +11,7 @@ import com.revrobotics.CANEncoder;
 import com.revrobotics.CANPIDController;
 import com.revrobotics.CANSparkMax;
 
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -29,11 +30,17 @@ public class ClimbingElevator extends Subsystem {
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
   public double currentPosition = 0;
 
+  //for the wheel at the bottom
+  private Victor bottomWheelMotor;
+
   public ClimbingElevator() {
     climbingElevatorMotor = new CANSparkMax(RobotMap.CLIMBING_ELEVATOR_CAN, MotorType.kBrushless);
     climbingElevatorMotorPidController = climbingElevatorMotor.getPIDController();
     climbingElevatorEncoder = climbingElevatorMotor.getEncoder();
     currentPosition = climbingElevatorEncoder.getPosition();
+
+    //for the wheel at the bottom
+    bottomWheelMotor = new Victor(RobotMap.CLIMBING_WHEEL);
 
     kP = 0.5;
     kI = 1e-5;
@@ -91,6 +98,26 @@ public class ClimbingElevator extends Subsystem {
   }
   public void stop() {
   }
+
+  //methods for the wheel at the bottom
+  public void wheelForward() {
+    bottomWheelMotor.set(RobotMap.CLIMBING_WHEEL_NORMAL_SPEED);
+  }
+  public void wheelBackward() {
+    bottomWheelMotor.set(-RobotMap.CLIMBING_WHEEL_NORMAL_SPEED);
+  }
+  public void wheelSetSpeed(double speed) {
+    double speedGoal = speed;
+    if(speedGoal > RobotMap.CLIMBING_WHEEL_MAX_SPEED) {
+      speedGoal = RobotMap.CLIMBING_WHEEL_MAX_SPEED;
+    }
+    bottomWheelMotor.set(speedGoal);
+  }
+  public void wheelStop() {
+    bottomWheelMotor.set(0.0);
+  }
+
+
   public void climbingElevatorPID() {
     // // read PID coefficients from SmartDashboard
     // double p = SmartDashboard.getNumber("ClimbingElevator P Gain", 0);

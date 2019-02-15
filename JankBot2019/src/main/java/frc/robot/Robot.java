@@ -42,6 +42,7 @@ public class Robot extends TimedRobot {
   public static ClimbingElevator climbingElevator = new ClimbingElevator();
   public static Joystick driver = new Joystick(RobotMap.DRIVE_PORT);
   public static Joystick operator = new Joystick(RobotMap.OPERATOR_PORT); 
+  //public static Joystick climberJoystick = new Joystick(RobotMap.CLIMBER_JOYSTICK_PORT);
 
   public static OI m_oi;
 
