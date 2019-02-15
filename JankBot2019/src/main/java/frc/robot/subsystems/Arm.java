@@ -30,7 +30,7 @@ public class Arm extends Subsystem {
   public double currentPosition = 0;
   
   public Arm() {
-    armMotor = new CANSparkMax(RobotMap.ELEVATOR_1_CAN, MotorType.kBrushless);
+    armMotor = new CANSparkMax(RobotMap.ARM_CAN, MotorType.kBrushless);
     armMotorPidController = armMotor.getPIDController();
     armEncoder = armMotor.getEncoder();
     currentPosition = armEncoder.getPosition();
@@ -80,6 +80,7 @@ public class Arm extends Subsystem {
   public void setPosition(double goalPosition) {
     armMotorPidController.setReference(goalPosition, ControlType.kPosition);
     currentPosition = goalPosition;
+    System.out.println("Set Arm Position to " + goalPosition);
   }
   public double getCurrentPosition() {
     return armEncoder.getPosition();
@@ -110,7 +111,7 @@ public class Arm extends Subsystem {
 
     armMotorPidController.setReference(rotations, ControlType.kPosition);
     
-    SmartDashboard.putNumber("SetPoint", rotations);
+    SmartDashboard.putNumber("Arm setPoint:", rotations);
 
     SmartDashboard.putNumber("Current arm position is ", armEncoder.getPosition());
   }

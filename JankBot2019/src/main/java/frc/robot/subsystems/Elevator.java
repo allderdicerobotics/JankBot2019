@@ -133,7 +133,7 @@ public class Elevator extends Subsystem {
   public void setPosition(double goalPosition) {
     elevatorMotorPidController.setReference(goalPosition + currentOffset, ControlType.kPosition);
     currentPosition = goalPosition;
-    System.out.println("setPosition to " + currentPosition);
+    System.out.println("set Elevator Position to " + goalPosition);
   }
   public void setSpeed(double speed) {
   }
@@ -170,7 +170,7 @@ public class Elevator extends Subsystem {
 
     //elevatorMotorPidController.setReference(rotations, ControlType.kPosition);
     
-    // SmartDashboard.putNumber("SetPoint", rotations);
+    // SmartDashboard.putNumber("Elevator SetPoint", rotations);
     SmartDashboard.putNumber("Current Elevator Position is ", elevatorEncoder.getPosition());
     SmartDashboard.putNumber("Current Elevator offset is ", currentOffset);
     SmartDashboard.putString("Elevator is ", currentState);

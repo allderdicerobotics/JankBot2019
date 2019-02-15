@@ -38,6 +38,8 @@ public class TeleopDrive extends Command {
   @Override
   protected void execute() {
     Robot.elevator.elevatorPID();
+    Robot.arm.armPID();
+    Robot.climbingElevator.climbingElevatorPID();
     if(autoBack) {
       driveTrain.arcadeDrive(RobotMap.AUTO_BACK_SPEED, 0);
     } 

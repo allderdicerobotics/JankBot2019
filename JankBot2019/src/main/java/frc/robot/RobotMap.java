@@ -26,7 +26,10 @@ public class RobotMap {
 
 	//CAN Identifiers
 	public static final int ELEVATOR_1_CAN = 1;
-	public static final int ELEVATOR_2_CAN = 2;
+	public static final int ELEVATOR_2_CAN = 3;
+
+	public static final int ARM_CAN = 2;
+	public static final int CLIMBING_ELEVATOR_CAN = 4;
 
 	//PWM Ports
 	public static final int INTAKE_PWM_LEFT = 4;
@@ -67,7 +70,8 @@ public class RobotMap {
 	public static final double ELEVATOR_NUDGE_CHANGE_DOWN = 10.0;
 	public static final double ELEVATOR_SMALL_NUDGE_CHANGE = 6.0;
 
-	public static final double ARM_ENCODER_CHANGE = 0.4;
+	public static final double ARM_ENCODER_CHANGE = 0.2;
+	public static final double CLIMBING_ELEVATOR_CHANGE = 0.5;
 
 	//goalPosition Encoder values
 	public static final double BALL_1 = 135.0;
@@ -79,6 +83,9 @@ public class RobotMap {
 	public static final double HATCH_3 = 330.0;
 
 	public static final double ARM_DOWN = 15.0;
+
+	public static final double CLIMBING_ELEVATOR_SECOND_LEVEL = 20.0;
+	public static final double CLIMBING_ELEVATOR_THIRD_LEVEL = 40.0;
 
   	//GamePad
 	/* axis mappings */
