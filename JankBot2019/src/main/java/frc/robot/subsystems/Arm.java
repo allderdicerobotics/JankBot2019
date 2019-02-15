@@ -110,9 +110,7 @@ public class Arm extends Subsystem {
     }
 
     armMotorPidController.setReference(rotations, ControlType.kPosition);
-    
     SmartDashboard.putNumber("Arm setPoint:", rotations);
-
     SmartDashboard.putNumber("Current arm position is ", armEncoder.getPosition());
   }
 

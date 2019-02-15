@@ -25,7 +25,7 @@ public class Elevator extends Subsystem {
   // here. Call these from Commands.
   
   private CANSparkMax elevator1Motor;
-  private CANSparkMax elevator2Motor;
+  //private CANSparkMax elevator2Motor;
   private CANPIDController elevatorMotorPidController;
   private CANEncoder elevatorEncoder;
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
@@ -35,7 +35,7 @@ public class Elevator extends Subsystem {
 
   public Elevator() {
     elevator1Motor = new CANSparkMax(RobotMap.ELEVATOR_1_CAN, MotorType.kBrushless);
-    elevator2Motor = new CANSparkMax(RobotMap.ELEVATOR_2_CAN, MotorType.kBrushless);
+    //elevator2Motor = new CANSparkMax(RobotMap.ELEVATOR_2_CAN, MotorType.kBrushless);
     elevatorMotorPidController = elevator1Motor.getPIDController();
     elevatorEncoder = elevator1Motor.getEncoder();
     currentPosition = elevatorEncoder.getPosition();
@@ -68,7 +68,7 @@ public class Elevator extends Subsystem {
   }
   public void Init() {
     stop();
-    elevator2Motor.follow(elevator1Motor);
+    //elevator2Motor.follow(elevator1Motor);
   }
   public void up() {
     double goalPosition = currentPosition - RobotMap.ELEVATOR_ENCODER_CHANGE;

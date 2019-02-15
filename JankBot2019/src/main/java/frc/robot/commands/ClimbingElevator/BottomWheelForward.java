@@ -5,19 +5,16 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.ClimbingElevator;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class TeleopClimbingWheel extends Command {
-  //private Joystick climberJoystick;
-  public TeleopClimbingWheel() {
+public class BottomWheelForward extends Command {
+  public BottomWheelForward() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.climbingElevator);
-    //this.climberJoystick = Robot.climberJoystick
   }
 
   // Called just before this Command runs the first time
@@ -28,7 +25,7 @@ public class TeleopClimbingWheel extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //this will look something like TeleopDrive but will call ClimbingElevator wheelSetSpeed method
+    Robot.climbingElevator.wheelForward();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -40,11 +37,13 @@ public class TeleopClimbingWheel extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.climbingElevator.wheelStop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    Robot.climbingElevator.wheelStop();
   }
 }

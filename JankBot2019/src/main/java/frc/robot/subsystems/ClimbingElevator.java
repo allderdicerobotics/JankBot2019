@@ -69,7 +69,7 @@ public class ClimbingElevator extends Subsystem {
     // SmartDashboard.putNumber("ClimbingElevator Set Rotations", 0);
   }
   public void Init() {
-    stop();
+    goToRestPosition();
   }
   public void up() {
     double goalPosition = currentPosition + RobotMap.CLIMBING_ELEVATOR_CHANGE;
