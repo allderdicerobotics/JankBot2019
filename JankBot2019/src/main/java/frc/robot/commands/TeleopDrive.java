@@ -55,13 +55,13 @@ public class TeleopDrive extends Command {
         speed = speed * RobotMap.BOOST_THROTTLE_SCALE;
         steer = steer * RobotMap.BOOST_STEERING_SCALE;
       }
+
+      speed = speed * -Math.pow(joystick.getRawAxis(RobotMap.kLeftStickY), 3);
+      steer = steer * Math.pow(joystick.getRawAxis(RobotMap.kRightStickX), 3);
+
       if (speed >= RobotMap.MAX_SPEED) {
        speed = RobotMap.MAX_SPEED;
      }
-
-      speed = speed * -joystick.getRawAxis(RobotMap.kLeftStickY);
-      steer = steer * joystick.getRawAxis(RobotMap.kRightStickX);
-
       driveTrain.arcadeDrive(speed, steer);
     }
   }

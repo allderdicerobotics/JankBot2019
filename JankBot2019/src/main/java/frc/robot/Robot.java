@@ -24,6 +24,7 @@ import org.opencv.imgproc.Imgproc;
 import edu.wpi.cscore.CvSink;
 import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
+import edu.wpi.cscore.VideoSink;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.Joystick;
 
@@ -43,6 +44,10 @@ public class Robot extends TimedRobot {
   public static Joystick driver = new Joystick(RobotMap.DRIVE_PORT);
   public static Joystick operator = new Joystick(RobotMap.OPERATOR_PORT); 
   public static Joystick climberJoystick = new Joystick(RobotMap.CLIMBER_JOYSTICK_PORT);
+
+  // public static UsbCamera driveCamera;
+  // public static UsbCamera alignCamera;
+  // public static VideoSink cameraServer;
 
   public static OI m_oi;
 
@@ -70,18 +75,29 @@ public class Robot extends TimedRobot {
 
     driveTrain.setDefaultCommand(teleopDrive);
 
+    // driveCamera = CameraServer.getInstance().startAutomaticCapture();
+    // alignCamera = CameraServer.getInstance().startAutomaticCapture();
+    // cameraServer = CameraServer.getInstance().getServer();
+
+    // driveCamera.setResolution(213, 160);
+    // driveCamera.setFPS(25);
+    // driveCamera.setBrightness(50);
+
+    // alignCamera.setResolution(213, 160);
+    // alignCamera.setFPS(5);
+    // alignCamera.setBrightness(50);
 
     //Setup Camera Server for Smart Dashboard
 		new Thread(() -> {
 			UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture();
-			//UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture();
+			UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture();
 
 			camera1.setResolution(213, 160);
-			//camera2.setResolution(320, 240);
+			camera2.setResolution(213, 160);
 			camera1.setFPS(30);
-			//camera2.setFPS(30);
+			camera2.setFPS(5);
 			camera1.setBrightness(50);
-			//camera2.setBrightness(50);
+			camera2.setBrightness(50);
 
 			
 			CvSink cvSink = CameraServer.getInstance().getVideo();
@@ -158,6 +174,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
+    //cameraStream();
   }
 
   @Override
@@ -177,6 +194,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    //cameraStream();
   }
 
   /**
@@ -185,4 +203,18 @@ public class Robot extends TimedRobot {
   @Override
   public void testPeriodic() {
   }
+
+  // public void cameraStream() {
+  //   if(Robot.elevator.getCurrentPosition() > 100 || driver.getRawButton(RobotMap.kButtonLeftBumper)) {
+  //     System.out.println("Switch to aligning camera");
+  //     cameraServer.setSource(alignCamera);
+  //   }
+  //   else {
+  //     cameraServer.setSource(driveCamera);
+  //   }
+  //   Mat source = new Mat();
+  //   Mat output = new Mat();
+  //   CvSource outputStream = CameraServer.getInstance().putVideo("Matias", 213, 160);
+  //   outputStream.putFrame(output);
+  // }
 }

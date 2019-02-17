@@ -71,31 +71,31 @@ public class Elevator extends Subsystem {
     //elevator2Motor.follow(elevator1Motor);
   }
   public void up() {
-    double goalPosition = currentPosition - RobotMap.ELEVATOR_ENCODER_CHANGE;
+    double goalPosition = currentPosition - RobotMap.ELEVATOR_MANUAL_CHANGE;
     setPosition(goalPosition);
     currentState = "moving up manually";
   }
   public void down() {
-    double goalPosition = currentPosition + RobotMap.ELEVATOR_ENCODER_CHANGE;
+    double goalPosition = currentPosition + RobotMap.ELEVATOR_MANUAL_CHANGE;
     setPosition(goalPosition);
     currentState = "moving down manually";
   }
   public void getHatchNudge() {
-    double goalPosition = currentPosition + RobotMap.ELEVATOR_NUDGE_CHANGE_UP;
+    double goalPosition = currentPosition + RobotMap.ELEVATOR_GET_HATCH_CHANGE;
     setPosition(goalPosition);
     currentState = "autonomously retreiving the hatch";
   }
   public void releaseHatchNudge() {
-    double goalPosition = currentPosition - RobotMap.ELEVATOR_NUDGE_CHANGE_DOWN;
+    double goalPosition = currentPosition - RobotMap.ELEVATOR_RELEASE_HATCH_CHANGE;
     setPosition(goalPosition);
     currentState = "autonomously releasing the hatch";
   }
   public void smallUpNudge() {
-    double goalPosition = currentPosition + RobotMap.ELEVATOR_SMALL_NUDGE_CHANGE;
+    double goalPosition = currentPosition + RobotMap.ELEVATOR_NUDGE_CHANGE;
     setPosition(goalPosition);
   }
   public void smallDownNudge() {
-    double goalPosition = currentPosition - RobotMap.ELEVATOR_SMALL_NUDGE_CHANGE;
+    double goalPosition = currentPosition - RobotMap.ELEVATOR_NUDGE_CHANGE;
     setPosition(goalPosition);
   }
   public void goToLvl1Ball() {
@@ -123,7 +123,7 @@ public class Elevator extends Subsystem {
     currentState = "going to level 3 to place a hatch panel";
   }
   public void goToLvlGetHatch() {
-    setPosition(RobotMap.GET_HATCH_1);
+    setPosition(RobotMap.GET_BALL);
     currentState = "going to the retreival zone height to get a hatch panel";
   }
   public void goToBottom() {
@@ -131,9 +131,9 @@ public class Elevator extends Subsystem {
     currentState = "Going to the bottom";
   }
   public void setPosition(double goalPosition) {
-    elevatorMotorPidController.setReference(goalPosition + currentOffset, ControlType.kPosition);
+    elevatorMotorPidController.setReference(goalPosition - currentOffset, ControlType.kPosition);
     currentPosition = goalPosition;
-    System.out.println("set Elevator Position to " + goalPosition);
+    //System.out.println("set Elevator Position to " + goalPosition);
   }
   public void setSpeed(double speed) {
   }
