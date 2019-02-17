@@ -69,7 +69,7 @@ public class ClimbingElevator extends Subsystem {
     // SmartDashboard.putNumber("ClimbingElevator Set Rotations", 0);
   }
   public void Init() {
-    goToRestPosition();
+    //goToRestPosition();
   }
   public void up() {
     double goalPosition = currentPosition + RobotMap.CLIMBING_ELEVATOR_CHANGE;
@@ -143,7 +143,7 @@ public class ClimbingElevator extends Subsystem {
     //climbingElevatorMotorPidController.setReference(rotations, ControlType.kPosition);
     
     // SmartDashboard.putNumber("ClimbingElevator SetPoint", rotations);
-    SmartDashboard.putNumber("Current ClimbingElevator Position is ", climbingElevatorEncoder.getPosition());
+    //SmartDashboard.putNumber("Current ClimbingElevator Position is ", climbingElevatorEncoder.getPosition());
   }
 
 

@@ -7,9 +7,9 @@
 
 package frc.robot;
 
-import frc.robot.commands.Arm.ArmAngle0;
-import frc.robot.commands.Arm.ArmAngle1;
 import frc.robot.commands.Arm.ArmDown;
+import frc.robot.commands.Arm.ArmNudgeDown;
+import frc.robot.commands.Arm.ArmNudgeUp;
 import frc.robot.commands.Arm.ArmUp;
 import frc.robot.commands.ClimbingElevator.BottomWheelBackward;
 import frc.robot.commands.ClimbingElevator.BottomWheelForward;
@@ -111,38 +111,37 @@ public class OI {
     operatorRightAxisUp.whileActive(new IntakeOut());
     operatorRightAxisDown.whileActive(new IntakeIn());
 
-    //ARM
-    //Arm designated levels (angles)
-    POVButton operatorPOVUp = new POVButton(Robot.operator, 0);
-    POVButton operatorPOVDown = new POVButton(Robot.operator, 180);
-    operatorPOVUp.whenActive(new ArmAngle0());
-    operatorPOVDown.whenActive(new ArmAngle1());
-
     //Manual operation of the arm
-    Button driverLeftBumper = new JoystickButton(Robot.driver, RobotMap.kButtonLeftBumper);
-    Button driverRightBumper = new JoystickButton(Robot.driver, RobotMap.kButtonRightBumper);
-    driverLeftBumper.whileActive(new ArmDown());
-    driverRightBumper.whileActive(new ArmUp());
+    Button climberY = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonY);
+    Button climberA = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonA);
+    climberY.whileActive(new ArmUp());
+    climberA.whileActive(new ArmDown());
+
+    //Nudge Arm
+    Button climberRightBumper = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonRightBumper);
+    Button climberLeftBumper = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonLeftBumper);
+    climberRightBumper.whenActive(new ArmNudgeUp());
+    climberLeftBumper.whenActive(new ArmNudgeDown());
     //END OF ARM
 
     //CLIMBING ELEVATOR
-    //Climbing elevator levels
-    POVButton operatorPOVRight = new POVButton(Robot.operator, 90);
-    POVButton operatorPOVLeft = new POVButton(Robot.operator, 270);
-    operatorPOVRight.whenActive(new ClimbingElevatorHeight0());
-    operatorPOVLeft.whenActive(new ClimbingElevatorHeight1());
+    // //Climbing elevator levels
+    // POVButton operatorPOVRight = new POVButton(Robot.operator, 90);
+    // POVButton operatorPOVLeft = new POVButton(Robot.operator, 270);
+    // operatorPOVRight.whenActive(new ClimbingElevatorHeight0());
+    // operatorPOVLeft.whenActive(new ClimbingElevatorHeight1());
 
-    //Manual Climbing Elevator control
-    POVButton driverPOVUp = new POVButton(Robot.driver, 0);
-    POVButton driverPOVDown = new POVButton(Robot.driver, 180);
-    driverPOVUp.whenActive(new ClimbingElevatorUp());
-    driverPOVDown.whenActive(new ClimbingElevatorDown());
+    // //Manual Climbing Elevator control
+    // POVButton driverPOVUp = new POVButton(Robot.driver, 0);
+    // POVButton driverPOVDown = new POVButton(Robot.driver, 180);
+    // driverPOVUp.whenActive(new ClimbingElevatorUp());
+    // driverPOVDown.whenActive(new ClimbingElevatorDown());
 
-    //Manual bottom wheel for climbing elevator control
-    POVButton driverPOVRight = new POVButton(Robot.driver, 90);
-    POVButton driverPOVLeft = new POVButton(Robot.driver, 270);
-    driverPOVRight.whenActive(new BottomWheelForward());
-    driverPOVLeft.whenActive(new BottomWheelBackward());
+    // //Manual bottom wheel for climbing elevator control
+    // POVButton driverPOVRight = new POVButton(Robot.driver, 90);
+    // POVButton driverPOVLeft = new POVButton(Robot.driver, 270);
+    // driverPOVRight.whenActive(new BottomWheelForward());
+    // driverPOVLeft.whenActive(new BottomWheelBackward());
     //END OF CLIMBING ELEVATOR
 
 

@@ -43,22 +43,26 @@ public class RobotMap {
 	//USB Ports
 	public static final int DRIVE_PORT = 0;
 	public static final int OPERATOR_PORT = 1;
-	//public static final int CLIMBER_JOYSTICK_PORT = 2;
+	public static final int CLIMBER_JOYSTICK_PORT = 2;
 
 	//Speed Constants
 	public static final double ELEVATOR_SPEED = 0.7;
-	public static final double INTAKE_SPEED = 0.5;
+	public static final double INTAKE_IN_SPEED = 0.7;
+	public static final double INTAKE_OUT_SPEED = 0.85;
+
 	public static final double THROTTLE_SCALE = 0.8;
-	public static final double STEERING_SCALE = 0.6;
+	public static final double STEERING_SCALE = 0.65;
 	
 	public static final double BOOST_THROTTLE_SCALE = 1.5;
 	public static final double BOOST_STEERING_SCALE = 1.2;
 	public static final double SLOW_THROTTLE_SCALE = 1.8;
-	public static final double SLOW_STEERING_SCALE = 1.4;
+	public static final double SLOW_STEERING_SCALE = 1.3;
 	public static final double MAX_SPEED = 0.9;
 
 	public static final double CLIMBING_WHEEL_NORMAL_SPEED = 0.2;
 	public static final double CLIMBING_WHEEL_MAX_SPEED = 0.4;
+
+	public static final double ARM_SPEED = 0.7;
 
 	//Times
 	public static final double DEADZONE_THRESHOLD = 0.07;
@@ -66,17 +70,19 @@ public class RobotMap {
 	public static final double NUDGE_SPEED = 0.3;
 	public static final double NUDGE_TIME = 0.4;
 
+	public static final double ARM_NUDGE_TIME = 0.2;
+
 	public static final double AUTO_BACK_SPEED = -0.4;
 	public static final double AUTO_BACK_TIME = 0.6;
 	public static final double ELEVATOR_DOWN_TIME = 0.15;
-	public static final double ELEVATOR_UP_TIME = 0.2;
+	public static final double ELEVATOR_UP_TIME = 0.4;
 
 	public static final double ELEVATOR_ENCODER_CHANGE = 1.9;
 	public static final double ELEVATOR_NUDGE_CHANGE_UP = 15.0;
 	public static final double ELEVATOR_NUDGE_CHANGE_DOWN = 10.0;
 	public static final double ELEVATOR_SMALL_NUDGE_CHANGE = 6.0;
 
-	public static final double ARM_ENCODER_CHANGE = 0.2;
+	public static final double ARM_ENCODER_CHANGE = 10.0;
 	public static final double CLIMBING_ELEVATOR_CHANGE = 0.5;
 
 	//goalPosition Encoder values

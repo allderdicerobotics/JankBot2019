@@ -28,10 +28,10 @@ public class Intake extends Subsystem {
     stop();
   }
   public void in() {
-    setSpeed(RobotMap.INTAKE_SPEED);
+    setSpeed(RobotMap.INTAKE_IN_SPEED);
   }
   public void out() {
-    setSpeed(-RobotMap.INTAKE_SPEED);
+    setSpeed(-RobotMap.INTAKE_OUT_SPEED);
   }
   public void setSpeed(double speed) {
     intakeMotorLeft.setSpeed(speed);

@@ -42,7 +42,7 @@ public class Robot extends TimedRobot {
   public static ClimbingElevator climbingElevator = new ClimbingElevator();
   public static Joystick driver = new Joystick(RobotMap.DRIVE_PORT);
   public static Joystick operator = new Joystick(RobotMap.OPERATOR_PORT); 
-  //public static Joystick climberJoystick = new Joystick(RobotMap.CLIMBER_JOYSTICK_PORT);
+  public static Joystick climberJoystick = new Joystick(RobotMap.CLIMBER_JOYSTICK_PORT);
 
   public static OI m_oi;
 
@@ -64,7 +64,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Elevator", elevator);
     SmartDashboard.putData("Intake", intake);
     SmartDashboard.putData("Arm", arm);
-    SmartDashboard.putData("Climbing Elevator", climbingElevator);
+    //SmartDashboard.putData("Climbing Elevator", climbingElevator);
     SmartDashboard.putData(Scheduler.getInstance());
 
 
@@ -74,18 +74,18 @@ public class Robot extends TimedRobot {
     //Setup Camera Server for Smart Dashboard
 		new Thread(() -> {
 			UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture();
-			UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture();
+			//UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture();
 
-			camera1.setResolution(320, 240);
-			camera2.setResolution(320, 240);
-			camera1.setFPS(10);
-			camera2.setFPS(10);
-			camera1.setBrightness(30);
-			camera2.setBrightness(30);
+			camera1.setResolution(213, 160);
+			//camera2.setResolution(320, 240);
+			camera1.setFPS(30);
+			//camera2.setFPS(30);
+			camera1.setBrightness(50);
+			//camera2.setBrightness(50);
 
 			
-			 CvSink cvSink = CameraServer.getInstance().getVideo();
-       CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 320, 240);
+			CvSink cvSink = CameraServer.getInstance().getVideo();
+      CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 213, 160);
 			
 			 Mat source = new Mat();
 			 Mat output = new Mat();

@@ -20,7 +20,7 @@ public class TeleopDrive extends Command {
   private boolean autoBack;
 
   public TeleopDrive(DriveTrain driveTrain, boolean autoBack) {
-    requires(this.driveTrain);
+    requires(driveTrain);
     this.driveTrain = driveTrain;
     this.joystick = Robot.driver;
     this.autoBack = autoBack;
@@ -38,8 +38,8 @@ public class TeleopDrive extends Command {
   @Override
   protected void execute() {
     Robot.elevator.elevatorPID();
-    Robot.arm.armPID();
-    Robot.climbingElevator.climbingElevatorPID();
+    //Robot.arm.armPID();
+    //Robot.climbingElevator.climbingElevatorPID();
     if(autoBack) {
       driveTrain.arcadeDrive(RobotMap.AUTO_BACK_SPEED, 0);
     } 
@@ -47,7 +47,7 @@ public class TeleopDrive extends Command {
       double speed = RobotMap.THROTTLE_SCALE;
       double steer = RobotMap.STEERING_SCALE;
 
-      if(joystick.getRawButton(RobotMap.kButtonA) || (Robot.elevator.getCurrentPosition() > 155.0)) {
+      if(joystick.getRawButton(RobotMap.kButtonA) || (Robot.elevator.getCurrentPosition() > 200.0)) {
         speed = speed / RobotMap.SLOW_THROTTLE_SCALE;
         steer = steer / RobotMap.SLOW_STEERING_SCALE;
       }

@@ -5,28 +5,20 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.Arm;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-import frc.robot.commands.Elevator.ElevatorHeight0;
-import frc.robot.commands.Elevator.NudgeDown;
 
-public class ReleaseHatch extends CommandGroup {
+public class ArmNudgeUp extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public ReleaseHatch() {
-    requires(Robot.elevator);
-
-    //Moves the elevator down a small amount (in order to leave the hatch on the velcro of the rocket)
-    addSequential(new NudgeDown(false));
-
-    //Drives back for a small amount of time to clear away from the rocket
-    addSequential(new TeleopDrive(Robot.driveTrain, true), RobotMap.AUTO_BACK_TIME);
-
-    addSequential(new ElevatorHeight0());
+  public ArmNudgeUp() {
+    requires(Robot.arm);
+    addSequential(new ArmCallNudgeUp(), RobotMap.ARM_NUDGE_TIME);
+    addSequential(new ArmStop());
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());

@@ -171,9 +171,13 @@ public class Elevator extends Subsystem {
     //elevatorMotorPidController.setReference(rotations, ControlType.kPosition);
     
     // SmartDashboard.putNumber("Elevator SetPoint", rotations);
-    SmartDashboard.putNumber("Current Elevator Position is ", elevatorEncoder.getPosition());
-    SmartDashboard.putNumber("Current Elevator offset is ", currentOffset);
-    SmartDashboard.putString("Elevator is ", currentState);
+
+    //temporary comment
+
+   // SmartDashboard.putNumber("Current Elevator Position is ", elevatorEncoder.getPosition());
+   // SmartDashboard.putNumber("Current Elevator offset is ", currentOffset);
+   
+    //SmartDashboard.putString("Elevator is ", currentState);
   }
 
   @Override
