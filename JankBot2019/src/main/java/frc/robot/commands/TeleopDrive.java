@@ -42,11 +42,11 @@ public class TeleopDrive extends Command {
       double speed = RobotMap.THROTTLE_SCALE;
       double steer = RobotMap.STEERING_SCALE;
 
-      if(joystick.getRawButton(RobotMap.kButtonA) || (Robot.elevator.getCurrentPosition() > 200.0)) {
+      if(joystick.getRawButton(RobotMap.kButtonLeftBumper) || (Robot.elevator.getCurrentPosition() > 200.0)) {
         speed = speed / RobotMap.SLOW_THROTTLE_SCALE;
         steer = steer / RobotMap.SLOW_STEERING_SCALE;
       }
-      if(joystick.getRawButton(RobotMap.kButtonB)) {
+      if(joystick.getRawButton(RobotMap.kButtonRightBumper)) {
         speed = speed * RobotMap.BOOST_THROTTLE_SCALE;
         steer = steer * RobotMap.BOOST_STEERING_SCALE;
       }

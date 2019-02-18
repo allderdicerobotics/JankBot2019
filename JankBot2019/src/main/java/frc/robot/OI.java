@@ -85,10 +85,10 @@ public class OI {
 
     /*-------------------------------ARM-----------------------------------*/
     //Buttons for the manual operation of the arm
-    Button climberY = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonY);
-    Button climberA = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonA);
-    climberY.whileActive(new ArmUp());
-    climberA.whileActive(new ArmDown());
+    Trigger climberRightAxisUp = new AxisButton(Robot.climberJoystick, RobotMap.kRightStickY, true);
+    Trigger climberRightAxisDown = new AxisButton(Robot.climberJoystick, RobotMap.kRightStickY, false);
+    climberRightAxisUp.whileActive(new ArmUp());
+    climberRightAxisDown.whileActive(new ArmDown());
 
     //Buttons for the manual nudging of the arm
     Button climberRightBumper = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonRightBumper);
@@ -98,7 +98,15 @@ public class OI {
     /*---------------------------END OF ARM--------------------------------*/
 
     /*-----------------------CLIMBING ELEVATOR-----------------------------*/
+    Trigger climberLeftAxisUp = new AxisButton(Robot.climberJoystick, RobotMap.kLeftStickY, true);
+    Trigger climberLeftAxisDown = new AxisButton(Robot.climberJoystick, RobotMap.kLeftStickY, false);
+    climberLeftAxisUp.whileActive(new ClimbingElevatorDown());
+    climberLeftAxisDown.whileActive(new ClimbingElevatorUp());
 
+    Button climberY = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonY);
+    Button climberA = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonA);
+    climberY.whileActive(new BottomWheelForward());
+    climberA.whileActive(new BottomWheelBackward());
     /*-------------------END OF CLIMBING ELEVATOR--------------------------*/
   }
 }

@@ -7,8 +7,10 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 /**
@@ -17,10 +19,12 @@ import frc.robot.RobotMap;
 public class Intake extends Subsystem {
   private Spark intakeMotorLeft;
   private Spark intakeMotorRight;
+  private Joystick operator;
 
   public Intake() {
     intakeMotorLeft = new Spark(RobotMap.INTAKE_PWM_LEFT);
     intakeMotorRight = new Spark(RobotMap.INTAKE_PWM_RIGHT);
+    this.operator = Robot.operator;
   }
   public void Init(){
     stop();
@@ -32,6 +36,7 @@ public class Intake extends Subsystem {
     setSpeed(RobotMap.INTAKE_OUT_SPEED);
   }
   public void setSpeed(double speed) {
+    speed = speed * Math.abs(operator.getRawAxis(RobotMap.kRightStickY));
     intakeMotorLeft.setSpeed(speed);
     intakeMotorRight.setSpeed(speed);
   }
