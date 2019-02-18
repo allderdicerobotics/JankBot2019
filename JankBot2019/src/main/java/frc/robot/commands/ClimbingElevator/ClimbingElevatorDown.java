@@ -12,8 +12,6 @@ import frc.robot.Robot;
 
 public class ClimbingElevatorDown extends Command {
   public ClimbingElevatorDown() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.climbingElevator);
   }
 

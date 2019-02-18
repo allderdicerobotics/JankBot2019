@@ -20,9 +20,6 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
  * Add your docs here.
  */
 public class Elevator extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
-  
   private CANSparkMax elevator1Motor;
   //private CANSparkMax elevator2Motor;
   private CANPIDController elevatorMotorPidController;
@@ -30,7 +27,7 @@ public class Elevator extends Subsystem {
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
   public double currentOffset = 0;
   public double currentPosition = 0;
-  public String currentState;
+  public String currentState = "";
 
   public Elevator() {
     elevator1Motor = new CANSparkMax(RobotMap.ELEVATOR_1_CAN, MotorType.kBrushless);
@@ -47,7 +44,7 @@ public class Elevator extends Subsystem {
     kMaxOutput = 1;
     kMinOutput = -1;
 
-    // set PID coefficients
+    //set PID coefficients
     elevatorMotorPidController.setP(kP);
     elevatorMotorPidController.setI(kI);
     elevatorMotorPidController.setD(kD);
@@ -66,7 +63,6 @@ public class Elevator extends Subsystem {
     // SmartDashboard.putNumber("Set Rotations", 0);
   }
   public void Init() {
-    stop();
     //elevator2Motor.follow(elevator1Motor);
   }
   public void up() {
@@ -132,11 +128,6 @@ public class Elevator extends Subsystem {
   public void setPosition(double goalPosition) {
     elevatorMotorPidController.setReference(goalPosition - currentOffset, ControlType.kPosition);
     currentPosition = goalPosition;
-    //System.out.println("set Elevator Position to " + goalPosition);
-  }
-  public void setSpeed(double speed) {
-  }
-  public void stop() {
   }
   public void setOffset() {
     currentOffset = elevatorEncoder.getPosition();
@@ -144,7 +135,6 @@ public class Elevator extends Subsystem {
   public double getCurrentPosition(){
     return elevatorEncoder.getPosition();
   }
-
   public void elevatorPID() {
     // // read PID coefficients from SmartDashboard
     // double p = SmartDashboard.getNumber("P Gain", 0);
@@ -166,7 +156,7 @@ public class Elevator extends Subsystem {
     //   elevatorMotorPidController.setOutputRange(min, max); 
     //   kMinOutput = min; kMaxOutput = max; 
     // }
-    
+
     //elevatorMotorPidController.setReference(rotations, ControlType.kPosition);
     // SmartDashboard.putNumber("Elevator SetPoint", rotations);
 
@@ -174,7 +164,6 @@ public class Elevator extends Subsystem {
     SmartDashboard.putNumber("Current Elevator offset is ", currentOffset);
     SmartDashboard.putString("Elevator is ", currentState);
   }
-
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

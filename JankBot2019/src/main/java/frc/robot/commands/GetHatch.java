@@ -24,22 +24,5 @@ public class GetHatch extends CommandGroup {
 
     //Drives back for a small amount of time to clear away from the retreival zone
     addSequential(new TeleopDrive(Robot.driveTrain, true), RobotMap.HATCH_AUTO_DRIVE_TIME);
-    
-    // Add Commands here:
-    // e.g. addSequential(new Command1());
-    // addSequential(new Command2());
-    // these will run in order.
-
-    // To run multiple commands at the same time,
-    // use addParallel()
-    // e.g. addParallel(new Command1());
-    // addSequential(new Command2());
-    // Command1 and Command2 will run in parallel.
-
-    // A command group will require all of the subsystems that each member
-    // would require.
-    // e.g. if Command1 requires chassis, and Command2 requires arm,
-    // a CommandGroup containing them would require both the chassis and the
-    // arm.
   }
 }

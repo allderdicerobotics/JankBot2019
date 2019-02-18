@@ -7,13 +7,12 @@
 
 package frc.robot.subsystems;
 
+import frc.robot.RobotMap;
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANPIDController;
 import com.revrobotics.CANSparkMax;
-
-import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import com.revrobotics.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -22,16 +21,14 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
  * Add your docs here.
  */
 public class ClimbingElevator extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
    private CANSparkMax climbingElevatorMotor;
   // private CANPIDController climbingElevatorMotorPidController;
   // private CANEncoder climbingElevatorEncoder;
   // public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
   // public double currentPosition = 0;
 
-  //for the wheel at the bottom
-  private Victor bottomWheelMotor;
+  //Declaration of the wheel at the bottom
+  private Spark bottomWheelMotor;
 
   public ClimbingElevator() {
     climbingElevatorMotor = new CANSparkMax(RobotMap.CLIMBING_ELEVATOR_CAN, MotorType.kBrushless);
@@ -39,8 +36,8 @@ public class ClimbingElevator extends Subsystem {
     // climbingElevatorEncoder = climbingElevatorMotor.getEncoder();
     // currentPosition = climbingElevatorEncoder.getPosition();
 
-    //for the wheel at the bottom
-    bottomWheelMotor = new Victor(RobotMap.CLIMBING_WHEEL);
+    //Initialization of the bottom wheel motor
+    bottomWheelMotor = new Spark(RobotMap.CLIMBING_WHEEL);
 
     // kP = 0.5;
     // kI = 1e-5;
@@ -87,6 +84,10 @@ public class ClimbingElevator extends Subsystem {
     }
     climbingElevatorMotor.set(speed);
   }
+  public void stop() {
+    climbingElevatorMotor.set(0.0);
+  }
+
   public void goToLevel2() {
     //setPosition(RobotMap.CLIMBING_ELEVATOR_SECOND_LEVEL);
   }
@@ -105,10 +106,8 @@ public class ClimbingElevator extends Subsystem {
     //return climbingElevatorEncoder.getPosition();
     return 0.0;
   }
-  public void stop() {
-  }
 
-  //methods for the wheel at the bottom
+//CONTROLLING THE WHEEL AT THE BOTTOM OF THE ELEVATOR
   public void wheelForward() {
     bottomWheelMotor.set(RobotMap.CLIMBING_WHEEL_NORMAL_SPEED);
   }
@@ -125,7 +124,6 @@ public class ClimbingElevator extends Subsystem {
   public void wheelStop() {
     bottomWheelMotor.set(0.0);
   }
-
 
   public void climbingElevatorPID() {
     // // read PID coefficients from SmartDashboard
@@ -151,11 +149,9 @@ public class ClimbingElevator extends Subsystem {
 
     //climbingElevatorMotorPidController.setReference(rotations, ControlType.kPosition);
     
-    // SmartDashboard.putNumber("ClimbingElevator SetPoint", rotations);
+    //SmartDashboard.putNumber("ClimbingElevator SetPoint", rotations);
     //SmartDashboard.putNumber("Current ClimbingElevator Position is ", climbingElevatorEncoder.getPosition());
   }
-
-
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

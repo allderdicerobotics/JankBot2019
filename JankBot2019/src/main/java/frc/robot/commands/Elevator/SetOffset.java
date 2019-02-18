@@ -12,8 +12,6 @@ import frc.robot.Robot;
 
 public class SetOffset extends Command {
   public SetOffset() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.elevator);
   }
 

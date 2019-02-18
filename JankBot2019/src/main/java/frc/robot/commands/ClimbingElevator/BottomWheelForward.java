@@ -12,8 +12,6 @@ import frc.robot.Robot;
 
 public class BottomWheelForward extends Command {
   public BottomWheelForward() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.climbingElevator);
   }
 

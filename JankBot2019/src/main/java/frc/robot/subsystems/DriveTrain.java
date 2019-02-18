@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
 
-
 /**
  * Add your docs here.
  */
@@ -40,36 +39,15 @@ public class DriveTrain extends Subsystem {
 
     differentialDrive = new DifferentialDrive(leftMotors, rightMotors);
   }
-
   public void arcadeDrive(double speed, double rotation) {
     differentialDrive.arcadeDrive(speed, rotation);
   }
-
   public void tankDrive(double leftSpeed, double rightSpeed) {
     differentialDrive.tankDrive(leftSpeed, rightSpeed);
   }
-
-  public void resetEncoders() {
-  }
-
-  public void resetGyro() {
-  }
-
-  public double getHeading() {
-    return 0.0;
-  }
-  
-  public double getDistance() {
-    return 0.0;
-  }
-
   public void stop() {
     differentialDrive.tankDrive(0.0, 0.0);
   }
-
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
-
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

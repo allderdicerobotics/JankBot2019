@@ -12,8 +12,6 @@ import frc.robot.Robot;
 
 public class ArmCallNudgeDown extends Command {
   public ArmCallNudgeDown() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.arm);
   }
 

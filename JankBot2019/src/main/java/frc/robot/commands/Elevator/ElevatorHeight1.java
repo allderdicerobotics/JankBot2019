@@ -13,8 +13,6 @@ import frc.robot.RobotMap;
 
 public class ElevatorHeight1 extends Command {
   public ElevatorHeight1() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.elevator);
   }
 

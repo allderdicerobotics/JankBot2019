@@ -13,8 +13,6 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ElevatorUp extends Command {
   
   public ElevatorUp() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.elevator);
   }
 
@@ -38,13 +36,11 @@ public class ElevatorUp extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.elevator.stop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.elevator.stop();
   }
 }

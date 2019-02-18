@@ -15,8 +15,6 @@ import frc.robot.RobotMap;
  * Add your docs here.
  */
 public class Intake extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
   private Spark intakeMotorLeft;
   private Spark intakeMotorRight;
 
