@@ -24,7 +24,7 @@ public class ReleaseHatch extends CommandGroup {
     addSequential(new NudgeDown(false));
 
     //Drives back for a small amount of time to clear away from the rocket
-    addSequential(new TeleopDrive(Robot.driveTrain, true), RobotMap.AUTO_BACK_TIME);
+    addSequential(new TeleopDrive(Robot.driveTrain, true), RobotMap.HATCH_AUTO_DRIVE_TIME);
 
     addSequential(new ElevatorHeight0());
     // Add Commands here:

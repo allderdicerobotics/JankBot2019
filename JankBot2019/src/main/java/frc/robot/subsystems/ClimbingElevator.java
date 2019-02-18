@@ -24,39 +24,39 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 public class ClimbingElevator extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private CANSparkMax climbingElevatorMotor;
-  private CANPIDController climbingElevatorMotorPidController;
-  private CANEncoder climbingElevatorEncoder;
-  public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
-  public double currentPosition = 0;
+   private CANSparkMax climbingElevatorMotor;
+  // private CANPIDController climbingElevatorMotorPidController;
+  // private CANEncoder climbingElevatorEncoder;
+  // public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
+  // public double currentPosition = 0;
 
   //for the wheel at the bottom
   private Victor bottomWheelMotor;
 
   public ClimbingElevator() {
     climbingElevatorMotor = new CANSparkMax(RobotMap.CLIMBING_ELEVATOR_CAN, MotorType.kBrushless);
-    climbingElevatorMotorPidController = climbingElevatorMotor.getPIDController();
-    climbingElevatorEncoder = climbingElevatorMotor.getEncoder();
-    currentPosition = climbingElevatorEncoder.getPosition();
+    // climbingElevatorMotorPidController = climbingElevatorMotor.getPIDController();
+    // climbingElevatorEncoder = climbingElevatorMotor.getEncoder();
+    // currentPosition = climbingElevatorEncoder.getPosition();
 
     //for the wheel at the bottom
     bottomWheelMotor = new Victor(RobotMap.CLIMBING_WHEEL);
 
-    kP = 0.5;
-    kI = 1e-5;
-    kD = 0.5;
-    kIz = 0;
-    kFF = 0;
-    kMaxOutput = 1;
-    kMinOutput = -1;
+    // kP = 0.5;
+    // kI = 1e-5;
+    // kD = 0.5;
+    // kIz = 0;
+    // kFF = 0;
+    // kMaxOutput = 1;
+    // kMinOutput = -1;
 
     // set PID coefficients
-    climbingElevatorMotorPidController.setP(kP);
-    climbingElevatorMotorPidController.setI(kI);
-    climbingElevatorMotorPidController.setD(kD);
-    climbingElevatorMotorPidController.setIZone(kIz);
-    climbingElevatorMotorPidController.setFF(kFF);
-    climbingElevatorMotorPidController.setOutputRange(kMinOutput, kMaxOutput);
+    // climbingElevatorMotorPidController.setP(kP);
+    // climbingElevatorMotorPidController.setI(kI);
+    // climbingElevatorMotorPidController.setD(kD);
+    // climbingElevatorMotorPidController.setIZone(kIz);
+    // climbingElevatorMotorPidController.setFF(kFF);
+    // climbingElevatorMotorPidController.setOutputRange(kMinOutput, kMaxOutput);
 
     // // display PID coefficients on SmartDashboard
     // SmartDashboard.putNumber("ClimbingElevator P Gain", kP);
@@ -72,29 +72,38 @@ public class ClimbingElevator extends Subsystem {
     //goToRestPosition();
   }
   public void up() {
-    double goalPosition = currentPosition + RobotMap.CLIMBING_ELEVATOR_CHANGE;
-    setPosition(goalPosition);
+    climbingElevatorMotor.set(RobotMap.CLIMBING_ELEVATOR_SPEED);
+    //double goalPosition = currentPosition + RobotMap.CLIMBING_ELEVATOR_CHANGE;
+    //setPosition(goalPosition);
   }
   public void down() {
-    double goalPosition = currentPosition - RobotMap.CLIMBING_ELEVATOR_CHANGE;
-    setPosition(goalPosition);
+    climbingElevatorMotor.set(-RobotMap.CLIMBING_ELEVATOR_SPEED);
+    //double goalPosition = currentPosition - RobotMap.CLIMBING_ELEVATOR_CHANGE;
+    //setPosition(goalPosition);
+  }
+  public void setSpeed(double speed) {
+    if(speed > 0.8) {
+      speed = 0.8;
+    }
+    climbingElevatorMotor.set(speed);
   }
   public void goToLevel2() {
-    setPosition(RobotMap.CLIMBING_ELEVATOR_SECOND_LEVEL);
+    //setPosition(RobotMap.CLIMBING_ELEVATOR_SECOND_LEVEL);
   }
   public void goToLevel3() {
-    setPosition(RobotMap.CLIMBING_ELEVATOR_THIRD_LEVEL);
+    //setPosition(RobotMap.CLIMBING_ELEVATOR_THIRD_LEVEL);
   }
   public void goToRestPosition() {
-    setPosition(0.0);
+    //setPosition(0.0);
   }
   public void setPosition(double goalPosition) {
-    climbingElevatorMotorPidController.setReference(goalPosition, ControlType.kPosition);
-    currentPosition = goalPosition;
-    System.out.println("Set Climbing Elevator Position to " + goalPosition);
+    //climbingElevatorMotorPidController.setReference(goalPosition, ControlType.kPosition);
+    //currentPosition = goalPosition;
+    //System.out.println("Set Climbing Elevator Position to " + goalPosition);
   }
   public double getCurrentPosition() {
-    return climbingElevatorEncoder.getPosition();
+    //return climbingElevatorEncoder.getPosition();
+    return 0.0;
   }
   public void stop() {
   }

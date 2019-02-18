@@ -80,6 +80,9 @@ public class Arm extends Subsystem {
   public void nudgeDown() {
     armMotor.set(-RobotMap.ARM_SPEED/1.6);
   }
+  public void setSpeed(double speed) {
+    armMotor.set(speed);
+  }
   public void goToDownPosition() {
     //setPosition(RobotMap.ARM_DOWN);
   }

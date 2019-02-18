@@ -10,7 +10,6 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANPIDController;
 import com.revrobotics.CANSparkMax;
@@ -167,17 +166,13 @@ public class Elevator extends Subsystem {
     //   elevatorMotorPidController.setOutputRange(min, max); 
     //   kMinOutput = min; kMaxOutput = max; 
     // }
-
-    //elevatorMotorPidController.setReference(rotations, ControlType.kPosition);
     
+    //elevatorMotorPidController.setReference(rotations, ControlType.kPosition);
     // SmartDashboard.putNumber("Elevator SetPoint", rotations);
 
-    //temporary comment
-
-   // SmartDashboard.putNumber("Current Elevator Position is ", elevatorEncoder.getPosition());
-   // SmartDashboard.putNumber("Current Elevator offset is ", currentOffset);
-   
-    //SmartDashboard.putString("Elevator is ", currentState);
+    SmartDashboard.putNumber("Current Elevator Position is ", elevatorEncoder.getPosition());
+    SmartDashboard.putNumber("Current Elevator offset is ", currentOffset);
+    SmartDashboard.putString("Elevator is ", currentState);
   }
 
   @Override

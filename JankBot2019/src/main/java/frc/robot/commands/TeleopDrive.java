@@ -41,7 +41,7 @@ public class TeleopDrive extends Command {
     //Robot.arm.armPID();
     //Robot.climbingElevator.climbingElevatorPID();
     if(autoBack) {
-      driveTrain.arcadeDrive(RobotMap.AUTO_BACK_SPEED, 0);
+      driveTrain.arcadeDrive(RobotMap.HATCH_AUTO_DRIVE_SPEED, 0);
     } 
     else {
       double speed = RobotMap.THROTTLE_SCALE;

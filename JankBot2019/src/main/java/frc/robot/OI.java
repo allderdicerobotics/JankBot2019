@@ -14,8 +14,6 @@ import frc.robot.commands.Arm.ArmUp;
 import frc.robot.commands.ClimbingElevator.BottomWheelBackward;
 import frc.robot.commands.ClimbingElevator.BottomWheelForward;
 import frc.robot.commands.ClimbingElevator.ClimbingElevatorDown;
-import frc.robot.commands.ClimbingElevator.ClimbingElevatorHeight0;
-import frc.robot.commands.ClimbingElevator.ClimbingElevatorHeight1;
 import frc.robot.commands.ClimbingElevator.ClimbingElevatorUp;
 import frc.robot.commands.Elevator.ElevatorDown;
 import frc.robot.commands.Elevator.ElevatorUp;
@@ -42,35 +40,8 @@ import frc.robot.AxisButton;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-  //// CREATING BUTTONS
-  // One type of button is a joystick button which is any button on a
-  //// joystick.
-  // You create one by telling it which joystick it's on and which button
-  // number it is.
-  // Joystick stick = new Joystick(port);
-  // Button button = new JoystickButton(stick, buttonNumber);
-
-  // There are a few additional built in buttons you can use. Additionally,
-  // by subclassing Button you can create custom triggers and bind those to
-  // commands the same as any other Button.
-
-  //// TRIGGERING COMMANDS WITH BUTTONS
-  // Once you have a button, it's trivial to bind it to a button in one of
-  // three ways:
-
-  // Start the command when the button is pressed and let it run the command
-  // until it is finished as determined by it's isFinished method.
-  // button.whenPressed(new ExampleCommand());
-
-  // Run the command while the button is being held down and interrupt it once
-  // the button is released.
-  // button.whileHeld(new ExampleCommand());
-
-  // Start the command when the button is released and let it run the command
-  // until it is finished as determined by it's isFinished method.
-  // button.whenReleased(new ExampleCommand());
   public OI() {
-    //ELEVATOR
+    /*-------------------------------ELEVATOR----------------------------*/
     //Buttons for the different levels the elevator will travel to. 
     Button operatorX = new JoystickButton(Robot.operator, RobotMap.kButtonX);
     Button operatorA = new JoystickButton(Robot.operator, RobotMap.kButtonA);
@@ -87,7 +58,7 @@ public class OI {
     operatorLeftAxisUp.whileActive(new ElevatorUp());
     operatorLeftAxisDown.whileActive(new ElevatorDown());
 
-    //Buttons for nudging the elevator manually
+    //Buttons for the manual nudging of the elevator 
     Button operatorLeftBumper = new JoystickButton(Robot.operator, RobotMap.kButtonLeftBumper);
     Button operatorRightBumper = new JoystickButton(Robot.operator, RobotMap.kButtonRightBumper);
     operatorLeftBumper.whenActive(new NudgeDown(true));
@@ -102,52 +73,32 @@ public class OI {
     //Button for zero'ing the encoder on the elevator
     Button operatorStart = new JoystickButton(Robot.operator, RobotMap.kButtonStart);
     operatorStart.whenActive(new SetOffset());
-    //END OF ELEVATOR
+    /*--------------------------END OF ELEVATOR----------------------------*/
 
-    //INTAKE
+    /*-------------------------------INTAKE--------------------------------*/
     //Trigger for the manual operation of the intake
     Trigger operatorRightAxisUp = new AxisButton(Robot.operator, RobotMap.kRightStickY, true);
     Trigger operatorRightAxisDown = new AxisButton(Robot.operator, RobotMap.kRightStickY, false);
     operatorRightAxisUp.whileActive(new IntakeOut());
     operatorRightAxisDown.whileActive(new IntakeIn());
+    /*---------------------------END OF INTAKE-----------------------------*/
 
-    //Manual operation of the arm
+    /*-------------------------------ARM-----------------------------------*/
+    //Buttons for the manual operation of the arm
     Button climberY = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonY);
     Button climberA = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonA);
     climberY.whileActive(new ArmUp());
     climberA.whileActive(new ArmDown());
 
-    //Nudge Arm
+    //Buttons for the manual nudging of the arm
     Button climberRightBumper = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonRightBumper);
     Button climberLeftBumper = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonLeftBumper);
     climberRightBumper.whenActive(new ArmNudgeUp());
     climberLeftBumper.whenActive(new ArmNudgeDown());
-    //END OF ARM
+    /*---------------------------END OF ARM--------------------------------*/
 
-    //CLIMBING ELEVATOR
-    // //Climbing elevator levels
-    // POVButton operatorPOVRight = new POVButton(Robot.operator, 90);
-    // POVButton operatorPOVLeft = new POVButton(Robot.operator, 270);
-    // operatorPOVRight.whenActive(new ClimbingElevatorHeight0());
-    // operatorPOVLeft.whenActive(new ClimbingElevatorHeight1());
+    /*-----------------------CLIMBING ELEVATOR-----------------------------*/
 
-    // //Manual Climbing Elevator control
-    // POVButton driverPOVUp = new POVButton(Robot.driver, 0);
-    // POVButton driverPOVDown = new POVButton(Robot.driver, 180);
-    // driverPOVUp.whenActive(new ClimbingElevatorUp());
-    // driverPOVDown.whenActive(new ClimbingElevatorDown());
-
-    // //Manual bottom wheel for climbing elevator control
-    // POVButton driverPOVRight = new POVButton(Robot.driver, 90);
-    // POVButton driverPOVLeft = new POVButton(Robot.driver, 270);
-    // driverPOVRight.whenActive(new BottomWheelForward());
-    // driverPOVLeft.whenActive(new BottomWheelBackward());
-    //END OF CLIMBING ELEVATOR
-
-
-
-
-    
-
+    /*-------------------END OF CLIMBING ELEVATOR--------------------------*/
   }
 }

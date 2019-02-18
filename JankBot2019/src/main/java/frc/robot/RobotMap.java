@@ -14,24 +14,12 @@ package frc.robot;
  * floating around.
  */
 public class RobotMap {
-  // For example to map the left and right motors, you could define the
-  // following variables to use with your drivetrain subsystem.
-  // public static int leftMotor = 1;
-  // public static int rightMotor = 2;
-
-  // If you are using multiple modules, make sure to define both the port
-  // number and the module. For example you with a rangefinder:
-  // public static int rangefinderPort = 1;
-  // public static int rangefinderModule = 1;
-
-	//CAN Identifiers
+	//CAN IDENTIFIERS
 	public static final int ELEVATOR_1_CAN = 1;
-	public static final int ELEVATOR_2_CAN = 3;
-
 	public static final int ARM_CAN = 2;
 	public static final int CLIMBING_ELEVATOR_CAN = 4;
 
-	//PWM Ports
+	//PWM PORTS
 	public static final int INTAKE_PWM_LEFT = 4;
 	public static final int INTAKE_PWM_RIGHT = 5;
   	public static final int DRIVE_TRAIN_LEFT_1 = 0;
@@ -40,16 +28,12 @@ public class RobotMap {
 	public static final int DRIVE_TRAIN_RIGHT_2 = 3;
 	public static final int CLIMBING_WHEEL = 6;
 
-	//USB Ports
+	//USB PORTS
 	public static final int DRIVE_PORT = 0;
 	public static final int OPERATOR_PORT = 1;
 	public static final int CLIMBER_JOYSTICK_PORT = 2;
 
-	//Speed Constants
-	public static final double ELEVATOR_SPEED = 0.7;
-	public static final double INTAKE_IN_SPEED = 0.7;
-	public static final double INTAKE_OUT_SPEED = 0.85;
-
+	//Drive train:
 	public static final double THROTTLE_SCALE = 0.7;
 	public static final double STEERING_SCALE = 0.6;
 	
@@ -59,33 +43,14 @@ public class RobotMap {
 	public static final double SLOW_STEERING_SCALE = 1.2;
 	public static final double MAX_SPEED = 0.9;
 
-	public static final double CLIMBING_WHEEL_NORMAL_SPEED = 0.2;
-	public static final double CLIMBING_WHEEL_MAX_SPEED = 0.4;
+	//Intake:
+	public static final double INTAKE_IN_SPEED = 0.6;
+	public static final double INTAKE_OUT_SPEED = 0.8;
 
-	public static final double ARM_SPEED = 0.7;
-
-	//Times
-	public static final double DEADZONE_THRESHOLD = 0.07;
-
-	public static final double NUDGE_SPEED = 0.3;
-	public static final double NUDGE_TIME = 0.4;
-
-	public static final double ARM_NUDGE_TIME = 0.2;
-
-	public static final double AUTO_BACK_SPEED = -0.4;
-	public static final double AUTO_BACK_TIME = 0.6;
-	public static final double ELEVATOR_DOWN_TIME = 0.15;
-	public static final double ELEVATOR_UP_TIME = 0.4;
-
+	//Elevator:
 	public static final double ELEVATOR_MANUAL_CHANGE = 1.9;
-	public static final double ELEVATOR_GET_HATCH_CHANGE = 40.0;
-	public static final double ELEVATOR_RELEASE_HATCH_CHANGE = 20.0;
 	public static final double ELEVATOR_NUDGE_CHANGE = 12.0;
-
-	public static final double ARM_ENCODER_CHANGE = 10.0;
-	public static final double CLIMBING_ELEVATOR_CHANGE = 0.5;
-
-	//goalPosition Encoder values
+	//Position Encoder values
 	public static final double BALL_1 = 135.0;
 	public static final double BALL_2 = 306.0;
 	public static final double BALL_3 = 440.0;
@@ -94,12 +59,25 @@ public class RobotMap {
 	public static final double HATCH_2 = 209.0;
 	public static final double HATCH_3 = 354.0;
 
-	public static final double ARM_DOWN = 15.0;
+	//Arm:
+	public static final double ARM_SPEED = 0.7;
+	public static final double ARM_NUDGE_TIME = 0.2;
 
-	public static final double CLIMBING_ELEVATOR_SECOND_LEVEL = 20.0;
-	public static final double CLIMBING_ELEVATOR_THIRD_LEVEL = 40.0;
+	//Climbing Elevator:
+	public static final double CLIMBING_ELEVATOR_SPEED = 0.4;
+	public static final double CLIMBING_WHEEL_NORMAL_SPEED = 0.2;
+	public static final double CLIMBING_WHEEL_MAX_SPEED = 0.4;
 
-  	//GamePad
+	public static final double DEADZONE_THRESHOLD = 0.07;
+
+	//Autonomous commands:
+	public static final double HATCH_AUTO_DRIVE_TIME = 0.6;
+	public static final double HATCH_AUTO_DRIVE_SPEED = -0.4;
+	public static final double ELEVATOR_GET_HATCH_CHANGE = 40.0;
+	public static final double ELEVATOR_RELEASE_HATCH_CHANGE = 20.0;
+
+	//GamePad Mappings
+	//Logitech f310
 	/* axis mappings */
 	public static final int kLeftStickX = 0;
 	public static final int kLeftStickY = 1;
