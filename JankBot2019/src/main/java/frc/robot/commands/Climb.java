@@ -8,12 +8,16 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import frc.robot.Robot;
 
 public class Climb extends CommandGroup {
   /**
    * Add your docs here.
    */
   public Climb() {
+    requires(Robot.driveTrain);
+    requires(Robot.climbingElevator);
+    requires(Robot.arm);
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
