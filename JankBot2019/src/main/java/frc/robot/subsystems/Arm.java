@@ -45,6 +45,7 @@ public class Arm extends Subsystem {
   public void setSpeed(double speed) {
     armMotor.set(speed);
   }
+  
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

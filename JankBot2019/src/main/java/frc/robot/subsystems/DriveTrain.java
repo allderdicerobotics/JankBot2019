@@ -17,7 +17,6 @@ import frc.robot.RobotMap;
  * Add your docs here.
  */
 public class DriveTrain extends Subsystem {
-
   private Victor rightMotor1;
   private Victor rightMotor2;
   private SpeedControllerGroup rightMotors;
@@ -46,8 +45,9 @@ public class DriveTrain extends Subsystem {
     differentialDrive.tankDrive(leftSpeed, rightSpeed);
   }
   public void stop() {
-    differentialDrive.tankDrive(0.0, 0.0);
+    tankDrive(0.0, 0.0);
   }
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

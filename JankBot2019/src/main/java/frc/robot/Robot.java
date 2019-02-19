@@ -58,8 +58,8 @@ public class Robot extends TimedRobot {
     m_oi = new OI();
 
     TeleopDrive teleopDrive = new TeleopDrive(driveTrain, false);
-
     m_chooser.setDefaultOption("TeleopDrive", teleopDrive);
+    
     SmartDashboard.putData("Drive Train", driveTrain);
     SmartDashboard.putData("Elevator", elevator);
     SmartDashboard.putData("Intake", intake);

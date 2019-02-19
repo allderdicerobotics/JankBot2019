@@ -155,6 +155,7 @@ public class ClimbingElevator extends Subsystem {
     //SmartDashboard.putNumber("ClimbingElevator SetPoint", rotations);
     //SmartDashboard.putNumber("Current ClimbingElevator Position is ", climbingElevatorEncoder.getPosition());
   }
+  
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
