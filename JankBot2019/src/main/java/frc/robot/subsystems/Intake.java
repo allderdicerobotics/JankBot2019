@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
+import frc.robot.commands.Elevator.SetOffset;
 
 /**
  * Add your docs here.
@@ -41,8 +42,8 @@ public class Intake extends Subsystem {
     intakeMotorRight.setSpeed(speed);
   }
   public void stop() {
-    intakeMotorLeft.setSpeed(0.0);
-    intakeMotorRight.setSpeed(0.0);
+    setSpeed(0.0);
+    setSpeed(0.0);
   }
 
   @Override

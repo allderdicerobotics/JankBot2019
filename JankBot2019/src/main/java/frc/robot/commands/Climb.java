@@ -9,6 +9,12 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.Robot;
+import frc.robot.commands.Arm.ArmDown;
+import frc.robot.commands.Arm.ArmUp;
+import frc.robot.commands.ClimbingElevator.BottomWheelBackward;
+import frc.robot.commands.ClimbingElevator.ClimbingElevatorDown;
+import frc.robot.commands.ClimbingElevator.ClimbingElevatorUp;
+
 
 public class Climb extends CommandGroup {
   /**
@@ -18,21 +24,22 @@ public class Climb extends CommandGroup {
     requires(Robot.driveTrain);
     requires(Robot.climbingElevator);
     requires(Robot.arm);
-    // Add Commands here:
-    // e.g. addSequential(new Command1());
-    // addSequential(new Command2());
-    // these will run in order.
 
-    // To run multiple commands at the same time,
-    // use addParallel()
-    // e.g. addParallel(new Command1());
-    // addSequential(new Command2());
-    // Command1 and Command2 will run in parallel.
+    addSequential(new TeleopDrive(Robot.driveTrain, 0.2, 0.0), 0.3);
+    addSequential(new TeleopDrive(Robot.driveTrain, -0.1, 0.0), 0.1);
 
-    // A command group will require all of the subsystems that each member
-    // would require.
-    // e.g. if Command1 requires chassis, and Command2 requires arm,
-    // a CommandGroup containing them would require both the chassis and the
-    // arm.
+    addSequential(new ArmDown(false), 3.0);
+
+    //addParallel(new ArmDown(true), 1.0);
+    addSequential(new ClimbingElevatorDown(false), 1.0);
+
+    addParallel(new ClimbingElevatorDown(true), 3.0);
+    //addParallel(new ArmDown(true), 1.0);
+    addSequential(new BottomWheelBackward(), 1.0);
+    addSequential(new ArmUp(), 2.0);
+    
+    addSequential(new ClimbingElevatorUp(), 1.5);
+
+    addSequential(new TeleopDrive(Robot.driveTrain, -0.4, 0.0), 1.0);
   }
 }

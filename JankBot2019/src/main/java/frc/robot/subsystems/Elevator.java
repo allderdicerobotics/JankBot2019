@@ -25,8 +25,8 @@ public class Elevator extends Subsystem {
   private CANPIDController elevatorMotorPidController;
   private CANEncoder elevatorEncoder;
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
-  public double currentOffset = 0;
-  public double currentPosition = 0;
+  public double currentOffset;
+  public double currentPosition;
   public String currentState = "";
 
   public Elevator() {
@@ -35,6 +35,9 @@ public class Elevator extends Subsystem {
     elevatorMotorPidController = elevator1Motor.getPIDController();
     elevatorEncoder = elevator1Motor.getEncoder();
     currentPosition = elevatorEncoder.getPosition();
+
+    currentOffset = 0.0;
+    currentPosition = 0.0;
 
     kP = 0.5;
     kI = 1e-5;
@@ -131,6 +134,7 @@ public class Elevator extends Subsystem {
   }
   public void setOffset() {
     currentOffset = elevatorEncoder.getPosition();
+    setPosition(0.0);
   }
   public double getCurrentPosition(){
     return elevatorEncoder.getPosition();
@@ -164,6 +168,7 @@ public class Elevator extends Subsystem {
     SmartDashboard.putNumber("Current Elevator offset is ", currentOffset);
     SmartDashboard.putString("Elevator is ", currentState);
   }
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
