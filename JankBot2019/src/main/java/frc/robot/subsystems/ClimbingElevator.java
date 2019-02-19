@@ -69,14 +69,17 @@ public class ClimbingElevator extends Subsystem {
     //goToRestPosition();
   }
   public void up() {
-    climbingElevatorMotor.set(RobotMap.CLIMBING_ELEVATOR_SPEED);
+    setSpeed(RobotMap.CLIMBING_ELEVATOR_SPEED);
     //double goalPosition = currentPosition + RobotMap.CLIMBING_ELEVATOR_CHANGE;
     //setPosition(goalPosition);
   }
   public void down() {
-    climbingElevatorMotor.set(-RobotMap.CLIMBING_ELEVATOR_SPEED);
+    setSpeed(-RobotMap.CLIMBING_ELEVATOR_SPEED);
     //double goalPosition = currentPosition - RobotMap.CLIMBING_ELEVATOR_CHANGE;
     //setPosition(goalPosition);
+  }
+  public void holdPositionDown() {
+    setSpeed(-RobotMap.CLIMBING_ELEVATOR_SPEED/2);
   }
   public void setSpeed(double speed) {
     if(speed > 0.3) {
@@ -85,7 +88,7 @@ public class ClimbingElevator extends Subsystem {
     climbingElevatorMotor.set(speed);
   }
   public void stop() {
-    climbingElevatorMotor.set(0.0);
+    setSpeed(0.0);
   }
 
   public void goToLevel2() {
@@ -109,10 +112,10 @@ public class ClimbingElevator extends Subsystem {
 
 //CONTROLLING THE WHEEL AT THE BOTTOM OF THE ELEVATOR
   public void wheelForward() {
-    bottomWheelMotor.set(RobotMap.CLIMBING_WHEEL_NORMAL_SPEED);
+    wheelSetSpeed(RobotMap.CLIMBING_WHEEL_NORMAL_SPEED);
   }
   public void wheelBackward() {
-    bottomWheelMotor.set(-RobotMap.CLIMBING_WHEEL_NORMAL_SPEED);
+    wheelSetSpeed(-RobotMap.CLIMBING_WHEEL_NORMAL_SPEED);
   }
   public void wheelSetSpeed(double speed) {
     double speedGoal = speed;
@@ -122,7 +125,7 @@ public class ClimbingElevator extends Subsystem {
     bottomWheelMotor.set(speedGoal);
   }
   public void wheelStop() {
-    bottomWheelMotor.set(0.0);
+    wheelSetSpeed(0.0);
   }
 
   public void climbingElevatorPID() {

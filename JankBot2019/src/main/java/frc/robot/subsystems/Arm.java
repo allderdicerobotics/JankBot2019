@@ -30,6 +30,9 @@ public class Arm extends Subsystem {
   public void up() {
     setSpeed(RobotMap.ARM_SPEED);
   }
+  public void holdPositionDown() {
+    setSpeed(-RobotMap.ARM_SPEED/2);
+  }
   public void nudgeUp() {
     setSpeed(RobotMap.ARM_SPEED/1.6);
   }

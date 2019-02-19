@@ -88,7 +88,7 @@ public class OI {
     Trigger climberRightAxisUp = new AxisButton(Robot.climberJoystick, RobotMap.kRightStickY, true);
     Trigger climberRightAxisDown = new AxisButton(Robot.climberJoystick, RobotMap.kRightStickY, false);
     climberRightAxisUp.whileActive(new ArmUp());
-    climberRightAxisDown.whileActive(new ArmDown());
+    climberRightAxisDown.whileActive(new ArmDown(false));
 
     //Buttons for the manual nudging of the arm
     Button climberRightBumper = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonRightBumper);
@@ -100,7 +100,7 @@ public class OI {
     /*-----------------------CLIMBING ELEVATOR-----------------------------*/
     Trigger climberLeftAxisUp = new AxisButton(Robot.climberJoystick, RobotMap.kLeftStickY, true);
     Trigger climberLeftAxisDown = new AxisButton(Robot.climberJoystick, RobotMap.kLeftStickY, false);
-    climberLeftAxisUp.whileActive(new ClimbingElevatorDown());
+    climberLeftAxisUp.whileActive(new ClimbingElevatorDown(false));
     climberLeftAxisDown.whileActive(new ClimbingElevatorUp());
 
     Button climberY = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonY);

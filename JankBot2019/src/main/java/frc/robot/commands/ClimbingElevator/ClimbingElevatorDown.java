@@ -11,8 +11,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class ClimbingElevatorDown extends Command {
-  public ClimbingElevatorDown() {
+  private boolean holdPosition;
+
+  public ClimbingElevatorDown(boolean holdPosition) {
     requires(Robot.climbingElevator);
+    this.holdPosition = holdPosition;
   }
 
   // Called just before this Command runs the first time
@@ -23,7 +26,12 @@ public class ClimbingElevatorDown extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.climbingElevator.down();
+    if(holdPosition) {
+      Robot.climbingElevator.holdPositionDown();
+    }
+    else {
+      Robot.climbingElevator.down();
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()

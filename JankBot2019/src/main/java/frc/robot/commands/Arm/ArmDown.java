@@ -11,8 +11,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class ArmDown extends Command {
-  public ArmDown() {
+  private boolean holdPosition;
+
+  public ArmDown(boolean holdPosition) {
     requires(Robot.arm);
+    this.holdPosition = holdPosition;
   }
 
   // Called just before this Command runs the first time
@@ -23,7 +26,12 @@ public class ArmDown extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.arm.down();
+    if(holdPosition) {
+      Robot.arm.holdPositionDown();
+    }
+    else {
+      Robot.arm.down();
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()

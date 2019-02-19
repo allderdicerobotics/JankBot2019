@@ -9,6 +9,8 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.Robot;
+import frc.robot.commands.Arm.ArmDown;
+import frc.robot.commands.ClimbingElevator.ClimbingElevatorDown;
 
 public class Climb extends CommandGroup {
   /**
@@ -18,6 +20,15 @@ public class Climb extends CommandGroup {
     requires(Robot.driveTrain);
     requires(Robot.climbingElevator);
     requires(Robot.arm);
+
+    addSequential(new TeleopDrive(Robot.driveTrain, 0.2, 0.0), 0.3);
+    addSequential(new TeleopDrive(Robot.driveTrain, -0.1, 0.0), 0.1);
+    addSequential(new ArmDown(false), 3.0);
+
+    addParallel(new ArmDown(true), 1.0);
+    addSequential(new ClimbingElevatorDown(false), 1.0);
+
+
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());

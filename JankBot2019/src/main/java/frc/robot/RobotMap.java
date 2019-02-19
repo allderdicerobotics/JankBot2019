@@ -60,7 +60,7 @@ public class RobotMap {
 	public static final double HATCH_3 = 354.0;
 
 	//Arm:
-	public static final double ARM_SPEED = 0.7;
+	public static final double ARM_SPEED = 0.3;
 	public static final double ARM_NUDGE_TIME = 0.2;
 
 	//Climbing Elevator:
