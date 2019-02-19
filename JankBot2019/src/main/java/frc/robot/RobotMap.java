@@ -64,7 +64,7 @@ public class RobotMap {
 	public static final double ARM_NUDGE_TIME = 0.2;
 
 	//Climbing Elevator:
-	public static final double CLIMBING_ELEVATOR_SPEED = 0.4;
+	public static final double CLIMBING_ELEVATOR_SPEED = 0.3;
 	public static final double CLIMBING_WHEEL_NORMAL_SPEED = 0.2;
 	public static final double CLIMBING_WHEEL_MAX_SPEED = 0.4;
 

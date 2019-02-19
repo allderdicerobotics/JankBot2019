@@ -79,8 +79,8 @@ public class ClimbingElevator extends Subsystem {
     //setPosition(goalPosition);
   }
   public void setSpeed(double speed) {
-    if(speed > 0.8) {
-      speed = 0.8;
+    if(speed > 0.3) {
+      speed = 0.3;
     }
     climbingElevatorMotor.set(speed);
   }
