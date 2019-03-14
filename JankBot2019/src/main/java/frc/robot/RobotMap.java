@@ -61,12 +61,13 @@ public class RobotMap {
 
 	//Front Climbing Elevator:
 	public static final double FRONT_CLIMBING_ELEVATOR_SPEED = 0.3;
+	public static final double FRONT_CLIMBING_ELEVATOR_MAX_SPEED = 0.6;
 	public static final double CLIMBING_WHEEL_NORMAL_SPEED = 0.45;
 	public static final double CLIMBING_WHEEL_MAX_SPEED = 0.5;
 
 	//Back Climbing Elevator
 	public static final double BACK_CLIMBING_ELEVATOR_SPEED = 0.3;
-
+	public static final double BACK_CLIMBING_ELEVATOR_MAX_SPEED = 0.6;
 
 	public static final double DEADZONE_THRESHOLD = 0.07;
 
