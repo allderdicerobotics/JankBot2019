@@ -5,17 +5,14 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.ClimbingElevator;
+package frc.robot.commands.FrontClimbingElevator;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ClimbingElevatorDown extends Command {
-  private boolean holdPosition;
-
-  public ClimbingElevatorDown(boolean holdPosition) {
-    requires(Robot.climbingElevator);
-    this.holdPosition = holdPosition;
+public class BottomWheelForward extends Command {
+  public BottomWheelForward() {
+    requires(Robot.frontClimbingElevator);
   }
 
   // Called just before this Command runs the first time
@@ -26,12 +23,7 @@ public class ClimbingElevatorDown extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(holdPosition) {
-      Robot.climbingElevator.holdPositionDown();
-    }
-    else {
-      Robot.climbingElevator.down();
-    }
+    Robot.frontClimbingElevator.wheelForward();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -43,13 +35,13 @@ public class ClimbingElevatorDown extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.climbingElevator.stop();
+    Robot.frontClimbingElevator.wheelStop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.climbingElevator.stop();
+    Robot.frontClimbingElevator.wheelStop();
   }
 }

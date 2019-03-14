@@ -20,8 +20,8 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 /**
  * Add your docs here.
  */
-public class ClimbingElevator extends Subsystem {
-   private CANSparkMax climbingElevatorMotor;
+public class FrontClimbingElevator extends Subsystem {
+   private CANSparkMax frontClimbingElevatorMotor;
   // private CANPIDController climbingElevatorMotorPidController;
   // private CANEncoder climbingElevatorEncoder;
   // public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
@@ -30,8 +30,8 @@ public class ClimbingElevator extends Subsystem {
   //Declaration of the wheel at the bottom
   private Spark bottomWheelMotor;
 
-  public ClimbingElevator() {
-    climbingElevatorMotor = new CANSparkMax(RobotMap.CLIMBING_ELEVATOR_CAN, MotorType.kBrushless);
+  public FrontClimbingElevator() {
+    frontClimbingElevatorMotor = new CANSparkMax(RobotMap.CLIMBING_ELEVATOR_CAN, MotorType.kBrushless);
     // climbingElevatorMotorPidController = climbingElevatorMotor.getPIDController();
     // climbingElevatorEncoder = climbingElevatorMotor.getEncoder();
     // currentPosition = climbingElevatorEncoder.getPosition();
@@ -69,23 +69,20 @@ public class ClimbingElevator extends Subsystem {
     //goToRestPosition();
   }
   public void up() {
-    setSpeed(RobotMap.CLIMBING_ELEVATOR_SPEED);
+    setSpeed(RobotMap.FRONT_CLIMBING_ELEVATOR_SPEED);
     //double goalPosition = currentPosition + RobotMap.CLIMBING_ELEVATOR_CHANGE;
     //setPosition(goalPosition);
   }
   public void down() {
-    setSpeed(-RobotMap.CLIMBING_ELEVATOR_SPEED);
+    setSpeed(-RobotMap.FRONT_CLIMBING_ELEVATOR_SPEED);
     //double goalPosition = currentPosition - RobotMap.CLIMBING_ELEVATOR_CHANGE;
     //setPosition(goalPosition);
   }
-  public void holdPositionDown() {
-    setSpeed(-RobotMap.CLIMBING_ELEVATOR_SPEED/2);
-  }
   public void setSpeed(double speed) {
-    if(speed > 0.3) {
-      speed = 0.3;
+    if(speed > 0.8) {
+      speed = 0.8;
     }
-    climbingElevatorMotor.set(speed);
+    frontClimbingElevatorMotor.set(speed);
   }
   public void stop() {
     setSpeed(0.0);
@@ -128,7 +125,7 @@ public class ClimbingElevator extends Subsystem {
     wheelSetSpeed(0.0);
   }
 
-  public void climbingElevatorPID() {
+  public void FrontClimbingElevatorPID() {
     // // read PID coefficients from SmartDashboard
     // double p = SmartDashboard.getNumber("ClimbingElevator P Gain", 0);
     // double i = SmartDashboard.getNumber("ClimbingElevator I Gain", 0);

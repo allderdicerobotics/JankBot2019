@@ -59,14 +59,14 @@ public class RobotMap {
 	public static final double HATCH_2 = 209.0;
 	public static final double HATCH_3 = 354.0;
 
-	//Arm:
-	public static final double ARM_SPEED = 0.25;
-	public static final double ARM_NUDGE_TIME = 0.2;
-
-	//Climbing Elevator:
-	public static final double CLIMBING_ELEVATOR_SPEED = 0.3;
+	//Front Climbing Elevator:
+	public static final double FRONT_CLIMBING_ELEVATOR_SPEED = 0.3;
 	public static final double CLIMBING_WHEEL_NORMAL_SPEED = 0.9;
-	public static final double CLIMBING_WHEEL_MAX_SPEED = 0.4;
+	public static final double CLIMBING_WHEEL_MAX_SPEED = 0.95;
+
+	//Back Climbing Elevator
+	public static final double BACK_CLIMBING_ELEVATOR_SPEED = 0.3;
+
 
 	public static final double DEADZONE_THRESHOLD = 0.07;
 

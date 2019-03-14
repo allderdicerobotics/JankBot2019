@@ -7,10 +7,10 @@
 
 package frc.robot;
 
-import frc.robot.commands.ClimbingElevator.BottomWheelBackward;
-import frc.robot.commands.ClimbingElevator.BottomWheelForward;
-import frc.robot.commands.ClimbingElevator.ClimbingElevatorDown;
-import frc.robot.commands.ClimbingElevator.ClimbingElevatorUp;
+import frc.robot.commands.FrontClimbingElevator.BottomWheelBackward;
+import frc.robot.commands.FrontClimbingElevator.BottomWheelForward;
+import frc.robot.commands.FrontClimbingElevator.FrontClimbingElevatorDown;
+import frc.robot.commands.FrontClimbingElevator.FrontClimbingElevatorUp;
 import frc.robot.commands.Elevator.ElevatorDown;
 import frc.robot.commands.Elevator.ElevatorUp;
 import frc.robot.commands.Intake.IntakeIn;
@@ -82,8 +82,8 @@ public class OI {
     /*-----------------------CLIMBING ELEVATOR-----------------------------*/
     Trigger climberLeftAxisUp = new AxisButton(Robot.climberJoystick, RobotMap.kLeftStickY, true);
     Trigger climberLeftAxisDown = new AxisButton(Robot.climberJoystick, RobotMap.kLeftStickY, false);
-    climberLeftAxisUp.whileActive(new ClimbingElevatorDown(false));
-    climberLeftAxisDown.whileActive(new ClimbingElevatorUp());
+    climberLeftAxisUp.whileActive(new FrontClimbingElevatorDown());
+    climberLeftAxisDown.whileActive(new FrontClimbingElevatorUp());
 
     Button climberY = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonY);
     Button climberA = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonA);
