@@ -17,7 +17,9 @@ public class RobotMap {
 	//CAN IDENTIFIERS
 	public static final int ELEVATOR_1_CAN = 1;
 	public static final int ARM_CAN = 2;
-	public static final int CLIMBING_ELEVATOR_CAN = 4;
+	public static final int FRONT_CLIMBING_ELEVATOR_CAN = 4;
+	public static final int BACK_CLIMBING_ELEVATOR_CAN = 5;
+
 
 	//PWM PORTS
 	public static final int INTAKE_PWM_LEFT = 4;
@@ -60,13 +62,18 @@ public class RobotMap {
 	public static final double HATCH_3 = 354.0;
 
 	//Front Climbing Elevator:
-	public static final double FRONT_CLIMBING_ELEVATOR_SPEED = 0.3;
 	public static final double CLIMBING_WHEEL_NORMAL_SPEED = 0.45;
 	public static final double CLIMBING_WHEEL_MAX_SPEED = 0.5;
+	public static final double FRONT_CLIMBING_ELEVATOR_CHANGE_VALUE = 0.5;
+	//position encoder values
+	public static final double FRONT_LEVEL_2_CLIMB = 30.0;
+	public static final double FRONT_LEVEL_3_CLIMB = 50.0;
 
 	//Back Climbing Elevator
-	public static final double BACK_CLIMBING_ELEVATOR_SPEED = 0.3;
-
+	public static final double BACK_CLIMBING_ELEVATOR_CHANGE_VALUE = 0.5;
+	//position encoder values
+	public static final double BACK_LEVEL_2_CLIMB = 30.0;
+	public static final double BACK_LEVEL_3_CLIMB = 50.0;
 
 	public static final double DEADZONE_THRESHOLD = 0.07;
 
