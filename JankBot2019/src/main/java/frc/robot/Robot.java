@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.TeleopDrive;
-import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.ClimbingElevator;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Elevator;
@@ -38,7 +37,6 @@ public class Robot extends TimedRobot {
   public static DriveTrain driveTrain = new DriveTrain();
   public static Elevator elevator = new Elevator();
   public static Intake intake = new Intake();
-  public static Arm arm = new Arm();
   public static ClimbingElevator climbingElevator = new ClimbingElevator();
   public static Joystick driver = new Joystick(RobotMap.DRIVE_PORT);
   public static Joystick operator = new Joystick(RobotMap.OPERATOR_PORT); 
@@ -63,7 +61,6 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Drive Train", driveTrain);
     SmartDashboard.putData("Elevator", elevator);
     SmartDashboard.putData("Intake", intake);
-    SmartDashboard.putData("Arm", arm);
     SmartDashboard.putData("Climbing Elevator", climbingElevator);
     SmartDashboard.putData(Scheduler.getInstance());
 

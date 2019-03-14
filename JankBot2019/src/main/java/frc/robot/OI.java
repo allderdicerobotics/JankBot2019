@@ -7,10 +7,6 @@
 
 package frc.robot;
 
-import frc.robot.commands.Arm.ArmDown;
-import frc.robot.commands.Arm.ArmNudgeDown;
-import frc.robot.commands.Arm.ArmNudgeUp;
-import frc.robot.commands.Arm.ArmUp;
 import frc.robot.commands.ClimbingElevator.BottomWheelBackward;
 import frc.robot.commands.ClimbingElevator.BottomWheelForward;
 import frc.robot.commands.ClimbingElevator.ClimbingElevatorDown;
@@ -82,20 +78,6 @@ public class OI {
     operatorRightAxisUp.whileActive(new IntakeOut());
     operatorRightAxisDown.whileActive(new IntakeIn());
     /*---------------------------END OF INTAKE-----------------------------*/
-
-    /*-------------------------------ARM-----------------------------------*/
-    //Buttons for the manual operation of the arm
-    Trigger climberRightAxisUp = new AxisButton(Robot.climberJoystick, RobotMap.kRightStickY, true);
-    Trigger climberRightAxisDown = new AxisButton(Robot.climberJoystick, RobotMap.kRightStickY, false);
-    climberRightAxisUp.whileActive(new ArmUp());
-    climberRightAxisDown.whileActive(new ArmDown(false));
-
-    //Buttons for the manual nudging of the arm
-    Button climberRightBumper = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonRightBumper);
-    Button climberLeftBumper = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonLeftBumper);
-    climberRightBumper.whenActive(new ArmNudgeUp());
-    climberLeftBumper.whenActive(new ArmNudgeDown());
-    /*---------------------------END OF ARM--------------------------------*/
 
     /*-----------------------CLIMBING ELEVATOR-----------------------------*/
     Trigger climberLeftAxisUp = new AxisButton(Robot.climberJoystick, RobotMap.kLeftStickY, true);
