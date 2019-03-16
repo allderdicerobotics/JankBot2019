@@ -20,6 +20,8 @@ import frc.robot.commands.Elevator.NudgeDown;
 import frc.robot.commands.Elevator.NudgeUp;
 import frc.robot.commands.GetHatch;
 import frc.robot.commands.ReleaseHatch;
+import frc.robot.commands.BackClimbingElevator.BackClimbingElevatorDown;
+import frc.robot.commands.BackClimbingElevator.BackClimbingElevatorUp;
 import frc.robot.commands.Elevator.SetOffset;
 import frc.robot.commands.Elevator.ElevatorHeight0;
 import frc.robot.commands.Elevator.ElevatorHeight1;
@@ -79,16 +81,25 @@ public class OI {
     operatorRightAxisDown.whileActive(new IntakeIn());
     /*---------------------------END OF INTAKE-----------------------------*/
 
-    /*-----------------------CLIMBING ELEVATOR-----------------------------*/
-    Trigger climberLeftAxisUp = new AxisButton(Robot.climberJoystick, RobotMap.kLeftStickY, true);
-    Trigger climberLeftAxisDown = new AxisButton(Robot.climberJoystick, RobotMap.kLeftStickY, false);
-    climberLeftAxisUp.whileActive(new FrontClimbingElevatorDown());
-    climberLeftAxisDown.whileActive(new FrontClimbingElevatorUp());
+    /*--------------------FRONT CLIMBING ELEVATOR--------------------------*/
+    Trigger climberRightAxisUp = new AxisButton(Robot.climberJoystick, RobotMap.kRightStickY, true);
+    Trigger climberRightAxisDown = new AxisButton(Robot.climberJoystick, RobotMap.kRightStickY, false);
+    climberRightAxisUp.whileActive(new FrontClimbingElevatorDown());
+    climberRightAxisDown.whileActive(new FrontClimbingElevatorUp());
 
     Button climberY = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonY);
     Button climberA = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonA);
     climberY.whileActive(new BottomWheelForward());
     climberA.whileActive(new BottomWheelBackward());
-    /*-------------------END OF CLIMBING ELEVATOR--------------------------*/
+    /*----------------END OF FRONT CLIMBING ELEVATOR-----------------------*/
+
+    /*--------------------BACK CLIMBING ELEVATOR---------------------------*/
+    Trigger climberLeftAxisUp = new AxisButton(Robot.climberJoystick, RobotMap.kLeftStickY, true);
+    Trigger climberLeftAxixDown = new AxisButton(Robot.climberJoystick, RobotMap.kLeftStickY, false);
+    climberLeftAxisUp.whileActive(new BackClimbingElevatorDown());
+    climberLeftAxixDown.whileActive(new BackClimbingElevatorUp());
+    /*----------------END OF BACK CLIMBING ELEVATOR------------------------*/
+
+
   }
 }
