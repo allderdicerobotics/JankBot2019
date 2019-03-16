@@ -23,16 +23,16 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
  */
 public class BackClimbingElevator extends Subsystem {
   private CANSparkMax backClimbingElevatorMotor;
-  private CANPIDController climbingElevatorMotorPidController;
-  private CANEncoder climbingElevatorEncoder;
+  private CANPIDController backClimbingElevatorMotorPidController;
+  private CANEncoder backClimbingElevatorEncoder;
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
   public double currentPosition = 0;
 
   public BackClimbingElevator() {
     backClimbingElevatorMotor = new CANSparkMax(RobotMap.BACK_CLIMBING_ELEVATOR_CAN, MotorType.kBrushless);
-    climbingElevatorMotorPidController = backClimbingElevatorMotor.getPIDController();
-    climbingElevatorEncoder = backClimbingElevatorMotor.getEncoder();
-    currentPosition = climbingElevatorEncoder.getPosition();
+    backClimbingElevatorMotorPidController = backClimbingElevatorMotor.getPIDController();
+    backClimbingElevatorEncoder = backClimbingElevatorMotor.getEncoder();
+    currentPosition = backClimbingElevatorEncoder.getPosition();
 
     kP = 0.5;
     kI = 1e-5;
@@ -43,22 +43,22 @@ public class BackClimbingElevator extends Subsystem {
     kMinOutput = -1;
 
     // set PID coefficients
-    climbingElevatorMotorPidController.setP(kP);
-    climbingElevatorMotorPidController.setI(kI);
-    climbingElevatorMotorPidController.setD(kD);
-    climbingElevatorMotorPidController.setIZone(kIz);
-    climbingElevatorMotorPidController.setFF(kFF);
-    climbingElevatorMotorPidController.setOutputRange(kMinOutput, kMaxOutput);
+    backClimbingElevatorMotorPidController.setP(kP);
+    backClimbingElevatorMotorPidController.setI(kI);
+    backClimbingElevatorMotorPidController.setD(kD);
+    backClimbingElevatorMotorPidController.setIZone(kIz);
+    backClimbingElevatorMotorPidController.setFF(kFF);
+    backClimbingElevatorMotorPidController.setOutputRange(kMinOutput, kMaxOutput);
 
-    // display PID coefficients on SmartDashboard
-    SmartDashboard.putNumber("ClimbingElevator P Gain", kP);
-    SmartDashboard.putNumber("ClimbingElevator I Gain", kI);
-    SmartDashboard.putNumber("ClimbingElevator D Gain", kD);
-    SmartDashboard.putNumber("ClimbingElevator I Zone", kIz);
-    SmartDashboard.putNumber("ClimbingElevator Feed Forward", kFF);
-    SmartDashboard.putNumber("ClimbingElevator Max Output", kMaxOutput);
-    SmartDashboard.putNumber("ClimbingElevator Min Output", kMinOutput);
-    SmartDashboard.putNumber("ClimbingElevator Set Rotations", 0);
+    // // display PID coefficients on SmartDashboard
+    // SmartDashboard.putNumber("BackClimbingElevator P Gain", kP);
+    // SmartDashboard.putNumber("BackClimbingElevator I Gain", kI);
+    // SmartDashboard.putNumber("BackClimbingElevator D Gain", kD);
+    // SmartDashboard.putNumber("BackClimbingElevator I Zone", kIz);
+    // SmartDashboard.putNumber("BackClimbingElevator Feed Forward", kFF);
+    // SmartDashboard.putNumber("BackClimbingElevator Max Output", kMaxOutput);
+    // SmartDashboard.putNumber("BackClimbingElevator Min Output", kMinOutput);
+    // SmartDashboard.putNumber("BackClimbingElevator Set Rotations", 0);
   }
   public void Init() {
     goToRestPosition();
@@ -82,12 +82,12 @@ public class BackClimbingElevator extends Subsystem {
     setPosition(0.0);
   }
   public void setPosition(double goalPosition) {
-    climbingElevatorMotorPidController.setReference(goalPosition, ControlType.kPosition);
+    backClimbingElevatorMotorPidController.setReference(goalPosition, ControlType.kPosition);
     currentPosition = goalPosition;
-    System.out.println("Set Climbing Elevator Position to " + goalPosition);
+    System.out.println("Set Back Climbing Elevator Position to " + goalPosition);
   }
   public double getCurrentPosition() {
-    return climbingElevatorEncoder.getPosition();
+    return backClimbingElevatorEncoder.getPosition();
   }
 
   public void BackClimbingElevatorPID() {

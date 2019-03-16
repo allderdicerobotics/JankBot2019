@@ -24,11 +24,11 @@ public class ElevatorHeight0 extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //Set the elevator to the level to retreive a hatch from the player station,
+    //Set the elevator to the level to retreive a ball from the player station,
     //or to the bottom. 
     //This changes based on whether the operator is holding down the "BACK" button
     if(Robot.operator.getRawButton(RobotMap.kButtonBack)) {
-      Robot.elevator.goToLvlGetHatch();
+      Robot.elevator.goToLvlGetBall();
       System.out.println("Set height to getHatch 1");
     }
     else {

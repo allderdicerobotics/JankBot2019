@@ -79,7 +79,7 @@ public class OI {
     operatorRightAxisDown.whileActive(new IntakeIn());
     /*---------------------------END OF INTAKE-----------------------------*/
 
-    /*-----------------------CLIMBING ELEVATOR-----------------------------*/
+    /*----------------------FRONT CLIMBING ELEVATOR------------------------*/
     Trigger climberLeftAxisUp = new AxisButton(Robot.climberJoystick, RobotMap.kLeftStickY, true);
     Trigger climberLeftAxisDown = new AxisButton(Robot.climberJoystick, RobotMap.kLeftStickY, false);
     climberLeftAxisUp.whileActive(new FrontClimbingElevatorDown());
@@ -89,6 +89,6 @@ public class OI {
     Button climberA = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonA);
     climberY.whileActive(new BottomWheelForward());
     climberA.whileActive(new BottomWheelBackward());
-    /*-------------------END OF CLIMBING ELEVATOR--------------------------*/
+    /*------------------END OF FRONTCLIMBING ELEVATOR---------------------*/
   }
 }

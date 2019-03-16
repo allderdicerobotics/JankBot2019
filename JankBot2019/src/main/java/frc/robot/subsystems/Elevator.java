@@ -120,9 +120,9 @@ public class Elevator extends Subsystem {
     setPosition(RobotMap.HATCH_3);
     currentState = "going to level 3 to place a hatch panel";
   }
-  public void goToLvlGetHatch() {
+  public void goToLvlGetBall() {
     setPosition(RobotMap.GET_BALL);
-    currentState = "going to the retreival zone height to get a hatch panel";
+    currentState = "going to the retreival zone height to get a ball";
   }
   public void goToBottom() {
     setPosition(0.0);
