@@ -55,15 +55,15 @@ public class FrontClimbingElevator extends Subsystem {
     frontClimbingElevatorMotorPidController.setFF(kFF);
     frontClimbingElevatorMotorPidController.setOutputRange(kMinOutput, kMaxOutput);
 
-     // display PID coefficients on SmartDashboard
-    SmartDashboard.putNumber("ClimbingElevator P Gain", kP);
-    SmartDashboard.putNumber("ClimbingElevator I Gain", kI);
-    SmartDashboard.putNumber("ClimbingElevator D Gain", kD);
-    SmartDashboard.putNumber("ClimbingElevator I Zone", kIz);
-    SmartDashboard.putNumber("ClimbingElevator Feed Forward", kFF);
-    SmartDashboard.putNumber("ClimbingElevator Max Output", kMaxOutput);
-    SmartDashboard.putNumber("ClimbingElevator Min Output", kMinOutput);
-    SmartDashboard.putNumber("ClimbingElevator Set Rotations", 0);
+    //  // display PID coefficients on SmartDashboard
+    // SmartDashboard.putNumber("ClimbingElevator P Gain", kP);
+    // SmartDashboard.putNumber("ClimbingElevator I Gain", kI);
+    // SmartDashboard.putNumber("ClimbingElevator D Gain", kD);
+    // SmartDashboard.putNumber("ClimbingElevator I Zone", kIz);
+    // SmartDashboard.putNumber("ClimbingElevator Feed Forward", kFF);
+    // SmartDashboard.putNumber("ClimbingElevator Max Output", kMaxOutput);
+    // SmartDashboard.putNumber("ClimbingElevator Min Output", kMinOutput);
+    // SmartDashboard.putNumber("ClimbingElevator Set Rotations", 0);
   }
   public void Init() {
     goToRestPosition();
@@ -113,31 +113,31 @@ public class FrontClimbingElevator extends Subsystem {
   }
 
   public void FrontClimbingElevatorPID() {
-    // read PID coefficients from SmartDashboard
-    double p = SmartDashboard.getNumber("FrontClimbingElevator P Gain", 0);
-    double i = SmartDashboard.getNumber("FrontClimbingElevator I Gain", 0);
-    double d = SmartDashboard.getNumber("FrontClimbingElevator D Gain", 0);
-    double iz = SmartDashboard.getNumber("FrontClimbingElevator I Zone", 0);
-    double ff = SmartDashboard.getNumber("FrontClimbingElevator Feed Forward", 0);
-    double max = SmartDashboard.getNumber("FrontClimbingElevator Max Output", 0);
-    double min = SmartDashboard.getNumber("FrontClimbingElevator Min Output", 0);
-    double rotations = SmartDashboard.getNumber("FrontClimbingElevator Set Rotations", 0);
+    // // read PID coefficients from SmartDashboard
+    // double p = SmartDashboard.getNumber("FrontClimbingElevator P Gain", 0);
+    // double i = SmartDashboard.getNumber("FrontClimbingElevator I Gain", 0);
+    // double d = SmartDashboard.getNumber("FrontClimbingElevator D Gain", 0);
+    // double iz = SmartDashboard.getNumber("FrontClimbingElevator I Zone", 0);
+    // double ff = SmartDashboard.getNumber("FrontClimbingElevator Feed Forward", 0);
+    // double max = SmartDashboard.getNumber("FrontClimbingElevator Max Output", 0);
+    // double min = SmartDashboard.getNumber("FrontClimbingElevator Min Output", 0);
+    // double rotations = SmartDashboard.getNumber("FrontClimbingElevator Set Rotations", 0);
 
-    // if PID coefficients on SmartDashboard have changed, write new values to controller
-    if((p != kP)) { frontClimbingElevatorMotorPidController.setP(p); kP = p; }
-    if((i != kI)) { frontClimbingElevatorMotorPidController.setI(i); kI = i; }
-    if((d != kD)) { frontClimbingElevatorMotorPidController.setD(d); kD = d; }
-    if((iz != kIz)) { frontClimbingElevatorMotorPidController.setIZone(iz); kIz = iz; }
-    if((ff != kFF)) { frontClimbingElevatorMotorPidController.setFF(ff); kFF = ff; }
-    if((max != kMaxOutput) || (min != kMinOutput)) { 
-      frontClimbingElevatorMotorPidController.setOutputRange(min, max); 
-      kMinOutput = min; kMaxOutput = max; 
-    }
+    // // if PID coefficients on SmartDashboard have changed, write new values to controller
+    // if((p != kP)) { frontClimbingElevatorMotorPidController.setP(p); kP = p; }
+    // if((i != kI)) { frontClimbingElevatorMotorPidController.setI(i); kI = i; }
+    // if((d != kD)) { frontClimbingElevatorMotorPidController.setD(d); kD = d; }
+    // if((iz != kIz)) { frontClimbingElevatorMotorPidController.setIZone(iz); kIz = iz; }
+    // if((ff != kFF)) { frontClimbingElevatorMotorPidController.setFF(ff); kFF = ff; }
+    // if((max != kMaxOutput) || (min != kMinOutput)) { 
+    //   frontClimbingElevatorMotorPidController.setOutputRange(min, max); 
+    //   kMinOutput = min; kMaxOutput = max; 
+    // }
 
-    frontClimbingElevatorMotorPidController.setReference(rotations, ControlType.kPosition);
+    // frontClimbingElevatorMotorPidController.setReference(rotations, ControlType.kPosition);
     
-    SmartDashboard.putNumber("ClimbingElevator SetPoint", rotations);
-    SmartDashboard.putNumber("Current ClimbingElevator Position is ", frontClimbingElevatorEncoder.getPosition());
+    // SmartDashboard.putNumber("ClimbingElevator SetPoint", rotations);
+    // SmartDashboard.putNumber("Current ClimbingElevator Position is ", frontClimbingElevatorEncoder.getPosition());
   }
   
   @Override
