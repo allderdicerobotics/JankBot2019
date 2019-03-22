@@ -23,7 +23,7 @@ public class FrontClimbingElevator extends Subsystem {
   private Spark bottomWheelMotor;
 
   public FrontClimbingElevator() {
-    frontClimbingElevatorMotor = new CANSparkMax(RobotMap.CLIMBING_ELEVATOR_CAN, MotorType.kBrushless);
+    frontClimbingElevatorMotor = new CANSparkMax(RobotMap.FRONT_CLIMBING_ELEVATOR_CAN, MotorType.kBrushless);
 
     //Initialization of the bottom wheel motor
     bottomWheelMotor = new Spark(RobotMap.CLIMBING_WHEEL);

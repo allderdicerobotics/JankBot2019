@@ -16,8 +16,8 @@ package frc.robot;
 public class RobotMap {
 	//CAN IDENTIFIERS
 	public static final int ELEVATOR_1_CAN = 1;
-	public static final int ARM_CAN = 2;
-	public static final int CLIMBING_ELEVATOR_CAN = 4;
+	public static final int FRONT_CLIMBING_ELEVATOR_CAN = 4;
+	public static final int BACK_CLIMGING_ELEVATOR_CAN = 3;
 
 	//PWM PORTS
 	public static final int INTAKE_PWM_LEFT = 4;
@@ -34,17 +34,17 @@ public class RobotMap {
 	public static final int CLIMBER_JOYSTICK_PORT = 2;
 
 	//Drive train:
-	public static final double THROTTLE_SCALE = 0.7;
-	public static final double STEERING_SCALE = 0.6;
+	public static final double THROTTLE_SCALE = 0.8;
+	public static final double STEERING_SCALE = 0.65;
 	
-	public static final double BOOST_THROTTLE_SCALE = 1.5;
+	public static final double BOOST_THROTTLE_SCALE = 1.2;
 	public static final double BOOST_STEERING_SCALE = 1.2;
 	public static final double SLOW_THROTTLE_SCALE = 1.6;
 	public static final double SLOW_STEERING_SCALE = 1.2;
 	public static final double MAX_SPEED = 0.9;
 
 	//Intake:
-	public static final double INTAKE_IN_SPEED = 0.6;
+	public static final double INTAKE_IN_SPEED = 0.55;
 	public static final double INTAKE_OUT_SPEED = 0.8;
 
 	//Elevator:

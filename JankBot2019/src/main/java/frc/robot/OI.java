@@ -95,9 +95,9 @@ public class OI {
 
     /*--------------------BACK CLIMBING ELEVATOR---------------------------*/
     Trigger climberLeftAxisUp = new AxisButton(Robot.climberJoystick, RobotMap.kLeftStickY, true);
-    Trigger climberLeftAxixDown = new AxisButton(Robot.climberJoystick, RobotMap.kLeftStickY, false);
+    Trigger climberLeftAxisDown = new AxisButton(Robot.climberJoystick, RobotMap.kLeftStickY, false);
     climberLeftAxisUp.whileActive(new BackClimbingElevatorDown());
-    climberLeftAxixDown.whileActive(new BackClimbingElevatorUp());
+    climberLeftAxisDown.whileActive(new BackClimbingElevatorUp());
     /*----------------END OF BACK CLIMBING ELEVATOR------------------------*/
 
 

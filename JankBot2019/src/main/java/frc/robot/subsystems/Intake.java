@@ -37,7 +37,6 @@ public class Intake extends Subsystem {
     setSpeed(RobotMap.INTAKE_OUT_SPEED);
   }
   public void setSpeed(double speed) {
-    speed = speed * Math.abs(operator.getRawAxis(RobotMap.kRightStickY));
     intakeMotorLeft.setSpeed(speed);
     intakeMotorRight.setSpeed(speed);
   }

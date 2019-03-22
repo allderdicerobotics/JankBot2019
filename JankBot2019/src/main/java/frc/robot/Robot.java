@@ -72,14 +72,10 @@ public class Robot extends TimedRobot {
     //Setup Camera Server for Smart Dashboard
 		new Thread(() -> {
 			UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture();
-			UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture();
 
 			camera1.setResolution(213, 160);
-			camera2.setResolution(213, 160);
 			camera1.setFPS(30);
-			camera2.setFPS(5);
 			camera1.setBrightness(50);
-      camera2.setBrightness(50);
       
 			CvSink cvSink = CameraServer.getInstance().getVideo();
       CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 213, 160);

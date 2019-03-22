@@ -19,7 +19,7 @@ public class BackClimbingElevator extends Subsystem {
   private CANSparkMax backClimbingElevatorMotor;
 
   public BackClimbingElevator() {
-    backClimbingElevatorMotor = new CANSparkMax(RobotMap.CLIMBING_ELEVATOR_CAN, MotorType.kBrushless);
+    backClimbingElevatorMotor = new CANSparkMax(RobotMap.BACK_CLIMGING_ELEVATOR_CAN, MotorType.kBrushless);
   }
   public void Init() {
   }

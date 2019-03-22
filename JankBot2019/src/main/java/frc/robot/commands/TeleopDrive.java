@@ -19,9 +19,9 @@ public class TeleopDrive extends Command {
   private Joystick joystick;
   private boolean autoBack;
 
-  private boolean climbMode;
-  private double climbSpeed;
-  private double climbRotation;
+  //private boolean climbMode;
+  //private double climbSpeed;
+  //private double climbRotation;
 
   public TeleopDrive(DriveTrain driveTrain, boolean autoBack) {
     requires(driveTrain);
@@ -29,11 +29,11 @@ public class TeleopDrive extends Command {
     this.joystick = Robot.driver;
     this.autoBack = autoBack;
   }
-  public TeleopDrive(DriveTrain driveTrain, double speed, double rotation) {
-    this.climbSpeed = speed;
-    this.climbRotation = rotation;
-    climbMode = true;
-  }
+  // public TeleopDrive(DriveTrain driveTrain, double speed, double rotation) {
+  //   this.climbSpeed = speed;
+  //   this.climbRotation = rotation;
+  //   climbMode = true;
+  // }
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
@@ -47,14 +47,14 @@ public class TeleopDrive extends Command {
     if(autoBack) {
       driveTrain.arcadeDrive(RobotMap.HATCH_AUTO_DRIVE_SPEED, 0);
     } 
-    if(climbMode) {
-      driveTrain.arcadeDrive(climbSpeed, climbRotation);
-    }
+    // if(climbMode) {
+    //   driveTrain.arcadeDrive(climbSpeed, climbRotation);
+    // }
     else {
       double speed = RobotMap.THROTTLE_SCALE;
       double steer = RobotMap.STEERING_SCALE;
 
-      if(joystick.getRawButton(RobotMap.kButtonLeftBumper) || (Robot.elevator.getCurrentPosition() > 200.0)) {
+      if(joystick.getRawButton(RobotMap.kButtonLeftBumper) || (Robot.elevator.getCurrentPosition() > 195.0)) {
         speed = speed / RobotMap.SLOW_THROTTLE_SCALE;
         steer = steer / RobotMap.SLOW_STEERING_SCALE;
       }
