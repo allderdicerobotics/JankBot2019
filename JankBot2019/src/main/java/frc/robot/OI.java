@@ -18,7 +18,6 @@ import frc.robot.commands.Intake.IntakeOut;
 
 import frc.robot.commands.Elevator.NudgeDown;
 import frc.robot.commands.Elevator.NudgeUp;
-import frc.robot.commands.ClimbLvl2;
 import frc.robot.commands.GetHatch;
 import frc.robot.commands.ReleaseHatch;
 import frc.robot.commands.BackClimbingElevator.BackClimbingElevatorDown;
@@ -42,14 +41,14 @@ public class OI {
   public OI() {
     /*-------------------------------ELEVATOR----------------------------*/
     //Buttons for the different levels the elevator will travel to. 
-    Button operatorX = new JoystickButton(Robot.operator, RobotMap.kButtonX);
-    Button operatorA = new JoystickButton(Robot.operator, RobotMap.kButtonA);
-    Button operatorB = new JoystickButton(Robot.operator, RobotMap.kButtonB);
-    Button operatorY = new JoystickButton(Robot.operator, RobotMap.kButtonY);
-    operatorX.whenPressed(new ElevatorHeight0());
-    operatorA.whenPressed(new ElevatorHeight1());
-    operatorB.whenPressed(new ElevatorHeight2());
-    operatorY.whenPressed(new ElevatorHeight3());
+    //Button operatorX = new JoystickButton(Robot.operator, RobotMap.kButtonX);
+    //Button operatorA = new JoystickButton(Robot.operator, RobotMap.kButtonA);
+    //Button operatorB = new JoystickButton(Robot.operator, RobotMap.kButtonB);
+    //Button operatorY = new JoystickButton(Robot.operator, RobotMap.kButtonY);
+    // operatorX.whenPressed(new ElevatorHeight0());
+    // operatorA.whenPressed(new ElevatorHeight1());
+    // operatorB.whenPressed(new ElevatorHeight2());
+    // operatorY.whenPressed(new ElevatorHeight3());
 
     //Trigger for the manual operation of the elevator
     Trigger operatorLeftAxisUp = new AxisButton(Robot.operator, RobotMap.kLeftStickY, true);
@@ -58,16 +57,16 @@ public class OI {
     operatorLeftAxisDown.whileActive(new ElevatorDown());
 
     //Buttons for the manual nudging of the elevator 
-    Button operatorLeftBumper = new JoystickButton(Robot.operator, RobotMap.kButtonLeftBumper);
-    Button operatorRightBumper = new JoystickButton(Robot.operator, RobotMap.kButtonRightBumper);
-    operatorLeftBumper.whenActive(new NudgeDown(true));
-    operatorRightBumper.whenActive(new NudgeUp(true));
+    //Button operatorLeftBumper = new JoystickButton(Robot.operator, RobotMap.kButtonLeftBumper);
+    //Button operatorRightBumper = new JoystickButton(Robot.operator, RobotMap.kButtonRightBumper);
+    //operatorLeftBumper.whenActive(new NudgeDown(true));
+    //operatorRightBumper.whenActive(new NudgeUp(true));
 
     //Buttons for the autonomous modes that retreive and release the hatch panels
-    Button driverA = new JoystickButton(Robot.driver, RobotMap.kButtonA);
-    Button driverY = new JoystickButton(Robot.driver, RobotMap.kButtonY);
-    driverA.whenPressed(new ReleaseHatch());
-    driverY.whenPressed(new GetHatch());
+    //Button driverA = new JoystickButton(Robot.driver, RobotMap.kButtonA);
+    //Button driverY = new JoystickButton(Robot.driver, RobotMap.kButtonY);
+    //driverA.whenPressed(new ReleaseHatch());
+    //driverY.whenPressed(new GetHatch());
 
     //Button for zero'ing the encoder on the elevator
     Button operatorStart = new JoystickButton(Robot.operator, RobotMap.kButtonStart);

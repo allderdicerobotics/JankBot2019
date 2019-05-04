@@ -45,18 +45,10 @@ public class TeleopDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //Robot.elevator.elevatorPID();
-    //Robot.climbingElevator.climbingElevatorPID();
-    if(autoBack) {
-      //System.out.println("In autoback in TElop");
-      driveTrain.arcadeDrive(RobotMap.HATCH_AUTO_DRIVE_SPEED, 0);
-    } else if(climb) {
-      driveTrain.arcadeDrive(0.45, 0);
-    } else {
       double speed = RobotMap.THROTTLE_SCALE;
       double steer = RobotMap.STEERING_SCALE;
 
-      if(joystick.getRawButton(RobotMap.kButtonLeftBumper) || (Robot.elevator.getCurrentPosition() > 195.0)) {
+      if(joystick.getRawButton(RobotMap.kButtonLeftBumper) || (Robot.elevator.getCurrentPosition() > 150.0)) {
         speed = speed / RobotMap.SLOW_THROTTLE_SCALE;
         steer = steer / RobotMap.SLOW_STEERING_SCALE;
       }
@@ -73,7 +65,6 @@ public class TeleopDrive extends Command {
      }
       driveTrain.arcadeDrive(speed, steer);
     }
-  }
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
