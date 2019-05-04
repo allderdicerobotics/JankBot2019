@@ -24,10 +24,10 @@ public class BackClimbingElevator extends Subsystem {
   public void Init() {
   }
   public void up() {
-    setSpeed(RobotMap.BACK_CLIMBING_ELEVATOR_SPEED);
+    setSpeed(-RobotMap.BACK_CLIMBING_ELEVATOR_SPEED);
   }
   public void down() {
-    setSpeed(-RobotMap.BACK_CLIMBING_ELEVATOR_SPEED);
+    setSpeed(RobotMap.BACK_CLIMBING_ELEVATOR_SPEED);
   }
   public void setSpeed(double speed) {
     if(speed > RobotMap.BACK_CLIMBING_ELEVATOR_MAX_SPEED) {

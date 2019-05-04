@@ -57,7 +57,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_oi = new OI();
 
-    TeleopDrive teleopDrive = new TeleopDrive(driveTrain, false);
+    TeleopDrive teleopDrive = new TeleopDrive(driveTrain, false, false);
     m_chooser.setDefaultOption("TeleopDrive", teleopDrive);
     
     SmartDashboard.putData("Drive Train", driveTrain);
@@ -73,8 +73,8 @@ public class Robot extends TimedRobot {
 		new Thread(() -> {
 			UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture();
 
-			camera1.setResolution(213, 160);
-			camera1.setFPS(30);
+			camera1.setResolution(640, 360);
+			camera1.setFPS(60);
 			camera1.setBrightness(50);
       
 			CvSink cvSink = CameraServer.getInstance().getVideo();

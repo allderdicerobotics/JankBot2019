@@ -40,12 +40,12 @@ public class RobotMap {
 	public static final double BOOST_THROTTLE_SCALE = 1.2;
 	public static final double BOOST_STEERING_SCALE = 1.2;
 	public static final double SLOW_THROTTLE_SCALE = 1.6;
-	public static final double SLOW_STEERING_SCALE = 1.2;
+	public static final double SLOW_STEERING_SCALE = 1.34;
 	public static final double MAX_SPEED = 0.9;
 
 	//Intake:
-	public static final double INTAKE_IN_SPEED = 0.55;
-	public static final double INTAKE_OUT_SPEED = 0.8;
+	public static final double INTAKE_OUT_SPEED = 0.55;
+	public static final double INTAKE_IN_SPEED = 0.88;
 
 	//Elevator:
 	public static final double ELEVATOR_MANUAL_CHANGE = 1.9;
@@ -60,9 +60,9 @@ public class RobotMap {
 	public static final double HATCH_3 = 354.0;
 
 	//Front Climbing Elevator:
-	public static final double FRONT_CLIMBING_ELEVATOR_SPEED = 0.3;
+	public static final double FRONT_CLIMBING_ELEVATOR_SPEED = 0.346;
 	public static final double FRONT_CLIMBING_ELEVATOR_MAX_SPEED = 0.6;
-	public static final double CLIMBING_WHEEL_NORMAL_SPEED = 0.45;
+	public static final double CLIMBING_WHEEL_NORMAL_SPEED = 0.35;
 	public static final double CLIMBING_WHEEL_MAX_SPEED = 0.5;
 
 	//Back Climbing Elevator
@@ -72,9 +72,9 @@ public class RobotMap {
 	public static final double DEADZONE_THRESHOLD = 0.07;
 
 	//Autonomous commands:
-	public static final double HATCH_AUTO_DRIVE_TIME = 0.6;
+	public static final double HATCH_AUTO_DRIVE_TIME = 1.0;
 	public static final double HATCH_AUTO_DRIVE_SPEED = -0.4;
-	public static final double ELEVATOR_GET_HATCH_CHANGE = 40.0;
+	public static final double ELEVATOR_GET_HATCH_CHANGE = 45.0;
 	public static final double ELEVATOR_RELEASE_HATCH_CHANGE = 20.0;
 
 	//GamePad Mappings

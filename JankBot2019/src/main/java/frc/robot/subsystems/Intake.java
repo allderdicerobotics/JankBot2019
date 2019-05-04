@@ -42,7 +42,6 @@ public class Intake extends Subsystem {
   }
   public void stop() {
     setSpeed(0.0);
-    setSpeed(0.0);
   }
 
   @Override

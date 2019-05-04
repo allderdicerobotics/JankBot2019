@@ -18,22 +18,25 @@ public class TeleopDrive extends Command {
   private DriveTrain driveTrain;
   private Joystick joystick;
   private boolean autoBack;
+  private boolean climb;
 
   //private boolean climbMode;
   //private double climbSpeed;
   //private double climbRotation;
 
-  public TeleopDrive(DriveTrain driveTrain, boolean autoBack) {
+  public TeleopDrive(DriveTrain driveTrain, boolean autoBack, boolean climb) {
     requires(driveTrain);
     this.driveTrain = driveTrain;
     this.joystick = Robot.driver;
     this.autoBack = autoBack;
+    this.climb = climb;
   }
-  // public TeleopDrive(DriveTrain driveTrain, double speed, double rotation) {
+  //  public TeleopDrive(DriveTrain driveTrain, double speed, double rotation) {
+  //   this.driveTrain = driveTrain;
   //   this.climbSpeed = speed;
   //   this.climbRotation = rotation;
   //   climbMode = true;
-  // }
+  //  }
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
@@ -42,15 +45,14 @@ public class TeleopDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.elevator.elevatorPID();
+    //Robot.elevator.elevatorPID();
     //Robot.climbingElevator.climbingElevatorPID();
     if(autoBack) {
+      //System.out.println("In autoback in TElop");
       driveTrain.arcadeDrive(RobotMap.HATCH_AUTO_DRIVE_SPEED, 0);
-    } 
-    // if(climbMode) {
-    //   driveTrain.arcadeDrive(climbSpeed, climbRotation);
-    // }
-    else {
+    } else if(climb) {
+      driveTrain.arcadeDrive(0.45, 0);
+    } else {
       double speed = RobotMap.THROTTLE_SCALE;
       double steer = RobotMap.STEERING_SCALE;
 

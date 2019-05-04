@@ -18,6 +18,7 @@ import frc.robot.commands.Intake.IntakeOut;
 
 import frc.robot.commands.Elevator.NudgeDown;
 import frc.robot.commands.Elevator.NudgeUp;
+import frc.robot.commands.ClimbLvl2;
 import frc.robot.commands.GetHatch;
 import frc.robot.commands.ReleaseHatch;
 import frc.robot.commands.BackClimbingElevator.BackClimbingElevatorDown;
@@ -63,9 +64,9 @@ public class OI {
     operatorRightBumper.whenActive(new NudgeUp(true));
 
     //Buttons for the autonomous modes that retreive and release the hatch panels
-    Button driverX = new JoystickButton(Robot.driver, RobotMap.kButtonX);
+    Button driverA = new JoystickButton(Robot.driver, RobotMap.kButtonA);
     Button driverY = new JoystickButton(Robot.driver, RobotMap.kButtonY);
-    driverX.whenPressed(new ReleaseHatch());
+    driverA.whenPressed(new ReleaseHatch());
     driverY.whenPressed(new GetHatch());
 
     //Button for zero'ing the encoder on the elevator
@@ -82,24 +83,26 @@ public class OI {
     /*---------------------------END OF INTAKE-----------------------------*/
 
     /*--------------------FRONT CLIMBING ELEVATOR--------------------------*/
-    Trigger climberRightAxisUp = new AxisButton(Robot.climberJoystick, RobotMap.kRightStickY, true);
-    Trigger climberRightAxisDown = new AxisButton(Robot.climberJoystick, RobotMap.kRightStickY, false);
-    climberRightAxisUp.whileActive(new FrontClimbingElevatorDown());
-    climberRightAxisDown.whileActive(new FrontClimbingElevatorUp());
+    // Trigger climberRightAxisUp = new AxisButton(Robot.climberJoystick, RobotMap.kRightStickY, true);
+    // Trigger climberRightAxisDown = new AxisButton(Robot.climberJoystick, RobotMap.kRightStickY, false);
+    // climberRightAxisUp.whileActive(new FrontClimbingElevatorUp());
+    // climberRightAxisDown.whileActive(new FrontClimbingElevatorDown());
 
-    Button climberY = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonY);
-    Button climberA = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonA);
-    climberY.whileActive(new BottomWheelForward());
-    climberA.whileActive(new BottomWheelBackward());
-    /*----------------END OF FRONT CLIMBING ELEVATOR-----------------------*/
+    // Button climberY = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonY);
+    // Button climberA = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonA);
+    // climberY.whileActive(new BottomWheelBackward());
+    // climberA.whileActive(new BottomWheelForward());
+    // /*----------------END OF FRONT CLIMBING ELEVATOR-----------------------*/
 
-    /*--------------------BACK CLIMBING ELEVATOR---------------------------*/
-    Trigger climberLeftAxisUp = new AxisButton(Robot.climberJoystick, RobotMap.kLeftStickY, true);
-    Trigger climberLeftAxisDown = new AxisButton(Robot.climberJoystick, RobotMap.kLeftStickY, false);
-    climberLeftAxisUp.whileActive(new BackClimbingElevatorDown());
-    climberLeftAxisDown.whileActive(new BackClimbingElevatorUp());
-    /*----------------END OF BACK CLIMBING ELEVATOR------------------------*/
+    // /*--------------------BACK CLIMBING ELEVATOR---------------------------*/
+    // Trigger climberLeftAxisUp = new AxisButton(Robot.climberJoystick, RobotMap.kLeftStickY, true);
+    // Trigger climberLeftAxisDown = new AxisButton(Robot.climberJoystick, RobotMap.kLeftStickY, false);
+    // climberLeftAxisUp.whileActive(new BackClimbingElevatorUp());
+    // climberLeftAxisDown.whileActive(new BackClimbingElevatorDown());
+    // /*----------------END OF BACK CLIMBING ELEVATOR------------------------*/
 
+    // Button climberB = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonB);
+    // climberB.whenActive(new ClimbLvl2());
 
   }
 }

@@ -31,10 +31,10 @@ public class FrontClimbingElevator extends Subsystem {
   public void Init() {
   }
   public void up() {
-    setSpeed(RobotMap.FRONT_CLIMBING_ELEVATOR_SPEED);
+    setSpeed(-RobotMap.FRONT_CLIMBING_ELEVATOR_SPEED);
   }
   public void down() {
-    setSpeed(-RobotMap.FRONT_CLIMBING_ELEVATOR_SPEED);
+    setSpeed(RobotMap.FRONT_CLIMBING_ELEVATOR_SPEED);
   }
   public void setSpeed(double speed) {
     if(speed > RobotMap.FRONT_CLIMBING_ELEVATOR_MAX_SPEED) {

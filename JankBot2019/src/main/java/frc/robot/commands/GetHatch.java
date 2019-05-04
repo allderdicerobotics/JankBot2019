@@ -23,6 +23,6 @@ public class GetHatch extends CommandGroup {
     addSequential(new NudgeUp(false));
 
     //Drives back for a small amount of time to clear away from the retreival zone
-    addSequential(new TeleopDrive(Robot.driveTrain, true), RobotMap.HATCH_AUTO_DRIVE_TIME);
+    addSequential(new TeleopDrive(Robot.driveTrain, true, false), RobotMap.HATCH_AUTO_DRIVE_TIME);
   }
 }
