@@ -34,13 +34,13 @@ public class RobotMap {
 	public static final int CLIMBER_JOYSTICK_PORT = 2;
 
 	//Drive train:
-	public static final double THROTTLE_SCALE = 0.6;
-	public static final double STEERING_SCALE = 0.5;
+	public static final double THROTTLE_SCALE = 0.7;
+	public static final double STEERING_SCALE = 0.6;
 	
 	public static final double BOOST_THROTTLE_SCALE = 1.5;
 	public static final double BOOST_STEERING_SCALE = 1.5;
 	public static final double SLOW_THROTTLE_SCALE = 1.4;
-	public static final double SLOW_STEERING_SCALE = 1.3;
+	public static final double SLOW_STEERING_SCALE = 1.2;
 	public static final double MAX_SPEED = 0.9;
 
 	//Intake:
