@@ -16,6 +16,7 @@ package frc.robot;
 public class RobotMap {
 	//CAN IDENTIFIERS
 	public static final int ELEVATOR_1_CAN = 1;
+	public static final int ELEVATOR_2_CAN = 5;
 	public static final int FRONT_CLIMBING_ELEVATOR_CAN = 4;
 	public static final int BACK_CLIMGING_ELEVATOR_CAN = 3;
 

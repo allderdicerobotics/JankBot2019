@@ -21,7 +21,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
  */
 public class Elevator extends Subsystem {
   private CANSparkMax elevator1Motor;
-  //private CANSparkMax elevator2Motor;
+  private CANSparkMax elevator2Motor;
   private CANPIDController elevatorMotorPidController;
   private CANEncoder elevatorEncoder;
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
@@ -31,7 +31,8 @@ public class Elevator extends Subsystem {
 
   public Elevator() {
     elevator1Motor = new CANSparkMax(RobotMap.ELEVATOR_1_CAN, MotorType.kBrushless);
-    //elevator2Motor = new CANSparkMax(RobotMap.ELEVATOR_2_CAN, MotorType.kBrushless);
+    elevator2Motor = new CANSparkMax(RobotMap.ELEVATOR_2_CAN, MotorType.kBrushless);
+    elevator2Motor.follow(elevator1Motor, true);
     elevatorMotorPidController = elevator1Motor.getPIDController();
     elevatorEncoder = elevator1Motor.getEncoder();
     currentPosition = elevatorEncoder.getPosition();
