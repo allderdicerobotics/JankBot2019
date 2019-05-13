@@ -56,18 +56,17 @@ public class Elevator extends Subsystem {
     elevatorMotorPidController.setFF(kFF);
     elevatorMotorPidController.setOutputRange(kMinOutput, kMaxOutput);
 
-    // // display PID coefficients on SmartDashboard
-    // SmartDashboard.putNumber("P Gain", kP);
-    // SmartDashboard.putNumber("I Gain", kI);
-    // SmartDashboard.putNumber("D Gain", kD);
-    // SmartDashboard.putNumber("I Zone", kIz);
-    // SmartDashboard.putNumber("Feed Forward", kFF);
-    // SmartDashboard.putNumber("Max Output", kMaxOutput);
-    // SmartDashboard.putNumber("Min Output", kMinOutput);
-    // SmartDashboard.putNumber("Set Rotations", 0);
+    // display PID coefficients on SmartDashboard
+    SmartDashboard.putNumber("P Gain", kP);
+    SmartDashboard.putNumber("I Gain", kI);
+    SmartDashboard.putNumber("D Gain", kD);
+    SmartDashboard.putNumber("I Zone", kIz);
+    SmartDashboard.putNumber("Feed Forward", kFF);
+    SmartDashboard.putNumber("Max Output", kMaxOutput);
+    SmartDashboard.putNumber("Min Output", kMinOutput);
+    SmartDashboard.putNumber("Set Rotations", 0);
   }
   public void Init() {
-    //elevator2Motor.follow(elevator1Motor);
   }
   public void up() {
     double goalPosition = currentPosition - RobotMap.ELEVATOR_MANUAL_CHANGE;
@@ -141,29 +140,29 @@ public class Elevator extends Subsystem {
     return elevatorEncoder.getPosition();
   }
   public void elevatorPID() {
-    // // read PID coefficients from SmartDashboard
-    // double p = SmartDashboard.getNumber("P Gain", 0);
-    // double i = SmartDashboard.getNumber("I Gain", 0);
-    // double d = SmartDashboard.getNumber("D Gain", 0);
-    // double iz = SmartDashboard.getNumber("I Zone", 0);
-    // double ff = SmartDashboard.getNumber("Feed Forward", 0);
-    // double max = SmartDashboard.getNumber("Max Output", 0);
-    // double min = SmartDashboard.getNumber("Min Output", 0);
-    // double rotations = SmartDashboard.getNumber("Set Rotations", 0);
+    // read PID coefficients from SmartDashboard
+      double p = SmartDashboard.getNumber("P Gain", 0);
+      double i = SmartDashboard.getNumber("I Gain", 0);
+      double d = SmartDashboard.getNumber("D Gain", 0);
+      double iz = SmartDashboard.getNumber("I Zone", 0);
+      double ff = SmartDashboard.getNumber("Feed Forward", 0);
+      double max = SmartDashboard.getNumber("Max Output", 0);
+      double min = SmartDashboard.getNumber("Min Output", 0);
+      double rotations = SmartDashboard.getNumber("Set Rotations", 0);
 
-    // // if PID coefficients on SmartDashboard have changed, write new values to controller
-    // if((p != kP)) { elevatorMotorPidController.setP(p); kP = p; }
-    // if((i != kI)) { elevatorMotorPidController.setI(i); kI = i; }
-    // if((d != kD)) { elevatorMotorPidController.setD(d); kD = d; }
-    // if((iz != kIz)) { elevatorMotorPidController.setIZone(iz); kIz = iz; }
-    // if((ff != kFF)) { elevatorMotorPidController.setFF(ff); kFF = ff; }
-    // if((max != kMaxOutput) || (min != kMinOutput)) { 
-    //   elevatorMotorPidController.setOutputRange(min, max); 
-    //   kMinOutput = min; kMaxOutput = max; 
-    // }
+      // if PID coefficients on SmartDashboard have changed, write new values to controller
+      if((p != kP)) { elevatorMotorPidController.setP(p); kP = p; }
+      if((i != kI)) { elevatorMotorPidController.setI(i); kI = i; }
+      if((d != kD)) { elevatorMotorPidController.setD(d); kD = d; }
+      if((iz != kIz)) { elevatorMotorPidController.setIZone(iz); kIz = iz; }
+      if((ff != kFF)) { elevatorMotorPidController.setFF(ff); kFF = ff; }
+      if((max != kMaxOutput) || (min != kMinOutput)) { 
+        elevatorMotorPidController.setOutputRange(min, max); 
+        kMinOutput = min; kMaxOutput = max; 
+      }
 
-    //elevatorMotorPidController.setReference(rotations, ControlType.kPosition);
-    // SmartDashboard.putNumber("Elevator SetPoint", rotations);
+    elevatorMotorPidController.setReference(rotations, ControlType.kPosition);
+    SmartDashboard.putNumber("Elevator SetPoint", rotations);
 
     SmartDashboard.putNumber("Current Elevator Position is ", elevatorEncoder.getPosition());
     SmartDashboard.putNumber("Current Elevator offset is ", currentOffset);
