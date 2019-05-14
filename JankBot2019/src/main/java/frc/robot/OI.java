@@ -76,8 +76,8 @@ public class OI {
 
     /*-------------------------------INTAKE--------------------------------*/
     //Trigger for the manual operation of the intake
-    Trigger operatorRightAxisUp = new AxisButton(Robot.operator, RobotMap.kRightStickY, true);
-    Trigger operatorRightAxisDown = new AxisButton(Robot.operator, RobotMap.kRightStickY, false);
+    Trigger operatorRightAxisUp = new AxisButton(Robot.operator, RobotMap.kRightStickY, false);
+    Trigger operatorRightAxisDown = new AxisButton(Robot.operator, RobotMap.kRightStickY, true);
     operatorRightAxisUp.whileActive(new IntakeOut());
     operatorRightAxisDown.whileActive(new IntakeIn());
     /*---------------------------END OF INTAKE-----------------------------*/

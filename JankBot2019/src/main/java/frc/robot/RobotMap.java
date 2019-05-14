@@ -46,7 +46,7 @@ public class RobotMap {
 
 	//Intake:
 	public static final double INTAKE_IN_SPEED = 0.55;
-	public static final double INTAKE_OUT_SPEED = 0.88;
+	public static final double INTAKE_OUT_SPEED = -0.88;
 
 	//Elevator:
 	public static final double ELEVATOR_MANUAL_CHANGE = 1.9;

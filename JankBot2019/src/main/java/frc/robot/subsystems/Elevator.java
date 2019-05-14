@@ -24,7 +24,7 @@ public class Elevator extends Subsystem {
   private CANSparkMax elevator2Motor;
   private CANPIDController elevatorMotorPidController;
   private CANEncoder elevatorEncoder;
-  public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
+  public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput, maxRPM, maxVel, minVel, maxAcc, allowedErr;
   public double currentOffset;
   public double currentPosition;
   public String currentState = "";
@@ -40,13 +40,18 @@ public class Elevator extends Subsystem {
     currentOffset = 0.0;
     currentPosition = 0.0;
 
-    kP = 0.5;
-    kI = 1e-5;
-    kD = 0.5;
+    kP = 1e-4;
+    kI = 1e-6;
+    kD = 0;
     kIz = 0;
-    kFF = 0;
+    kFF = 1e-4;
     kMaxOutput = 1;
     kMinOutput = -1;
+    maxRPM = 5700;
+
+    //Smart Motion Coefficients
+    maxVel = 20000; //rpm
+    maxAcc = 6500;
 
     //set PID coefficients
     elevatorMotorPidController.setP(kP);
@@ -56,6 +61,12 @@ public class Elevator extends Subsystem {
     elevatorMotorPidController.setFF(kFF);
     elevatorMotorPidController.setOutputRange(kMinOutput, kMaxOutput);
 
+    int smartMotionSlot = 0;
+    elevatorMotorPidController.setSmartMotionMaxVelocity(maxVel, smartMotionSlot);
+    elevatorMotorPidController.setSmartMotionMinOutputVelocity(minVel, smartMotionSlot);
+    elevatorMotorPidController.setSmartMotionMaxAccel(maxAcc, smartMotionSlot);
+    elevatorMotorPidController.setSmartMotionAllowedClosedLoopError(allowedErr, smartMotionSlot);
+
     // display PID coefficients on SmartDashboard
     SmartDashboard.putNumber("P Gain", kP);
     SmartDashboard.putNumber("I Gain", kI);
@@ -64,7 +75,16 @@ public class Elevator extends Subsystem {
     SmartDashboard.putNumber("Feed Forward", kFF);
     SmartDashboard.putNumber("Max Output", kMaxOutput);
     SmartDashboard.putNumber("Min Output", kMinOutput);
-    SmartDashboard.putNumber("Set Rotations", 0);
+
+    SmartDashboard.putNumber("Max Velocity", maxVel);
+    SmartDashboard.putNumber("Min Velocity", minVel);
+    SmartDashboard.putNumber("Max Acceleration", maxAcc);
+    SmartDashboard.putNumber("Allowed Closed Loop Error", allowedErr);
+    SmartDashboard.putNumber("Set Position", 0);
+    SmartDashboard.putNumber("Set Velocity", 0);
+
+    // button to toggle between velocity and smart motion modes
+    SmartDashboard.putBoolean("Mode", true);
   }
   public void Init() {
   }
@@ -129,7 +149,7 @@ public class Elevator extends Subsystem {
     currentState = "Going to the bottom";
   }
   public void setPosition(double goalPosition) {
-    elevatorMotorPidController.setReference(goalPosition - currentOffset, ControlType.kPosition);
+    elevatorMotorPidController.setReference(goalPosition - currentOffset, ControlType.kSmartMotion);
     currentPosition = goalPosition;
   }
   public void setOffset() {
@@ -141,28 +161,56 @@ public class Elevator extends Subsystem {
   }
   public void elevatorPID() {
     // read PID coefficients from SmartDashboard
-      double p = SmartDashboard.getNumber("P Gain", 0);
-      double i = SmartDashboard.getNumber("I Gain", 0);
-      double d = SmartDashboard.getNumber("D Gain", 0);
-      double iz = SmartDashboard.getNumber("I Zone", 0);
-      double ff = SmartDashboard.getNumber("Feed Forward", 0);
-      double max = SmartDashboard.getNumber("Max Output", 0);
-      double min = SmartDashboard.getNumber("Min Output", 0);
-      double rotations = SmartDashboard.getNumber("Set Rotations", 0);
+    double p = SmartDashboard.getNumber("P Gain", 0);
+    double i = SmartDashboard.getNumber("I Gain", 0);
+    double d = SmartDashboard.getNumber("D Gain", 0);
+    double iz = SmartDashboard.getNumber("I Zone", 0);
+    double ff = SmartDashboard.getNumber("Feed Forward", 0);
+    double max = SmartDashboard.getNumber("Max Output", 0);
+    double min = SmartDashboard.getNumber("Min Output", 0);
+    double maxV = SmartDashboard.getNumber("Max Velocity", 0);
+    double minV = SmartDashboard.getNumber("Min Velocity", 0);
+    double maxA = SmartDashboard.getNumber("Max Acceleration", 0);
+    double allE = SmartDashboard.getNumber("Allowed Closed Loop Error", 0);
 
-      // if PID coefficients on SmartDashboard have changed, write new values to controller
-      if((p != kP)) { elevatorMotorPidController.setP(p); kP = p; }
-      if((i != kI)) { elevatorMotorPidController.setI(i); kI = i; }
-      if((d != kD)) { elevatorMotorPidController.setD(d); kD = d; }
-      if((iz != kIz)) { elevatorMotorPidController.setIZone(iz); kIz = iz; }
-      if((ff != kFF)) { elevatorMotorPidController.setFF(ff); kFF = ff; }
-      if((max != kMaxOutput) || (min != kMinOutput)) { 
-        elevatorMotorPidController.setOutputRange(min, max); 
-        kMinOutput = min; kMaxOutput = max; 
-      }
+    // if PID coefficients on SmartDashboard have changed, write new values to controller
+    if((p != kP)) { elevatorMotorPidController.setP(p); kP = p; }
+    if((i != kI)) { elevatorMotorPidController.setI(i); kI = i; }
+    if((d != kD)) { elevatorMotorPidController.setD(d); kD = d; }
+    if((iz != kIz)) { elevatorMotorPidController.setIZone(iz); kIz = iz; }
+    if((ff != kFF)) { elevatorMotorPidController.setFF(ff); kFF = ff; }
+    if((max != kMaxOutput) || (min != kMinOutput)) { 
+      elevatorMotorPidController.setOutputRange(min, max); 
+      kMinOutput = min; kMaxOutput = max; 
+    }
+    if((maxV != maxVel)) { elevatorMotorPidController.setSmartMotionMaxVelocity(maxV,0); maxVel = maxV; }
+    if((minV != minVel)) { elevatorMotorPidController.setSmartMotionMinOutputVelocity(minV,0); minVel = minV; }
+    if((maxA != maxAcc)) { elevatorMotorPidController.setSmartMotionMaxAccel(maxA,0); maxAcc = maxA; }
+    if((allE != allowedErr)) { elevatorMotorPidController.setSmartMotionAllowedClosedLoopError(allE,0); allE = allowedErr; }
 
-    elevatorMotorPidController.setReference(rotations, ControlType.kPosition);
-    SmartDashboard.putNumber("Elevator SetPoint", rotations);
+    double setPoint, processVariable;
+    boolean mode = SmartDashboard.getBoolean("Mode", false);
+    System.out.println("test");
+    if(mode) {
+      System.out.println("VELOCITY MODE");
+      setPoint = SmartDashboard.getNumber("Set Velocity", 0);
+      elevatorMotorPidController.setReference(setPoint, ControlType.kVelocity);
+      processVariable = elevatorEncoder.getVelocity();
+    } else {
+      System.out.println("SMART MOTION MODE");
+      setPoint = SmartDashboard.getNumber("Set Position", 0);
+      /**
+       * As with other PID modes, Smart Motion is set by calling the
+       * setReference method on an existing pid object and setting
+       * the control type to kSmartMotion
+       */
+      elevatorMotorPidController.setReference(setPoint, ControlType.kSmartMotion);
+      processVariable = elevatorEncoder.getPosition();
+    }
+    
+    SmartDashboard.putNumber("SetPoint", setPoint);
+    SmartDashboard.putNumber("Process Variable", processVariable);
+    SmartDashboard.putNumber("Output", elevator1Motor.getAppliedOutput());
 
     SmartDashboard.putNumber("Current Elevator Position is ", elevatorEncoder.getPosition());
     SmartDashboard.putNumber("Current Elevator offset is ", currentOffset);
