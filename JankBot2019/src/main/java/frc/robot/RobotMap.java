@@ -52,13 +52,13 @@ public class RobotMap {
 	public static final double ELEVATOR_MANUAL_CHANGE = 1.9;
 	public static final double ELEVATOR_NUDGE_CHANGE = 12.0;
 	//Position Encoder values
-	public static final double BALL_1 = 135.0;
-	public static final double BALL_2 = 306.0;
-	public static final double BALL_3 = 440.0;
-	public static final double GET_BALL = 227.0;
-	public static final double HATCH_1 = 25.0;
-	public static final double HATCH_2 = 209.0;
-	public static final double HATCH_3 = 354.0;
+	public static final double BALL_1 = 45.0;
+	public static final double BALL_2 = 102.0;
+	public static final double BALL_3 = 146.0;
+	public static final double GET_BALL = 75.6;
+	public static final double HATCH_1 = 8.0;
+	public static final double HATCH_2 = 69.69;
+	public static final double HATCH_3 = 118.0;
 
 	//Front Climbing Elevator:
 	public static final double FRONT_CLIMBING_ELEVATOR_SPEED = 0.346;
