@@ -27,7 +27,7 @@ public class Intake extends Subsystem {
     intakeMotorRight = new Spark(RobotMap.INTAKE_PWM_RIGHT);
     this.operator = Robot.operator;
   }
-  public void Init(){
+  public void Init() {
     stop();
   }
   public void in() {
