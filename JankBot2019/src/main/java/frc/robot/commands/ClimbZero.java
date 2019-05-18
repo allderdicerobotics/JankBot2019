@@ -8,6 +8,8 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.Robot;
 import frc.robot.commands.BackClimbingElevator.BackClimbingElevatorDown;
 import frc.robot.commands.BackClimbingElevator.BackClimbingElevatorUp;
@@ -17,7 +19,6 @@ import frc.robot.commands.BackClimbingElevator.BackClimb0;
 import frc.robot.commands.BackClimbingElevator.BackClimbLevel2;
 import frc.robot.commands.BackClimbingElevator.BackClimbLevel3;
 import frc.robot.commands.FrontClimbingElevator.BottomWheelBackward;
-import frc.robot.commands.FrontClimbingElevator.BottomWheelForward;
 import frc.robot.commands.FrontClimbingElevator.FrontClimbingElevatorDown;
 import frc.robot.commands.FrontClimbingElevator.FrontClimbingElevatorUp;
 import frc.robot.commands.FrontClimbingElevator.FrontGoToHeight;
@@ -26,42 +27,18 @@ import frc.robot.commands.FrontClimbingElevator.FrontClimb0;
 import frc.robot.commands.FrontClimbingElevator.FrontClimbLevel2;
 import frc.robot.commands.FrontClimbingElevator.FrontClimbLevel3;;
 
-
-public class ClimbLvl2 extends CommandGroup {
+public class ClimbZero extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public ClimbLvl2() {
-
-    addParallel(new FrontClimb0());  //Move both elevators to their zero position
-    addSequential(new BackClimb0());
-
-    addParallel(new FrontMoveToGround()); //Move both elevators to the ground
-    addSequential(new BackMoveToGround());
-
-    addParallel(new FrontGoToHeight(20)); //Move both elevators to the height of the platform in increments
-    addSequential(new BackGoToHeight(20));
-    addParallel(new FrontGoToHeight(40));
-    addSequential(new BackGoToHeight(40));
-    addParallel(new FrontGoToHeight(60));
-    addSequential(new BackGoToHeight(60));
-    addParallel(new FrontGoToHeight(90));
-    addSequential(new BackGoToHeight(90));
-
-    addSequential(new BottomWheelBackward(), 1.25); //Move the robot forward so the front wheels are the platform
-
-    addSequential(new FrontClimb0()); //Move the front elevator up to its zero position
-
-    addSequential(new BackGoToHeight(120)); //Tilt the robot forward
-
-    addSequential(new TeleopDrive(Robot.driveTrain, false, true), 0.9); //Move the whole robot onto the platform
-
-    addSequential(new BackClimb0()); //Lift the back elevator to complete the climb
-
+  public ClimbZero() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
+    System.out.println("zero");
+    addParallel(new FrontClimb0());
+    addSequential(new BackClimb0());
 
     // To run multiple commands at the same time,
     // use addParallel()

@@ -5,15 +5,18 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.BackClimbingElevator;
-
+package frc.robot.commands.FrontClimbingElevator;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
-public class BackClimbingElevatorDown extends Command {
-  
-  public BackClimbingElevatorDown() {
-    requires(Robot.backClimbingElevator);
+public class FrontGoToHeight extends Command {
+  private double elevatorHeight;
+  public FrontGoToHeight(double position) {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
+    requires(Robot.frontClimbingElevator);
+    elevatorHeight = position;
   }
 
   // Called just before this Command runs the first time
@@ -24,13 +27,14 @@ public class BackClimbingElevatorDown extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.backClimbingElevator.down();
+    Robot.frontClimbingElevator.setPosition(elevatorHeight + RobotMap.FRONT_OFFSET);
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return Robot.frontClimbingElevator.atPosition();
   }
 
   // Called once after isFinished returns true

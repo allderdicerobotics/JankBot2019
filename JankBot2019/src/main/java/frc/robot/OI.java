@@ -19,6 +19,8 @@ import frc.robot.commands.Intake.IntakeOut;
 import frc.robot.commands.Elevator.NudgeDown;
 import frc.robot.commands.Elevator.NudgeUp;
 import frc.robot.commands.ClimbLvl2;
+import frc.robot.commands.ClimbLvl3;
+import frc.robot.commands.ClimbZero;
 import frc.robot.commands.GetHatch;
 import frc.robot.commands.ReleaseHatch;
 import frc.robot.commands.BackClimbingElevator.BackClimbingElevatorDown;
@@ -101,8 +103,16 @@ public class OI {
     // climberLeftAxisDown.whileActive(new BackClimbingElevatorDown());
     // /*----------------END OF BACK CLIMBING ELEVATOR------------------------*/
 
-    // Button climberB = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonB);
-    // climberB.whenActive(new ClimbLvl2());
+
+    /*------------------CLIMBER AUTO COMMANDS, USING PID-----------------*/
+    Button climberX = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonX);
+    climberX.whenPressed(new ClimbZero());
+
+    Button climberB = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonB);
+    climberB.whenPressed(new ClimbLvl2());
+
+    Button climberY = new JoystickButton(Robot.climberJoystick, RobotMap.kButtonY);
+    climberY.whenPressed(new ClimbLvl3());
 
   }
 }

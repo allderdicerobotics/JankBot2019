@@ -49,22 +49,29 @@ public class RobotMap {
 	public static final double INTAKE_OUT_SPEED = -0.88;
 
 	//Elevator:
-	public static final double ELEVATOR_MANUAL_CHANGE = 1.9;
-	public static final double ELEVATOR_NUDGE_CHANGE = 12.0;
+	public static final double ELEVATOR_MANUAL_CHANGE = 1.6871584;
+	public static final double ELEVATOR_NUDGE_CHANGE = 4.0;
 	//Position Encoder values
-	public static final double BALL_1 = 45.0;
-	public static final double BALL_2 = 102.0;
-	public static final double BALL_3 = 146.0;
+	public static final double BALL_1 = 55.0;
+	public static final double BALL_2 = 117.0;
+	public static final double BALL_3 = 170.0;
 	public static final double GET_BALL = 75.6;
-	public static final double HATCH_1 = 8.0;
-	public static final double HATCH_2 = 69.69;
-	public static final double HATCH_3 = 118.0;
+	public static final double HATCH_1 = 15.0;
+	public static final double HATCH_2 = 79.0;
+	public static final double HATCH_3 = 143.0;
+
+	public static final double CLIMB_AUTO_TOLERANCE = 10.0;
 
 	//Front Climbing Elevator:
 	public static final double FRONT_CLIMBING_ELEVATOR_SPEED = 0.346;
 	public static final double FRONT_CLIMBING_ELEVATOR_MAX_SPEED = 0.6;
 	public static final double CLIMBING_WHEEL_NORMAL_SPEED = 0.35;
 	public static final double CLIMBING_WHEEL_MAX_SPEED = 0.5;
+
+	public static final double CLIMB_LEVEL_2 = 90;
+	public static final double CLIMB_LEVEL_3 = 30;
+	public static final double BACK_OFFSET = 47.5;
+	public static final double FRONT_OFFSET = 55;
 
 	//Back Climbing Elevator
 	public static final double BACK_CLIMBING_ELEVATOR_SPEED = 0.3;
@@ -75,8 +82,8 @@ public class RobotMap {
 	//Autonomous commands:
 	public static final double HATCH_AUTO_DRIVE_TIME = 1.0;
 	public static final double HATCH_AUTO_DRIVE_SPEED = -0.4;
-	public static final double ELEVATOR_GET_HATCH_CHANGE = 45.0;
-	public static final double ELEVATOR_RELEASE_HATCH_CHANGE = 20.0;
+	public static final double ELEVATOR_GET_HATCH_CHANGE = 20.0;
+	public static final double ELEVATOR_RELEASE_HATCH_CHANGE = 7.0;
 
 	//GamePad Mappings
 	//Logitech f310

@@ -46,7 +46,7 @@ public class TeleopDrive extends Command {
   @Override
   protected void execute() {
     //Robot.elevator.elevatorPID();
-    //Robot.climbingElevator.climbingElevatorPID();
+    
     if(autoBack) {
       //System.out.println("In autoback in TElop");
       driveTrain.arcadeDrive(RobotMap.HATCH_AUTO_DRIVE_SPEED, 0);
@@ -56,7 +56,7 @@ public class TeleopDrive extends Command {
       double speed = RobotMap.THROTTLE_SCALE;
       double steer = RobotMap.STEERING_SCALE;
 
-      if(joystick.getRawButton(RobotMap.kButtonLeftBumper) || (Robot.elevator.getCurrentPosition() > 195.0)) {
+      if(joystick.getRawButton(RobotMap.kButtonLeftBumper) || (Robot.elevator.getCurrentPosition() > 105.0)) {
         speed = speed / RobotMap.SLOW_THROTTLE_SCALE;
         steer = steer / RobotMap.SLOW_STEERING_SCALE;
       }
